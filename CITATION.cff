@@ -8,6 +8,14 @@ authors:
     affiliation: "BLACKBOX.ROCKS, Cologne, Germany"
 license: Apache-2.0
 repository-code: "https://github.com/lxtececo/blackbox-rocks-q-paper-repro"
+doi: "10.5281/zenodo.24247106"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24247106"
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.24247107"
+    description: "Version 1.0.0, as cited in the paper"
 version: "1.0.0"
 date-released: "2026-11-15"
 keywords: [quantum computing, benchmarking, amplitude estimation, QAOA, sample-based quantum diagonalization, Rydberg arrays, reproducibility]

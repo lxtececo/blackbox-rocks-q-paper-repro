@@ -1,5 +1,7 @@
 # Every Quantum Run Needs a Referee — reproduction package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24247106.svg)](https://doi.org/10.5281/zenodo.24247106)
+
 Code, raw results and paper source for
 
 > A. Nachtigall, *Every Quantum Run Needs a Referee: Design and Empirical
@@ -65,4 +67,7 @@ pip install -r requirements.txt
 ## Licence and citation
 
 Code: Apache-2.0 (`LICENSE`). Paper, figures and results: CC-BY-4.0
-(`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI.
+(`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI:
+[10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
+versions); the paper cites version 1.0.0,
+[10.5281/zenodo.24247107](https://doi.org/10.5281/zenodo.24247107).
