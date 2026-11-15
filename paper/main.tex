@@ -1,0 +1,1250 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\newcommand{\mHa}{\,\mathrm{mHa}}
+\newcommand{\sysname}{BLACKBOX.ROCKS~$|\psi\rangle$~Q}
+\newcommand{\finding}[1]{\par\smallskip\noindent\textbf{Finding.} \emph{#1}\par\smallskip}
+
+\title{Every Quantum Run Needs a Referee:\\
+Design and Empirical Lessons from a Vendor-Neutral\\ Hybrid Quantum--Classical Platform}
+
+\author{Alexander Nachtigall\\
+\small BLACKBOX.ROCKS, Cologne, Germany\\
+\small \texttt{contact@blackbox.rocks}}
+
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe \sysname, a multi-tenant platform that runs five application
+workloads --- portfolio selection, vehicle routing, facility location, option
+pricing and molecular ground-state energy --- on gate-based and annealing
+back-ends and their simulators, with a neutral-atom path in integration. Its
+design rule is that no quantum result is shown without a referee: an exact
+answer or a classical baseline computed on the same instance. We report the
+architecture, a correctness methodology that exposed silent encoding defects,
+and nine reproducible experiments with seeds, controls and confidence
+intervals, two of them on an IBM Heron processor. Amplitude estimation converges as $N^{-1}$ against $N^{-1/2}$ for
+classical sampling of the same distribution, a $70\times$ saving at our
+target accuracy; but its deepest circuit needs 13{,}374 CX gates, so at a
+$10^{-3}$ two-qubit error rate only shallow schedules with no practical gain
+fit on hardware; on \texttt{ibm\_marrakesh} even the shallowest schedule
+returned a depolarised estimate. An exact MILP solver shows that our facility-location
+baseline was 2--3\% from optimal and that annealing samples were almost never
+feasible before classical repair. QAOA states beat uniform sampling in
+expectation, yet their best-of-$N$ solutions did not. Sample-based
+diagonalization was exact wherever its subspace covered the configuration
+space; at matched subspace size its noiseless sampler beat random and
+excitation-based classical selection for stretched N$_2$. On hardware the
+same pipeline looked better still, but uniform random bitstrings did as well:
+noise enlarged the subspace. For Rydberg arrays,
+mapping the spacing rule to the final-detuning cutoff raised valid raw
+readouts from 42\% to 97\%. We derive a research agenda and claim no quantum
+advantage at these sizes.
+\end{abstract}
+
+\clearpage
+\tableofcontents
+
+%======================================================================
+\clearpage
+\section{Introduction}
+\label{sec:intro}
+
+Quantum computing is sold today by several hardware vendors with different
+qubit modalities, software kits and access models~\cite{preskill2018,bharti2022}.
+An organisation that wants to know whether quantum methods can help with a
+concrete problem meets three obstacles before it meets any physics.
+
+\begin{enumerate}
+  \item \textbf{Fragmentation.} Each vendor stack needs its own encoding,
+        compilation and credential handling, so comparing modalities on one
+        problem is an engineering project in itself.
+  \item \textbf{Incomparable baselines.} Published results are reported
+        against classical baselines of very different strength. ``The quantum
+        method found a good solution'' carries no information without the
+        best classical answer next to it~\cite{ronnow2014,abbas2024}.
+  \item \textbf{Silent failure.} Many optimisation encodings fail without
+        crashing: a sign, scale or bit-ordering error yields a valid-looking
+        answer to a different problem.
+\end{enumerate}
+
+This paper describes \sysname{}, a platform built around one rule that
+addresses all three: \emph{every quantum result is shown next to a referee
+computed on the same instance}. Where an exact answer exists --- a closed-form
+option price, a full configuration interaction (FCI) energy, an exact maximum
+independent set, an exact mixed-integer optimum --- the referee is exact.
+Where it does not, the referee is a classical method run on the identical
+instance, and the quantum result is reported as a gap, positive or negative.
+
+The rule sounds obvious. Applying it consistently across five workloads and
+several vendors turned out to change the architecture, expose defects, and
+overturn several of our own earlier claims. This paper reports both the system
+and what the rule taught us.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+  \item A set of design principles for referee-first quantum middleware and an
+        architecture that implements them across gate-based, annealing and
+        analog back-ends (Sections~\ref{sec:principles}--\ref{sec:architecture}).
+  \item A correctness methodology --- a single QUBO-to-Ising authority locked
+        by exhaustive equivalence tests --- with a taxonomy of the defects it
+        exposed (Section~\ref{sec:correctness}).
+  \item A mapping of spaced site selection onto Rydberg atom arrays,
+        including a cutoff rule that differs from the usual blockade radius
+        and an analysis of which instances can be embedded faithfully
+        (Section~\ref{sec:workloads}).
+  \item Nine reproducible experiments with seeds, controls and confidence
+        intervals, including exact referees and random-sampling controls that
+        the platform itself did not have before, and a first hardware round
+        on a 156-qubit IBM Heron processor checked against a uniform-noise
+        control (Sections~\ref{sec:method}--\ref{sec:results}).
+  \item A discussion of cross-cutting lessons and a concrete research agenda
+        for the community (Sections~\ref{sec:discussion}--\ref{sec:agenda}).
+\end{enumerate}
+
+\paragraph{Summary of findings.}
+\begin{itemize}
+  \item \emph{The only measured asymptotic gain does not survive circuit
+        cost.} Maximum-likelihood amplitude estimation (MLAE) converges with
+        slope $-1.14$ against $-0.51$ for classical sampling, but its deepest
+        useful circuit needs $13{,}374$ CX gates (Section~\ref{sec:res-mc}).
+  \item \emph{A weak referee flatters every method.} An exact MILP solver
+        showed the platform's facility-location baseline to be 2.2--3.4\%
+        above optimal; annealing pipelines that ``matched the baseline'' were
+        in fact 3.5--3.9\% from optimal (Section~\ref{sec:res-cflp}).
+  \item \emph{Classical post-processing carries the quality.} Raw annealing
+        samples of the facility-location QUBO were feasible in at most 1 of 10
+        runs. The optimised QAOA state was better than uniform (expectation
+        17--26\% of the way to the ground state), but its best-of-1\,024
+        solution was indistinguishable from random sampling with the same
+        shots (Sections~\ref{sec:res-cflp}--\ref{sec:res-qaoa}).
+  \item \emph{Exact is not evidence, but a matched control is.} Sample-based
+        diagonalization was exact whenever its subspace covered most of the
+        configuration space. At matched subspace size, the noiseless SqDRIFT
+        sampler was 20--45$\times$ more accurate than random selection, and
+        for stretched N$_2$ three times more accurate than an
+        excitation-based classical selection --- the one encouraging quantum
+        result in this study (Section~\ref{sec:res-chem}).
+  \item \emph{On hardware, noise can improve the headline number.} On
+        \texttt{ibm\_marrakesh}, SqDRIFT reached sub-0.1\,mHa errors for N$_2$,
+        far better than its noiseless simulation, because noisy shots enlarged
+        the recovered subspace; uniform random bitstrings did equally well.
+        MLAE was fully depolarised from the first Grover power, and QAOA's
+        best-of-1\,024 was again indistinguishable from random
+        (Section~\ref{sec:res-hw}).
+  \item \emph{Analog embedding needs its own physics.} Mapping the spacing rule
+        to the final-detuning cutoff instead of the blockade radius raised the
+        valid fraction of raw Rydberg readouts from 42\% to 97\%; a geometric
+        limit of $\approx 2.8$ on spacing over closest-pair distance decides
+        which instances can be embedded at all (Section~\ref{sec:res-mis}).
+\end{itemize}
+
+\section{Background and related work}
+\label{sec:related}
+
+\paragraph{Software stacks.}
+Vendor and open-source kits --- Qiskit~\cite{javadi2024}, Cirq, Amazon Braket,
+D-Wave Ocean, Pulser~\cite{silverio2022} --- expose devices and simulators but
+leave problem encoding, baselines and comparison to the user. Commercial
+middleware adds workflow orchestration and multi-vendor access. To our
+knowledge, none makes an instance-level classical referee a mandatory part of
+every result.
+
+\paragraph{Benchmarks.}
+Device-level metrics such as quantum volume~\cite{cross2019} characterise
+hardware, not applications. Application-oriented suites~\cite{lubinski2023,tomesh2022}
+measure circuit-level fidelity on algorithm families, typically without a
+domain baseline. The speed-up literature~\cite{ronnow2014} established that
+a claimed advantage must be defined against the best classical method at
+equal resources. Recent surveys~\cite{abbas2024,herman2023,lee2023} reach the
+same conclusion for optimisation, finance and chemistry respectively.
+
+\paragraph{Methods used here.}
+Ising and QUBO formulations~\cite{lucas2014,glover2019}; quantum
+annealing~\cite{kadowaki1998,johnson2011}; QAOA~\cite{farhi2014} and its
+constraint-preserving generalisation~\cite{hadfield2019}; variational
+eigensolvers~\cite{peruzzo2014}, CVaR objectives~\cite{barkoutsos2020}, Pauli
+correlation encoding~\cite{sciorilli2024} and bias-field digitized
+counterdiabatic optimisation~\cite{cadavid2024}; amplitude
+estimation~\cite{brassard2002,montanaro2015,suzuki2020,giurgica2022} for option
+pricing~\cite{woerner2019,stamatopoulos2020}; qDRIFT~\cite{campbell2019} and
+sample-based diagonalization~\cite{kanno2023,robledo2024,sqdrift2025}; and
+Rydberg-blockade MIS~\cite{pichler2018,ebadi2022,wurtz2023,nguyen2023}. Our
+contribution is not a new algorithm but a system that applies these methods
+under one referee discipline, and what that discipline revealed.
+
+%======================================================================
+\section{Design principles}
+\label{sec:principles}
+
+Seven principles follow from the referee rule. Each was adopted after a
+specific failure, noted in brackets.
+
+\begin{description}
+  \item[P1 --- Same-instance referee.] Every run computes its referee on the
+        instance it submits, not on a published benchmark. \emph{[Published
+        baselines did not match our instances' constraints.]}
+  \item[P2 --- Exact where possible, strong otherwise.] Prefer closed forms,
+        exact diagonalization and exact optimisation; a heuristic referee must
+        be labelled as such. \emph{[Section~\ref{sec:res-cflp}: a heuristic
+        referee hid a 2--3\% gap.]}
+  \item[P3 --- No silent substitution.] A failed quantum step surfaces as an
+        error and is never replaced by another back-end under the quantum
+        label. \emph{[A broad exception handler once returned local-simulator
+        results under a vendor label.]}
+  \item[P4 --- Separate raw from refined.] Hybrid pipelines report the raw
+        quantum output and the refined result separately, and share the
+        refinement operator with the referee. \emph{[Refinement turned 34\%
+        gaps into 8\% gaps.]}
+  \item[P5 --- One authority for the mathematics.] Conversions such as
+        QUBO$\to$Ising exist once and are locked by exhaustive tests.
+        \emph{[Section~\ref{sec:correctness}: four independent copies, four
+        defect classes.]}
+  \item[P6 --- Decompose the error.] Report systematic error (discretisation
+        bias, subspace truncation) separately from statistical error.
+        \emph{[A tight confidence interval surrounded a biased price.]}
+  \item[P7 --- Honest language.] The interface, documentation and
+        natural-language assistant may not claim speed or advantage beyond
+        what the run shows. \emph{[A language model repeatedly described QAOA
+        as ``exploring all combinations at once''.]}
+\end{description}
+
+%======================================================================
+\section{Architecture}
+\label{sec:architecture}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  base/.style={draw, rounded corners=2pt, align=center, inner sep=3pt},
+  box/.style={base, font=\small, fill=blue!4},
+  ref/.style={base, font=\small, fill=green!8},
+  hw/.style={base, font=\scriptsize, fill=orange!8, text width=2.15cm, minimum height=8mm},
+  >={Stealth[length=2mm]}]
+  \node[box, text width=14.6cm] (ui) at (0,0) {Web client $\cdot$ natural-language assistant $\cdot$ guided problem wizards $\cdot$ REST API};
+  \node[box, text width=14.6cm] (api) at (0,-1.1) {Gateway: authentication, tenant isolation, quotas, entitlements, per-tenant vendor credentials};
+  \node[box, text width=7.0cm] (wl) at (-3.8,-2.55) {Workload services\\\scriptsize portfolio $\cdot$ routing $\cdot$ facility location $\cdot$ option pricing $\cdot$ chemistry $\cdot$ site spacing};
+  \node[ref, text width=7.0cm] (rf) at (3.8,-2.55) {Referees on the same instance\\\scriptsize classical heuristics $\cdot$ Black--Scholes $\cdot$ FCI (PySCF) $\cdot$ exact MIS};
+  \node[box, text width=14.6cm] (rt) at (0,-4.0) {Router and job queue: compatibility, cost pre-flight, asynchronous workers, step-level trace};
+  \foreach \x/\name/\txt in {-6.25/h1/{IBM\\superconducting}, -3.75/h2/{IonQ\\trapped ion}, -1.25/h3/{D-Wave\\annealing}, 1.25/h4/{Braket\\Rigetti, IQM}, 3.75/h5/{Braket AHS\\neutral atom$^\ast$}, 6.25/h6/{Simulators\\CPU / GPU}}
+    \node[hw] (\name) at (\x,-5.3) {\txt};
+  \draw[->] (ui) -- (api);
+  \draw[->] (api.south -| wl.north) -- (wl.north);
+  \draw[->] (api.south -| rf.north) -- (rf.north);
+  \draw[->] (wl.south) -- (wl.south |- rt.north);
+  \draw[->] (rf.south) -- (rf.south |- rt.north);
+  \foreach \name in {h1,h2,h3,h4,h5,h6}
+    \draw[->] (rt.south -| \name.north) -- (\name.north);
+\end{tikzpicture}
+\caption{Platform layers. Every workload service computes its referee on the
+same instance it sends to the router; results are stored and displayed as a
+pair. $^\ast$Local analog simulator; hardware submission in progress.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Layers}
+
+Figure~\ref{fig:architecture} shows the layers. Users reach the platform
+through a web client, a natural-language assistant that maps requests to runs
+(Section~\ref{sec:assistant}), guided problem wizards, or a REST API. A
+gateway handles authentication, tenant isolation, quotas and feature
+entitlements. Workload services own problem models, encodings and referees. A
+router checks method--platform compatibility and estimated cost, and dispatches
+long runs to asynchronous workers through a message queue. Results, traces and
+audit records live in a relational database. Table~\ref{tab:codebase} gives the
+size of the implementation.
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{lp{7.0cm}}
+\toprule
+Component & Size \\
+\midrule
+Python services (workloads, routing, adapters, API) & 84\,k lines, 215 modules \\
+Python tests & 37\,k lines, 137 files, 2\,019 passing tests \\
+Gateway (Java/Spring) & 11\,k lines \\
+Web client (React) & 44\,k lines \\
+Database schema migrations & 36 \\
+Vendor adapters & IBM, IonQ, D-Wave, Google Cirq, Rigetti/IQM (Braket), QCI CUDA-Q \\
+Version history & 1\,857 commits since September 2025 \\
+\bottomrule
+\end{tabular}
+\caption{Implementation size at the time of writing.}
+\label{tab:codebase}
+\end{table}
+
+\subsection{Request lifecycle}
+
+A run proceeds through named steps, each recorded with metrics and a
+plain-language explanation authored next to the code that produces the
+numbers:
+\begin{enumerate}
+  \item \emph{Capture.} A wizard, the assistant or the API produces a typed
+        problem instance (assets and constraints, stops and vehicles, sites
+        and demand, option contract, molecule and bond length, candidate sites
+        and spacing).
+  \item \emph{Gate.} Entitlements, quotas and, for hardware, a vendor
+        credential and cost estimate are checked before anything is queued,
+        so failures surface as actionable errors rather than orphaned jobs.
+  \item \emph{Encode.} The workload service builds the quantum formulation and
+        records its size (variables, qubits, terms) and any approximation.
+  \item \emph{Execute.} The router dispatches to a simulator or vendor
+        back-end; vendor job identifiers are kept for deep links.
+  \item \emph{Decode and refine.} Raw measurements are decoded; classical
+        refinement, if any, runs as a separate, separately reported step.
+  \item \emph{Referee.} The referee is computed on the same instance and the
+        gap, error or approximation ratio is stored next to the result.
+\end{enumerate}
+
+\subsection{Credentials across process boundaries}
+
+Tenants may bring their own vendor keys. Keys are encrypted at rest and
+injected into vendor SDK calls only for the duration of a submission, through
+a context variable. An instructive failure: context variables do not cross
+the boundary from the API process to the worker process. A run was recorded
+as executed on a vendor (the API's credential lookup succeeded) while the
+worker silently fell back to a local simulator. The label and the reality
+disagreed and nothing failed. Workers now re-resolve credentials, and any
+fallback is logged with vendor and reason. Hybrid systems routinely split
+submission and execution across processes, so this class of defect is general.
+
+\subsection{Contract drift between services}
+
+The gateway and the workload services are written in different languages.
+Twice, a field added on one side was silently dropped on the other: once
+because a schema library ignores unknown keys by default, once because a field
+was nested where the receiver expected it at the top level. In the second case
+a hardware-credential check was bypassed for every request routed through the
+gateway. Both were found only by end-to-end tests that compared two requests
+differing in one field. Our conclusion is that any multi-language quantum
+service needs such paired-request contract tests.
+
+\subsection{Natural-language assistant}
+\label{sec:assistant}
+
+The assistant translates requests (``price an at-the-money call with
+amplitude estimation'', ``what is the principle of molecular energy
+simulation?'') into explanations and run proposals. A rule-based layer handles
+known intents and typos; a language model answers open questions using a
+prompt grounded in what each workload actually does. Every answer about a
+workload offers a classical and a quantum run of the same instance. Even with
+explicit instructions, the model repeatedly described quantum methods as
+``exploring all combinations at once'' or ``finding solutions faster''. A
+sentence-level post-filter now removes such claims except for amplitude
+estimation, the only workload with a proven asymptotic query advantage.
+Language interfaces to quantum software therefore need an explicit
+honesty layer, not only a prompt.
+
+\subsection{Operations}
+
+The services run on Kubernetes with GitOps delivery and continuous
+integration that gates every build on unit, integration and end-to-end tests
+and a dependency and code security scan. Development, staging and
+production are separate clusters.
+
+%======================================================================
+\section{Correctness methodology}
+\label{sec:correctness}
+
+All gate-based and annealing optimisation paths share one conversion from a
+quadratic unconstrained binary objective
+$f(x) = \sum_i q_i x_i + \sum_{i<j} Q_{ij} x_i x_j + c$ to an Ising
+Hamiltonian via $x_i = (1 - z_i)/2$:
+\begin{equation}
+H(z) = \sum_i h_i z_i + \sum_{i<j} J_{ij} z_i z_j + c', \qquad
+h_i = -\tfrac{q_i}{2} - \tfrac{1}{4}\sum_{j\neq i} Q_{ij}, \qquad
+J_{ij} = \tfrac{Q_{ij}}{4},
+\end{equation}
+with $c' = c + \tfrac{1}{2}\sum_i q_i + \tfrac{1}{4}\sum_{i<j} Q_{ij}$.
+Every path that builds a Hamiltonian is tested by enumerating all $2^n$
+bitstrings of reference instances and asserting $f(x) = H(z(x))$ exactly, that
+the arg-min of both coincide, and that constraints hold at the minimum.
+
+Before this lock existed, independently written conversions in different
+vendor paths contained the defects in Table~\ref{tab:defects}. None crashed.
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{p{4.2cm}p{5.0cm}p{4.6cm}}
+\toprule
+Defect & Visible symptom & Detected by \\
+\midrule
+Sign flip of the linear field & Returned the complement of the intended selection ($n-K$ assets instead of $K$) & Exhaustive $f(x)=H(z)$ check \\
+Pair coefficients at half weight & Plausible selections, wrong ranking of near-optimal solutions & Exhaustive check \\
+QUBO coefficients on Pauli terms without conversion & Optimised a different problem; selections looked reasonable & Exhaustive check \\
+Big-endian strings decoded as little-endian & Correct objective value, wrong assets reported & Cross-path agreement on identical instances \\
+Variance diagonal dropped & Risk term ignored for single assets & Exhaustive check \\
+Equality where inequality intended (cardinality) & Opened a superfluous facility at extra cost & Brute-force optimum comparison \\
+Oversized penalty weights & Feasible but mediocre solutions; annealer temperature scale dominated by penalties & Gap to referee \\
+\bottomrule
+\end{tabular}
+\caption{Defect classes found by the correctness methodology. Each produced a
+valid-looking answer.}
+\label{tab:defects}
+\end{table}
+
+The same discipline extends beyond Hamiltonians. Option pricing reports the
+discretisation bias separately from the statistical error and warns when the
+bias dominates. Chemistry reports the error above FCI, not an absolute energy.
+Facility-location penalty weights are sized against what a violation could
+save rather than set large ``to be safe''.
+
+%======================================================================
+\section{Workloads and encodings}
+\label{sec:workloads}
+
+Table~\ref{tab:workloads} summarises the workloads.
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{p{2.4cm}p{3.1cm}p{3.6cm}p{3.6cm}}
+\toprule
+Workload & Quantum formulation & Quantum methods & Referee \\
+\midrule
+Portfolio selection & QUBO, $n$ variables & QAOA, CVaR-VQE, PCE, BF-DCQO, annealing & Classical QP (heuristic) \\
+Vehicle routing & Assignment QUBO, $n_{\mathrm{stops}}\times n_{\mathrm{clusters}}$ & Annealing, QAOA & Savings construction (heuristic) \\
+Facility location & QUBO, $n_s + n_s n_d$ + slack & Annealing, QAOA & Greedy + local search (heuristic); MILP (exact, this paper) \\
+Option pricing & $n$-qubit price register + ancilla & MLAE & Black--Scholes (exact) \\
+Ground-state energy & $2\,n_{\mathrm{orb}}$ qubits & SqDRIFT + SQD & FCI (exact) \\
+Spaced site selection & One atom per site & Adiabatic Rydberg sweep & Exact MIS (exact) \\
+\bottomrule
+\end{tabular}
+\caption{Workloads, formulations and referees.}
+\label{tab:workloads}
+\end{table}
+
+\paragraph{Portfolio selection.} Mean--variance~\cite{markowitz1952} over
+binary selection with a cardinality penalty,
+$\min_x \gamma\, x^\top \Sigma x - \mu^\top x + \lambda (\mathbf 1^\top x - K)^2$,
+with shrinkage covariance~\cite{ledoit2004}.
+
+\paragraph{Vehicle routing.} A capacitated, time-windowed routing problem is
+decomposed into a stop-to-vehicle assignment QUBO with pairwise distance terms
+followed by classical sequencing. The referee is a savings
+construction~\cite{clarke1964}.
+
+\paragraph{Capacitated facility location (CFLP).} Opening variables $y_j$ and
+assignment variables $x_{ij}$, objective
+$\sum_j f_j y_j + \sum_{i,j} c_{ij} x_{ij}$~\cite{owen1998}, one-hot service
+constraints, linking terms $x_{ij}(1 - y_j)$, and an upper bound on open sites
+encoded with slack bits whose weights represent $[0, m]$ exactly. Capacity is
+enforced in classical repair. Annealing samples propose an open set; the same
+drop/swap local search used by the heuristic referee refines it.
+
+\paragraph{European option pricing.} A log-normal terminal price is
+discretised onto $2^n$ bins and loaded by state preparation; a controlled
+rotation encodes the payoff into an ancilla amplitude. MLAE~\cite{suzuki2020}
+uses Grover powers $0, 1, 2, 4, \dots, m$ with a fixed number of shots per
+power and fits the amplitude by maximum likelihood.
+
+\paragraph{Molecular ground-state energy.} For H$_2$, LiH, H$_2$O and N$_2$
+(STO-3G), the SqDRIFT procedure~\cite{sqdrift2025} samples configurations from
+randomized qDRIFT evolutions~\cite{campbell2019} of the Hartree--Fock state
+and diagonalizes the Hamiltonian in the subspace spanned by the sampled
+configurations with configuration recovery~\cite{kanno2023,robledo2024}.
+
+\paragraph{Spaced site selection on Rydberg arrays.} Choose as many candidate
+sites as possible with no two chosen sites closer than $s$: maximum independent
+set (MIS) on the unit-disk conflict graph. Atoms at scaled site coordinates
+evolve under
+\begin{equation}
+H(t) = \sum_i \frac{\Omega(t)}{2}\,\sigma^x_i - \Delta(t)\sum_i n_i
+      + \sum_{i<j} \frac{C_6}{|\mathbf r_i - \mathbf r_j|^6}\, n_i n_j,
+\end{equation}
+with $\Omega$ ramped up and down while $\Delta$ sweeps from negative to
+positive~\cite{pichler2018,ebadi2022}. At the end of the sweep $\Omega = 0$
+and the Hamiltonian is diagonal: adding atom $j$ to an excited set $S$ changes
+the energy by $-\Delta_{\mathrm{end}} + \sum_{i\in S} V_{ij}$. Pairs with
+$V_{ij} > \Delta_{\mathrm{end}}$ are excluded, which places the effective
+cutoff at
+\begin{equation}
+r_c = \left(C_6/\Delta_{\mathrm{end}}\right)^{1/6},
+\end{equation}
+not at the blockade radius $R_b = (C_6/\Omega)^{1/6}$. We scale coordinates so
+that the spacing threshold maps to $r_c$, choose
+$\Omega_{\max} = \Delta_{\mathrm{end}}/2$, and place the threshold at the
+geometric mean of the longest conflicting and shortest non-conflicting
+distance. The minimum atom spacing $d_{\min} = 4\,\mu$m and the smallest
+detuning that keeps a $4\,\mu$s sweep adiabatic bound the ratio of the spacing
+rule to the closest pair of sites:
+\begin{equation}
+\frac{s}{d_{\mathrm{closest}}} \;\le\; \frac{r_c^{\max}}{d_{\min}}
+\;=\; \frac{(C_6/\Delta_{\mathrm{end}}^{\min})^{1/6}}{4\,\mu\mathrm{m}}
+\;\approx\; 2.85
+\end{equation}
+for $C_6 = 5.42\times 10^{-24}$\,rad\,m$^6$/s and
+$\Delta_{\mathrm{end}}^{\min} = 2.5$\,Mrad/s. Instances beyond this ratio are
+refused rather than embedded unfaithfully.
+
+%======================================================================
+\section{Experimental methodology}
+\label{sec:method}
+
+\paragraph{Setup.} All experiments call the platform's own modules; no
+separate research code reimplements the methods. They ran on a single
+workstation (AMD Ryzen 9 5950X, 16 cores, 62\,GB RAM) with Qiskit 2.5.2,
+Qiskit Aer, \texttt{qiskit-addon-sqd}~0.13, PySCF, Amazon Braket SDK 1.117
+(local analog simulator), D-Wave Ocean (\texttt{neal}), SciPy~1.17 with
+HiGHS~\cite{virtanen2020,huangfu2018}. Unless stated otherwise, quantum
+circuits were sampled from exact state vectors without noise (``noiseless
+simulation''); the analog protocol used the Braket local solver of the ideal
+Rydberg Hamiltonian. The hardware round (Section~\ref{sec:res-hw}) used the
+platform's production path to IBM Quantum (Open plan): least-busy device
+selection, transpilation at optimisation level~3, SamplerV2 with XY4
+dynamical decoupling and gate twirling, and no further error mitigation. Every
+vendor job identifier is recorded in the result files.
+
+\paragraph{Cost units.} For amplitude estimation, one \emph{oracle query} is one
+application of the state-preparation unitary $\mathcal A$; a shot at Grover
+power $k$ costs $2k+1$ queries. For classical Monte Carlo, the cost unit is one
+payoff evaluation; with antithetic variates, $N$ evaluations form $N/2$
+independent pairs.
+
+\paragraph{Statistics.} We report RMSE across independent seeds, means with
+95\% normal confidence intervals across runs, Wilson intervals for
+proportions, and bootstrap percentile intervals (2\,000 resamples of seeds)
+for log--log slopes. Where only two or three seeds were affordable we report
+the range instead of an interval.
+
+\paragraph{Controls added for this paper.} Five controls did not exist in the
+platform before this study: an exact MILP optimum for facility location, a
+uniform-random best-of-$N$ control for QAOA, classical configuration
+selection at matched size for sample-based diagonalization, classical
+sampling of the discretised distribution for amplitude estimation, and, for
+hardware runs, uniformly random bitstrings at the same shot count passed
+through the identical post-processing (a fully depolarised device). Each
+changed or sharpened a conclusion.
+
+\paragraph{Reproducibility.} Experiment scripts, raw JSON results and figure
+generators are versioned with the paper source. Each result file records the
+code commit and library versions.
+
+%======================================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{Option pricing: a measured gain that does not fit on hardware}
+\label{sec:res-mc}
+
+Instance: at-the-money European call, $S_0 = K = 100$, $r = 0.05$,
+$\sigma = 0.2$, $T = 1$; Black--Scholes price $10.4506$; $n = 5$ price qubits
+(discretised target $10.4376$). MLAE with 100 shots per Grover power and
+maximum powers $1\dots64$; classical Monte Carlo with antithetic variates on
+the continuous log-normal, $10^2$--$10^6$ evaluations; and, as a like-for-like
+control, plain classical sampling of the same 32-bin distribution that MLAE
+encodes, scored against the same discretised target; 20 seeds each.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/mlae_convergence.pdf}
+\caption{Left: RMSE over 20 seeds against oracle queries (MLAE) or payoff
+evaluations (classical). MLAE is shown against its own discretised target and
+against Black--Scholes; classical sampling is shown on the continuous
+distribution (antithetic) and on the same 32-bin grid as MLAE; the dotted line
+is the discretisation bias at $n=5$. Right: CX count of the deepest MLAE
+circuit per Grover power after transpilation to
+$\{\mathrm{CX}, R_z, \sqrt{X}, X\}$ with all-to-all connectivity.}
+\label{fig:mlae}
+\end{figure}
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Max power $m$ & Queries & RMSE & Reported SE & CX (deepest) & $P_{\mathrm{ok}}$ at $10^{-3}$ & $P_{\mathrm{ok}}$ at $10^{-4}$ \\
+\midrule
+1 & 400 & 1.543 & 1.278 & 270 & 0.76 & 0.97 \\
+2 & 900 & 0.578 & 0.678 & 478 & 0.62 & 0.95 \\
+4 & 1\,800 & 0.266 & 0.369 & 894 & 0.41 & 0.91 \\
+8 & 3\,500 & 0.171 & 0.199 & 1\,726 & 0.18 & 0.84 \\
+16 & 6\,800 & 0.097 & 0.103 & 3\,390 & 0.034 & 0.71 \\
+32 & 13\,300 & 0.028 & 0.053 & 6\,718 & 0.0012 & 0.51 \\
+64 & 26\,200 & 0.011 & 0.027 & 13\,374 & $1.6\times10^{-6}$ & 0.26 \\
+\bottomrule
+\end{tabular}
+\caption{MLAE: RMSE against the discretised target over 20 seeds, the mean
+Fisher standard error reported by the estimator, CX count of the deepest
+circuit, and $P_{\mathrm{ok}} = (1-\varepsilon)^{N_{\mathrm{CX}}}$, the
+probability that the deepest circuit runs without a two-qubit error at error
+rate $\varepsilon$ (a lower bound on cost: no routing, no single-qubit or
+readout errors).}
+\label{tab:mlae}
+\end{table}
+
+The fitted error slope is $-1.14$ (95\% CI $[-1.22, -1.06]$) for MLAE,
+$-0.51$ $[-0.54, -0.48]$ for antithetic sampling of the continuous
+distribution, and $-0.49$ $[-0.52, -0.45]$ for plain sampling of the same
+32-bin grid (Figure~\ref{fig:mlae}). The classical slopes match the
+theoretical $-1/2$. The MLAE slope is steeper than the Heisenberg-limited $-1$,
+which cannot persist asymptotically. Excluding the shallowest schedule does not
+remove it ($-1.16$ $[-1.27, -1.04]$); the most likely cause is that the
+maximum-likelihood fit is still pre-asymptotic over this range of powers, with
+its bias shrinking faster than $1/N$. We read the result as consistent with
+linear scaling, not as evidence of anything faster.
+
+On the fitted lines, RMSE $0.01$ against the discretised target takes about
+$35$k MLAE queries, $2.4$M plain samples of the same grid, and $740$k
+antithetic samples of the continuous distribution. The like-for-like ratio is
+therefore about $70\times$ at this accuracy, and a modest classical
+variance-reduction technique recovers a factor of three of it. At RMSE $0.1$
+the numbers are $4.6$k, $21$k and $8.1$k.
+
+Three further observations matter for practice.
+\begin{enumerate}
+  \item \emph{Bias dominates at small $n$.} The discretisation bias is
+        $+5.42$, $+1.11$, $+0.21$, $-0.013$, $+0.018$ at $n = 2\dots6$. Below
+        $n = 5$ no number of shots brings MLAE within $0.1$ of the true price.
+        This regime would be invisible without an exact referee.
+  \item \emph{The reported uncertainty is miscalibrated.} The Fisher standard
+        error underestimates the spread at $m = 1$ and overestimates it by up
+        to $2.6\times$ at $m = 64$ (Table~\ref{tab:mlae}). Confidence
+        intervals from the estimator alone are not trustworthy in either
+        direction.
+  \item \emph{The gain does not fit on near-term hardware.} With a
+        two-qubit error rate of $10^{-3}$, the deepest circuit at $m = 8$ runs
+        error-free with probability $0.18$ and at $m = 64$ with $1.6\times
+        10^{-6}$. Schedules that fit ($m \lesssim 4$--$8$) reach RMSE
+        $0.17$--$0.27$, which antithetic classical sampling matches with about
+        $1$--$3$k evaluations. Even at $10^{-4}$ the $m=64$ circuit succeeds only a
+        quarter of the time. This estimate is optimistic: it ignores SWAP
+        overhead on restricted connectivity, single-qubit and readout errors
+        and coherent errors, and it ignores error mitigation, which could help.
+        It also uses generic uniformly controlled rotations for state
+        preparation, whose cost grows as $O(2^n)$; more efficient loaders would
+        shift the numbers but not the conclusion. Query counts also hide the
+        cost per query: one query here is hundreds of two-qubit gates, one
+        classical evaluation a few nanoseconds. Low-depth
+        variants~\cite{giurgica2022} and error correction~\cite{beverland2022}
+        are prerequisites for the asymptotic gain to matter.
+\end{enumerate}
+
+\finding{The one proven asymptotic advantage on the platform is reproducible
+on a simulator and irrelevant on current hardware; the crossover is set by
+circuit depth, not by query count.}
+
+\subsection{Molecular energy: exactness tracks subspace coverage}
+\label{sec:res-chem}
+
+SqDRIFT with 25, 100 or 200 circuits per evolution time, 100 shots each,
+noiseless simulation; 3 seeds (2 for N$_2$, ranges reported). All molecules
+use STO-3G without a frozen core; N$_2$ has 10 spatial orbitals and (7,7)
+electrons, so its FCI dimension is $\binom{10}{7}^2 = 14{,}400$.
+\emph{Coverage} is the SQD subspace dimension divided by the FCI dimension.
+SQD diagonalizes in the Cartesian product of the distinct $\alpha$- and
+$\beta$-strings it has seen, so a few hundred sampled configurations can span
+thousands of determinants. Table~\ref{tab:chem} and Figure~\ref{fig:chem}
+relate the error to coverage.
+
+\begin{table}[H]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Molecule & Qubits & FCI dim. & Circuits & Coverage & $|$Err.$|$ (mHa) & $\le 1.6$\,mHa & Corr. rec. \\
+\midrule
+H$_2$ & 4 & 4 & 25--100 & 100\% & 0.000 & 6/6 & 100\% \\
+LiH & 12 & 225 & 25 & 89\% & 0.001 & 3/3 & 100\% \\
+LiH & 12 & 225 & 100 & 91\% & 0.000 & 3/3 & 100\% \\
+H$_2$O & 14 & 441 & 25 & 50\% & 0.47 (max 1.08) & 3/3 & 99.0\% \\
+H$_2$O & 14 & 441 & 100 & 75\% & 0.08 (max 0.20) & 3/3 & 99.8\% \\
+N$_2$ eq. & 20 & 14\,400 & 25 & 17\% & 4.85 & 0/2 & 96.9\% \\
+N$_2$ eq. & 20 & 14\,400 & 100 & 39\% & 1.18 & 2/2 & 99.2\% \\
+N$_2$ 1.8\,\AA & 20 & 14\,400 & 25 & 13\% & 27.3 & 0/2 & 94.1\% \\
+N$_2$ 1.8\,\AA & 20 & 14\,400 & 100 & 34\% & 6.12 & 0/2 & 98.7\% \\
+N$_2$ 1.8\,\AA & 20 & 14\,400 & 200 & 38\% & 5.25 & 0/2 & 98.9\% \\
+\bottomrule
+\end{tabular}
+\caption{SqDRIFT + SQD against FCI. Coverage is the SQD subspace dimension over
+the FCI dimension (mean over seeds).}
+\label{tab:chem}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\linewidth]{figures/chemistry_subspace.pdf}
+\caption{Absolute error against FCI versus subspace coverage. Errors below
+$10^{-4}$\,mHa are drawn at $10^{-4}$. The dotted line is chemical accuracy.}
+\label{fig:chem}
+\end{figure}
+
+H$_2$ and LiH are exact because the subspace spans almost the entire FCI
+space: once all relevant determinants are present, diagonalization is exact
+whatever the sampler produced. Our earlier IBM hardware run on H$_2$ (20
+circuits on \texttt{ibm\_marrakesh}, FCI energy reproduced) is evidence of a
+working pipeline, not of sampler quality; Section~\ref{sec:res-hw} shows that
+the same caveat applies to N$_2$ on hardware. The first informative instance is
+N$_2$: at equilibrium it reaches chemical accuracy at 39\% coverage; stretched
+to $1.8$\,\AA, where static correlation is strong, it does not, and the error
+plateaus between 100 and 200 circuits ($6.1 \to 5.3\mHa$) while coverage
+barely grows ($34\% \to 38\%$). The sampler concentrates near the
+Hartree--Fock state, so more circuits mostly resample the same
+determinants: only 264--394 distinct configurations were seen across
+20\,000--40\,000 shots. The correlation-recovered metric is misleading here:
+$98.9\%$ recovered still means three times the chemical-accuracy threshold.
+
+We also observed that runs with the same seed are not bit-reproducible under
+multithreaded execution (N$_2$ equilibrium, 25 circuits: $4.06$ and $5.09\mHa$
+on two runs with seed 0). Reproducibility claims for SQD pipelines need fixed
+thread counts or reported spreads.
+
+\paragraph{Is the sampler better than classical selection?}
+Exactness and failure alike say nothing about the sampler unless the same
+diagonalization is run on classically chosen configurations of the same size.
+For each N$_2$ setting we built two classical subspaces and diagonalized them
+with the same routine, without subsampling: (i) the Hartree--Fock strings plus
+uniformly random $\alpha$- and $\beta$-strings, sized to match the mean
+SqDRIFT subspace dimension (3 seeds); (ii) all strings up to double excitation
+from Hartree--Fock, whose product spans 50\% of the FCI space
+(Table~\ref{tab:chemctl}).
+
+\begin{table}[H]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Setting & Coverage & SqDRIFT & Random, matched & S+D strings (50\%) \\
+\midrule
+N$_2$ eq., 25 circuits & 17\% & 4.85 (4.6--5.1) & 94.1 (67--122) & 1.90 \\
+N$_2$ eq., 100 circuits & 39\% & 1.18 (0.9--1.5) & 52.7 (28--70) & 1.90 \\
+N$_2$ 1.8\,\AA, 25 circuits & 13\% & 27.3 (27.0--27.7) & 292 (251--330) & 15.43 \\
+N$_2$ 1.8\,\AA, 100 circuits & 34\% & 6.12 (5.1--7.1) & 160 (119--197) & 15.43 \\
+N$_2$ 1.8\,\AA, 200 circuits & 38\% & 5.25 (4.4--6.1) & 135 (117--167) & 15.43 \\
+\bottomrule
+\end{tabular}
+\caption{Error above FCI (mHa) for SQD subspaces built from SqDRIFT samples
+and from two classical selections: random strings matched to the SqDRIFT
+subspace size, and all singles-and-doubles (S+D) strings. Ranges over seeds in
+brackets.}
+\label{tab:chemctl}
+\end{table}
+
+The quantum sampler is 20--45$\times$ more accurate than random selection at
+the same coverage, so it is not merely filling the space. Against the
+excitation-based subspace the picture depends on effort and correlation: at
+equilibrium, where Hartree--Fock dominates, the singles-and-doubles strings
+beat the smallest SqDRIFT ensemble ($1.90$ vs $4.85\mHa$) but lose to the
+larger one ($1.18\mHa$ at 39\% coverage); for stretched N$_2$, where static
+correlation spreads the wave
+function, SqDRIFT is about three times more accurate (5.3--6.1 vs
+$15.4\mHa$) with a smaller subspace (34--38\% vs 50\%). This is the most
+encouraging result in the study, with two caveats: the sampler is noiseless,
+and the classical selection is deliberately simple. Selected-CI methods that
+rank determinants by their Hamiltonian coupling (heat-bath or perturbative
+selection) are the proper referee and would likely narrow or close the gap.
+
+\finding{Exact results at small sizes say nothing about the quantum sampler.
+At matched subspace size, the noiseless SqDRIFT sampler beats random and
+excitation-based selection in the strongly correlated regime; whether it beats
+state-of-the-art selected CI is the open question, and noise will narrow its
+edge.}
+
+\subsection{Facility location: a weak referee flatters everyone}
+\label{sec:res-cflp}
+
+Four seeded instances from 18 to 2\,444 QUBO variables. The exact optimum was
+computed with HiGHS; samplers ran over 10 seeds. Table~\ref{tab:cflp}.
+
+\begin{table}[H]
+\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrcccc}
+\toprule
+ & & Exact & Heuristic & \multicolumn{2}{c}{SA (\texttt{neal})} & \multicolumn{2}{c}{SA (NumPy)} \\
+Instance & Vars & (time) & referee & raw feas. & refined & raw feas. & refined \\
+\midrule
+2 of 4, 3 demand & 18 & 44\,522 (0.01\,s) & $+0.00\%$ & 0/10 & $+0.00\%$ & 0/10 & $+0.00\%$ \\
+3 of 6, 8 demand & 56 & 64\,553 (0.01\,s) & $+0.00\%$ & 1/10 & $+0.00\%$ & 1/10 & $+0.00\%$ \\
+5 of 12, 20 demand & 255 & 141\,388 (3.0\,s) & $+3.36\%$ & 0/10 & $+3.94 \pm 0.58\%$ & 0/10 & $+3.62 \pm 0.69\%$ \\
+8 of 40, 60 demand & 2\,444 & 290\,279 (112\,s) & $+2.17\%$ & 0/10 & $+3.50 \pm 0.79\%$ & --- & refused \\
+\bottomrule
+\end{tabular}
+\caption{Facility location: gap to the exact MILP optimum. ``Raw feas.'' is the
+number of seeds whose raw annealing sample satisfied all constraints before
+repair; ``refined'' is the gap after the shared local-search refinement (mean
+$\pm$ 95\% CI over 10 seeds).}
+\label{tab:cflp}
+\end{table}
+
+Three conclusions follow. First, the platform's heuristic referee was itself
+$2.2$--$3.4\%$ from optimal on the two larger instances. Earlier we had reported
+annealing as ``matching the baseline'' there; against the exact optimum the
+baseline is 2.2--3.4\% away and the annealing pipelines 3.5--3.9\%. Second, raw samples were feasible in at most 1 of 10
+seeds on any instance: the sampler contributes an open-set proposal and the
+classical repair and local search contribute feasibility and most of the
+quality. Third, an off-the-shelf MILP solver found the proven optimum of the
+largest instance in under two minutes on a workstation, an instance far beyond
+any current gate-based device and solved by annealing only approximately. The
+simulated annealers took 0.75\,s (\texttt{neal}) and 3.7\,s (NumPy) on the
+255-variable instance and 10.5\,s on the largest; the MILP took 3.0\,s and
+112\,s. Time-to-target comparisons~\cite{ronnow2014} at matched quality are
+the fair next step.
+
+\finding{Matching a heuristic baseline is not evidence of quality. For problems
+of this size an exact classical optimum is cheap, and the honest referee is
+the MILP solver, not a heuristic.}
+
+\subsection{QAOA against a random-sampling control}
+\label{sec:res-qaoa}
+
+The platform's QAOA sampler trains parameters with COBYLA on a simulator, then
+returns the lowest-energy bitstring among 1\,024 final shots. We ran it on the
+18-variable facility-location QUBO (262\,144 states) at depth $p = 1, 2, 3$
+over 5 seeds, and paired each run with the best of 1\,024 uniformly random
+bitstrings. Quality is measured two ways: the energy rank of the returned
+state among all $2^{18}$ states, computed exactly, and the expectation-energy
+ratio $r = (\bar E_{\mathrm{unif}} - \langle E\rangle_{\mathrm{QAOA}}) / (\bar E_{\mathrm{unif}} - E_0)$,
+which is 0 for the uniform superposition and 1 for the ground state and does
+not depend on post-selection. Parameters start at uniform random angles with a
+60-evaluation COBYLA budget on a noiseless simulator.
+
+\begin{table}[H]
+\centering\footnotesize
+\begin{tabular}{crrrcc}
+\toprule
+$p$ & QAOA rank (\%) & Random rank (\%) & Expectation ratio $r$ & QAOA better & Ground state found \\
+\midrule
+1 & $0.061 \pm 0.072$ & $0.063 \pm 0.062$ & $0.26 \pm 0.07$ & 3/5 & 0/5 vs 0/5 \\
+2 & $0.066 \pm 0.046$ & $0.063 \pm 0.062$ & $0.22 \pm 0.07$ & 2/5 & 0/5 vs 0/5 \\
+3 & $0.101 \pm 0.041$ & $0.063 \pm 0.062$ & $0.17 \pm 0.07$ & 1/5 & 0/5 vs 0/5 \\
+\bottomrule
+\end{tabular}
+\caption{QAOA versus uniform random sampling with the same shot budget on an
+18-qubit QUBO. Rank is the percentile of the returned energy among all $2^{18}$
+states (lower is better); $r$ is the normalised expectation energy of the
+optimised state; mean $\pm$ 95\% CI over 5 seeds.}
+\label{tab:qaoa}
+\end{table}
+
+The optimised QAOA state is better than uniform: its expectation energy moves
+17--26\% of the way to the ground state. That gain does not survive into the
+returned solution: best-of-1\,024 selection from the QAOA state is
+indistinguishable from best-of-1\,024 from uniform sampling
+(Table~\ref{tab:qaoa}), whose expected rank is about $1/N \approx 0.1\%$.
+Neither found the ground state. Deeper circuits made the expectation
+\emph{worse} at a fixed optimiser budget, the signature of a harder classical
+outer loop rather than a less expressive ansatz; better initialisation
+(parameter transfer, linear ramps) is needed before depth can be judged. A
+heavily penalised one-hot landscape is also a known difficulty for
+transverse-field mixers, which spend amplitude on infeasible states;
+constraint-preserving mixers~\cite{hadfield2019} are the natural next test. All
+of this is noiseless; on hardware the expectation would degrade further.
+
+\finding{Best-of-$N$ post-selection makes any sampler look competent at small
+sizes, and a better-than-uniform expectation does not imply better returned
+solutions. QAOA results should be reported with both the expectation ratio and
+a random control at the same shot budget.}
+
+\subsection{Vehicle routing}
+\label{sec:res-fleet}
+
+Two presets (90 stops, 12 vehicles; 120 stops, 18 vehicles), 3 instance seeds
+each, 5 sampler seeds per instance. Simulated annealing on the assignment QUBO
+(\texttt{neal}) and a NumPy annealer, against the platform's classical
+construction on the same instance.
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Instance & Sampler & Distance gap & Range & Wins & Runs dropping stops \\
+\midrule
+90 stops & \texttt{neal} & $+18.0 \pm 6.1\%$ & $-5.1$ to $+36.6\%$ & 0/15 & 8/15 \\
+90 stops & NumPy SA & $+29.4 \pm 5.5\%$ & $+8.9$ to $+50.7\%$ & 0/15 & 10/15 \\
+120 stops & \texttt{neal} & $+63.2 \pm 5.7\%$ & $+43.5$ to $+82.5\%$ & 0/15 & 0/15 \\
+120 stops & NumPy SA & $+61.7 \pm 8.1\%$ & $+32.0$ to $+92.4\%$ & 0/15 & 0/15 \\
+\bottomrule
+\end{tabular}
+\caption{Routing: distance gap to the classical construction. ``Wins'' compares
+the full objective, which penalises unserved stops.}
+\label{tab:fleet}
+\end{table}
+
+No sampler run beat the classical construction (Table~\ref{tab:fleet}). The
+one negative distance gap came from a solution that left stops unserved, a
+reminder that single-metric comparisons reward infeasibility. An earlier
+internal figure of $+1.24\%$ on the 90-stop instance was obsolete: the
+classical construction had since improved by 14\% on the same instance, while
+the quantum figure had not been regenerated.
+
+\finding{Published numbers must be regenerated from code whenever either side
+changes. A stale referee is as misleading as a weak one.}
+
+\subsection{Spaced site selection on Rydberg arrays}
+\label{sec:res-mis}
+
+Local Braket analog simulator, 4\,$\mu$s sweep, 200 shots. (a) 24 random
+8-site instances with spacing ratios $1.4$--$2.4$ relative to the closest
+pair, each run with the final-detuning cutoff and with the $\Omega$-blockade
+mapping. (b) Sweep duration $0.5$--$4\,\mu$s on the 10-city Rhine--Ruhr
+instance. (c) Embeddability of 2\,000 random 10-site instances.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/rydberg_mis.pdf}
+\caption{Left: fraction of raw shots that are optimal MIS on 24 random
+instances, sorted, for both mappings. Centre: raw optimal fraction versus sweep
+duration on the Rhine--Ruhr instance (15\,km: 6 conflicts; 20\,km: 10
+conflicts). Right: fraction of random instances that can be embedded versus
+the ratio of the spacing rule to the closest-pair distance.}
+\label{fig:mis}
+\end{figure}
+
+\begin{table}[H]
+\centering\small
+\begin{tabular}{lcc}
+\toprule
+ & $\Omega$-blockade mapping & Final-detuning cutoff \\
+\midrule
+Raw shots that are independent sets & $41.6 \pm 16.0\%$ & $97.0 \pm 2.2\%$ \\
+Raw shots that are optimal & $39.8 \pm 15.1\%$ & $63.5 \pm 13.7\%$ \\
+Instances solved after repair & 24/24 & 24/24 \\
+\bottomrule
+\end{tabular}
+\caption{Ablation on 24 random instances (mean $\pm$ 95\% CI). A greedy
+minimum-degree heuristic also solves all 24 exactly.}
+\label{tab:mis}
+\end{table}
+
+The cutoff mapping almost always yields valid plans (Table~\ref{tab:mis}). The
+mechanism is quantitative. The blockade mapping sets
+$\Delta_{\mathrm{end}} = 6\,\Omega_{\max}$, so its end-of-sweep cutoff is
+$r_c = 6^{-1/6} R_b \approx 0.74\,R_b$: conflicting pairs at $0.74$--$1.0$ of
+the threshold are not excluded once $\Omega$ is switched off, and both atoms
+are excited. The cutoff mapping sets $\Omega_{\max} = \Delta_{\mathrm{end}}/2$,
+so $R_b = 2^{1/6} r_c \approx 1.12\,r_c$; during the sweep, non-conflicting
+pairs up to 12\% beyond the threshold are partially blockaded. That predicts
+outputs which are valid but sometimes too small, which is what we see:
+per-instance optimal fractions range from 0 to 1, on some instances the
+blockade mapping does better (Figure~\ref{fig:mis}, left), and the optimal
+fraction correlates with the number of pairs within 15\% of the threshold
+($r = -0.54$). The two mappings differ in both $\Omega$ and $\Delta$, so the
+ablation compares parameter regimes rather than isolating one variable.
+
+Longer sweeps help: on the Rhine--Ruhr instance the raw optimal fraction rises
+from $0.36$ to $0.995$ at 15\,km and from $0.20$ to $0.53$ at 20\,km between
+$0.5$ and $4\,\mu$s, so the device's maximum sweep duration, not the shot
+count, limits quality on denser graphs. A 4\,$\mu$s sweep is quasi-adiabatic
+at best for these gaps. All of this is for the ideal Hamiltonian: decoherence,
+atom loss, position disorder, Rabi-frequency inhomogeneity and readout error
+are absent from the simulator and will lower every fraction on hardware.
+Embeddability follows the derived bound: over 93\% of instances embed below a
+ratio of $2.75$, 36\% between $2.75$ and $3.0$, and almost none beyond.
+
+\finding{Analog devices need problem mappings derived from their own
+dynamics; textbook parameters produced less than half the valid output. Their geometry
+restricts which business instances they can represent at all, and this must
+be checked before any run.}
+
+\subsection{Hardware: IBM Heron (\texttt{ibm\_marrakesh})}
+\label{sec:res-hw}
+
+We repeated three experiments on \texttt{ibm\_marrakesh}, a 156-qubit IBM
+Heron~r2 processor, on 15~November~2026, through the platform's production
+hardware path (Section~\ref{sec:method}). The round used 41\,s of QPU time in
+nine jobs. Table~\ref{tab:hw} summarises it.
+
+\begin{table}[H]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
+\toprule
+Workload & Noiseless simulation & \texttt{ibm\_marrakesh} & Control \\
+\midrule
+MLAE, $m=1$--$8$, price & $9.53$--$10.41$ & $79.5$--$81.4$ & target $10.44$ \\
+MLAE, $P(1)$ at $k=0$ & $0.064$ & $0.23$--$0.32$ & depolarised $0.5$ \\
+MLAE, $P(1)$ at $k\ge1$ & $0.48$--$0.92$ & $0.46$--$0.54$ & depolarised $0.5$ \\
+SqDRIFT N$_2$ eq., 25 circ. & 4.85\,mHa @ 17\% & 0.016\,mHa @ 69\% & 0.15 [0.03, 0.30] @ 74\% \\
+SqDRIFT N$_2$ 1.8\,\AA, 25 circ. & 27.3\,mHa @ 13\% & 0.005\,mHa @ 66\% & 0.001 @ 76\% \\
+SqDRIFT N$_2$ 1.8\,\AA, 100 circ. & 6.12\,mHa @ 34\% & 0.049\,mHa @ 61\% & 0.011 [0.005, 0.020] @ 69\% \\
+QAOA $p=1$, rank of best of 1\,024 & 0.013--0.20\% & 0.027--0.047\% & random 0.018--0.031\% \\
+\bottomrule
+\end{tabular}
+\caption{Hardware round. SqDRIFT entries are error against FCI @ coverage; the
+control for SqDRIFT is uniformly random 20-bit strings at the same shot count
+(5\,000 or 20\,000) through the identical SQD call, mean [range] over three
+seeds. QAOA angles were trained on the simulator; only the final sample ran on
+hardware (three seeds). MLAE: 200 shots per Grover power $k$.}
+\label{tab:hw}
+\end{table}
+
+\paragraph{Amplitude estimation.} Every MLAE schedule returned a price near
+$80$, about half the payoff ceiling of $163$: the estimator saw $P(1)\approx
+\tfrac12$, the output of a fully depolarised circuit. At $k=0$ (state
+preparation only) the device returned $P(1)=0.23$--$0.32$ against an ideal
+$0.064$; from $k=1$ on, $0.46$--$0.54$ regardless of the ideal value
+($0.48$, $0.92$, $0.55$, $0.87$ for $k=1,2,4,8$). Transpiled to the device's
+heavy-hex connectivity, the circuits need 107, 469, 813, 1\,493 and 2\,885
+CZ gates for $k=0,1,2,4,8$, so at the device's median CZ error on that day
+($2.7\times10^{-3}$) the probability of an error-free run is $0.75$, $0.28$, $0.11$, $0.018$ and
+$4\times10^{-4}$. The measurement confirms the resource argument of
+Section~\ref{sec:res-mc} with a stronger result: on this device no schedule,
+not even the one without Grover iterations, produced a usable estimate.
+Error mitigation could recover part of the $k=0$ signal but not the
+quadratic speed-up, which lives at depths that are already fully depolarised.
+
+\paragraph{Sample-based diagonalization.} On hardware, SqDRIFT reached errors
+of $0.005$--$0.05$\,mHa for N$_2$ --- 100 to 5\,000 times better than its
+noiseless simulation at the same settings, and well within chemical accuracy
+for stretched N$_2$, where the noiseless sampler failed. Read naively, this is
+a hardware advantage over simulation. It is not. The circuits conserve
+particle number, yet only $1.4$--$2.0\%$ of hardware shots had the right
+number of electrons, which is what a uniform distribution gives
+($\binom{10}{7}^2/2^{20} = 1.37\%$). Configuration recovery then repaired
+thousands of near-random strings into a subspace covering $61$--$69\%$ of the
+FCI space, against $13$--$34\%$ in simulation, and at that coverage the
+diagonalization is close to exact whatever the input. The uniform-noise control
+confirms it: random bitstrings at the same shot count, through the identical
+SQD call, reached $0.001$--$0.15$\,mHa at $69$--$76\%$ coverage, on par with or
+better than the hardware. At 20 qubits and these shot counts the experiment
+cannot detect sampler quality on hardware; it needs active spaces where the
+shot budget is far below the FCI dimension, so that recovery cannot fill the
+space, and must be reported against the noise control.
+
+\paragraph{QAOA.} The best of 1\,024 hardware samples ranked in the top
+$0.027$--$0.047\%$ of all $2^{18}$ states, against $0.018$--$0.031\%$ for
+1\,024 uniform samples and $0.013$--$0.20\%$ for the noiseless final sample.
+All three are within the $\approx 1/N$ band of best-of-$N$ selection. The
+hardware result is therefore no worse than the noiseless one by this metric ---
+because the metric cannot see the state at all.
+
+\finding{On current hardware, the metrics a pipeline reports can improve
+while the quantum signal disappears. Sample-based diagonalization and
+best-of-$N$ selection both return good answers from pure noise at these sizes;
+only a noise control at the same shot count distinguishes the two. We report
+the control with every hardware result.}
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the referee rule changed}
+
+Of the claims we would have made before this study, five did not survive:
+annealing ``matching the baseline'' on facility location (the baseline was
+not optimal); a $1.24\%$ routing gap (the baseline had improved);
+SqDRIFT ``reaching chemical accuracy'' (the subspace covered the whole space);
+the textbook Rydberg mapping (it produced less than half the valid output);
+and SqDRIFT on hardware ``beating simulation'' for stretched N$_2$ (uniform
+noise did as well). In each case the
+quantum method had not changed; the referee had. The practical lesson is that
+the referee deserves as much engineering as the quantum path.
+
+\subsection{Where the quality comes from}
+
+In every hybrid pipeline we measured, classical components supplied most of
+the solution quality: repair and local search in facility location,
+configuration recovery and diagonalization in chemistry, best-of-$N$ selection
+in QAOA, greedy repair in MIS. This is not a criticism of hybrid methods ---
+it is how they are meant to work --- but it means that the quantum
+contribution must be measured by ablation, not inferred from the final
+answer. The chemistry controls show what such an ablation can reveal in the
+other direction: once the classical part was held fixed, the quantum sampler
+did carry information that random and excitation-based selection did not.
+On hardware the same ablation, run with uniform noise, showed that the
+information had not survived. The ablations we added (random control, raw
+versus refined, noise control) are cheap and should be standard.
+
+\subsection{Depth, not queries, sets the crossover}
+
+Amplitude estimation is the only workload with a proven query advantage, and we
+reproduced it. Its circuits, however, grow linearly with the Grover power,
+and the power needed for the advantage pushes two-qubit gate counts into the
+thousands. The relevant comparison for near-term planning is error per unit of
+error-free circuit volume, which requires resource estimates under explicit
+error assumptions~\cite{beverland2022}. The hardware round confirmed the
+estimate from the other side: with routing, even the Grover-free circuit
+needs 107 two-qubit gates, and every deeper schedule was fully depolarised. We
+plan to attach such an estimate to every run.
+
+\subsection{Modality matters, and so does geometry}
+
+The Rydberg results show that an analog device solves its native problem
+well when the mapping respects its physics, but its geometry restricts the
+instances it can represent. Unit-disk graphs with dense clusters cannot be
+embedded at all, and non-unit-disk graphs need gadget
+constructions~\cite{nguyen2023} that multiply atom counts. A vendor-neutral
+platform must therefore route by problem structure, not by qubit count.
+
+\subsection{Interfaces can overclaim on their own}
+
+The most persistent source of overclaiming in our system was not the
+algorithms but the natural-language layer. Language models reproduce popular
+descriptions of quantum computing that are false at these sizes.
+Prompting reduced but did not eliminate this; a deterministic filter did. As
+language interfaces become the default entry point to quantum services, their
+honesty becomes a property to test, like any other.
+
+%======================================================================
+\section{Limitations and threats to validity}
+\label{sec:limitations}
+
+\paragraph{Internal validity.} Penalty weights, sweep shapes and effort
+presets were tuned on the instances we report, which favours the quantum
+paths. Seeds per configuration are modest (2--20). Chemistry runs are not
+bit-reproducible under multithreading. QAOA training uses a noiseless
+simulator even when the final sample runs on hardware. The hardware round is
+one device, one day and one to three seeds per setting, with the platform's
+default mitigation only; calibration drift and stronger mitigation could move
+the MLAE numbers, though not the depolarisation at $k \ge 1$.
+
+\paragraph{External validity.} Instances are small and seeded; they were
+chosen so that exact referees exist. Results on larger, real-world instances
+may differ in either direction. Apart from the hardware round of
+Section~\ref{sec:res-hw}, quantum results come from noiseless simulators;
+annealing results come from simulated annealing, not annealing hardware; the
+analog protocol ran on a simulator.
+
+\paragraph{Construct validity.} Gaps are measured in the problem's own
+objective; distance alone was shown to be misleading for routing. Rank among
+all states is a fair metric for QAOA only at sizes where all states can be
+enumerated. Correlation recovered is a poor proxy for chemical accuracy.
+
+\paragraph{Referees.} Only three of six workloads have exact referees in the
+platform; the MILP referee for facility location was added for this study.
+Portfolio and routing referees remain heuristics, so their gaps are lower
+bounds on the true distance to optimal. The classical configuration selection
+used against SqDRIFT is deliberately simple; heat-bath or perturbative
+selected CI is the stronger referee and may reverse that comparison.
+
+\paragraph{Independence.} The author built the platform and ran the
+experiments. Scripts, solver code and raw results are public with a pinned
+container to allow independent checks, but no third party has reproduced them
+yet.
+
+%======================================================================
+\section{Research agenda}
+\label{sec:agenda}
+
+The study suggests open questions for both the research community and
+industrial users. We list them with the experiment that would answer each.
+
+\begin{enumerate}
+  \item \textbf{Referee standards.} What counts as an acceptable classical
+        referee for a given problem class and size, and how should time,
+        energy and cost budgets be matched? \emph{Experiment:} a shared,
+        versioned ledger of instances, exact or best-known optima, and
+        referee configurations, with results from many vendors.
+  \item \textbf{Attributing quality in hybrid pipelines.} Which metrics
+        isolate the quantum contribution when classical repair dominates?
+        \emph{Experiment:} systematic ablations (random control, raw versus
+        refined, shuffled samples) across workloads and devices.
+  \item \textbf{Constraint handling without penalties.} Do
+        constraint-preserving mixers~\cite{hadfield2019}, native analog
+        constraints, or feasible-subspace encodings close the gap to random
+        sampling observed for penalised one-hot problems?
+  \item \textbf{Sampler quality in sample-based diagonalization.} How should
+        sampler quality be measured independently of configuration recovery,
+        and which state preparations move probability away from the reference
+        state in strongly correlated regimes?
+        \emph{Experiment:} coverage and error curves as in
+        Figure~\ref{fig:chem} on hardware, for active spaces large enough
+        that configuration recovery cannot fill the space, each against a
+        uniform-noise control at the same shot count
+        (Section~\ref{sec:res-hw}).
+  \item \textbf{Resource estimates as a first-class output.} For each run,
+        what logical qubits, non-Clifford count and wall-clock time would a
+        fault-tolerant machine need~\cite{beverland2022}, and where do
+        low-depth estimation methods~\cite{giurgica2022} cross the classical
+        line under realistic error rates?
+  \item \textbf{Analog--digital co-design.} Which business problems map to
+        unit-disk structure natively; how far do local detuning, longer sweeps
+        and gadgets~\cite{nguyen2023} extend the embeddable set; and how do
+        neutral-atom vendors compare on the same instance?
+  \item \textbf{Cost-normalised comparison.} Reporting cost per solution,
+        time to target and energy alongside quality, so that ``competitive''
+        has a definition a buyer can use.
+  \item \textbf{Routing by structure.} Can a router learn from a referee
+        ledger which modality, method and size combinations are worth
+        submitting, and decline the rest?
+  \item \textbf{Honest language interfaces.} How to evaluate and certify that
+        assistants for quantum services do not overstate capability, as a
+        measurable property.
+  \item \textbf{Provenance standards.} Which metadata (device calibration,
+        transpiled circuit, vendor job identifier, seeds, thread counts) must
+        accompany a published quantum result for it to be reproducible?
+\end{enumerate}
+
+%======================================================================
+\section{Conclusion}
+
+Making the referee mandatory changed what the platform could truthfully say.
+It turned silent encoding errors into failing tests, separated the quantum
+contribution from classical refinement, exposed stale and weak baselines,
+showed that QAOA at these sizes is no better than random sampling with the
+same shots, located the regime where sample-based chemistry becomes
+informative, and found a cutoff rule for Rydberg arrays that doubled valid
+output. On real hardware it caught a result that looked better than the
+simulation for the wrong reason. None of these results shows a quantum advantage, and the platform
+does not claim one. We argue that the same discipline --- same-instance
+referees, exact where possible, ablations against cheap controls, and
+regenerated rather than remembered numbers --- should accompany any quantum
+result presented to people who must decide whether to use it.
+
+\section*{Availability and reproducibility}
+
+The platform is accessible at \url{https://quantumfpo.blackbox.rocks}. A free
+account includes a 30-day trial with quantum-simulator access. Single runs of
+four experiments can be reproduced there with the parameters and seeds given
+in the paper: option pricing (price qubits, shots per power, maximum Grover
+power, seed), molecular energy (molecule, bond length, circuits, shots, seed),
+facility location and routing (scenario, method, sampler settings, seed). Each
+result is shown next to its referee and with its execution trace. Facility
+location runs also report the gap to the exact MILP optimum. A
+\emph{Research} view (paid tier, included in the trial) runs five of the
+experiments as seeded suites on the simulators: MLAE convergence, the exact
+facility-location referee, the QAOA random control, the Rydberg mapping
+ablation and the SQD classical controls. The full seed sweeps, the
+circuit-resource analysis, the hardware round and the noise control require
+the experiment scripts, which call the platform's optimisation modules. The
+scripts, the solver modules they call, raw results (including every IBM job
+identifier), a pinned container and a one-command runner are public at
+\url{https://github.com/lxtececo/blackbox-rocks-q-paper-repro} (code
+Apache-2.0, paper and data CC-BY-4.0) and archived on Zenodo; they are also
+provided as ancillary files with this submission. Each result file records the
+code commit and library versions.
+
+\section*{Acknowledgements}
+
+Parts of the software and of this manuscript were drafted with the help of
+AI coding and writing assistants. The author reviewed all content and takes
+full responsibility for it.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\section{Experiment index}
+\label{app:experiments}
+
+\begin{center}\small
+\begin{tabular}{lp{9.5cm}}
+\toprule
+Script & Content \\
+\midrule
+\texttt{e1\_montecarlo.py} & MLAE vs classical Monte Carlo, 20 seeds; bias vs qubits; transpiled resources \\
+\texttt{e2\_facility.py} & Facility location: exact MILP (HiGHS), heuristic referee, two simulated annealers, 10 seeds \\
+\texttt{e3\_rydberg.py} & Rydberg MIS: mapping ablation on 24 random instances, sweep duration, embeddability of 2\,000 instances \\
+\texttt{e4\_chemistry.py} & SqDRIFT + SQD on H$_2$, LiH, H$_2$O, N$_2$ (equilibrium and 1.8\,\AA) at three efforts \\
+\texttt{e5\_fleet.py} & Routing: two presets $\times$ 3 instances $\times$ 5 seeds $\times$ 2 samplers \\
+\texttt{e6\_qaoa\_control.py} & QAOA $p=1..3$ vs uniform random best-of-1\,024 on an 18-qubit QUBO; expectation ratio \\
+\texttt{e7\_chemistry\_controls.py} & SQD on classically selected subspaces (random matched, singles+doubles strings) vs SqDRIFT \\
+\texttt{e8\_ibm\_hardware.py} & MLAE ($m=1$--$8$), SqDRIFT on N$_2$ and QAOA $p=1$ on \texttt{ibm\_marrakesh}; \texttt{--dry-run} runs the same code on the simulator \\
+\texttt{e8b\_ibm\_transpiled\_cost.py} & MLAE circuits transpiled for \texttt{ibm\_marrakesh}: two-qubit gates, depth, error-free probability \\
+\texttt{e9\_sqd\_noise\_control.py} & Uniform random bitstrings through the identical SQD call, matched to each hardware run \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

@@ -1,0 +1,134 @@
+{
+  "provenance": {
+    "commit": "dc5cd91d",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "simulator",
+  "mlae": [
+    {
+      "max_power": 1,
+      "queries": 800,
+      "price": 9.52797,
+      "error_vs_target": -0.9096599582146787,
+      "error_vs_bs": -0.9226135721855648,
+      "hits_per_power": [
+        8,
+        92
+      ],
+      "grover_schedule": [
+        0,
+        1
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.4
+    },
+    {
+      "max_power": 2,
+      "queries": 1800,
+      "price": 9.842897,
+      "error_vs_target": -0.5947329582146779,
+      "error_vs_bs": -0.607686572185564,
+      "hits_per_power": [
+        8,
+        92,
+        180
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.1
+    },
+    {
+      "max_power": 4,
+      "queries": 3600,
+      "price": 10.405835,
+      "error_vs_target": -0.031794958214678815,
+      "error_vs_bs": -0.04474857218556494,
+      "hits_per_power": [
+        8,
+        92,
+        180,
+        106
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.2
+    },
+    {
+      "max_power": 8,
+      "queries": 7000,
+      "price": 10.34286,
+      "error_vs_target": -0.0947699582146786,
+      "error_vs_bs": -0.10772357218556472,
+      "hits_per_power": [
+        8,
+        92,
+        180,
+        106,
+        171
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.3
+    }
+  ],
+  "qaoa": [
+    {
+      "reps": 1,
+      "seed": 0,
+      "qaoa_energy": 89550.054668,
+      "qaoa_rank_pct": 0.01983642578125,
+      "random_rank_pct": 0.030517578125,
+      "backend": "aer_simulator(qaoa)",
+      "platform": "cpu",
+      "execution_mode": "simulator",
+      "wall_s": 8.7
+    },
+    {
+      "reps": 1,
+      "seed": 1,
+      "qaoa_energy": 160736.759909,
+      "qaoa_rank_pct": 0.201416015625,
+      "random_rank_pct": 0.017547607421875,
+      "backend": "aer_simulator(qaoa)",
+      "platform": "cpu",
+      "execution_mode": "simulator",
+      "wall_s": 6.6
+    },
+    {
+      "reps": 1,
+      "seed": 2,
+      "qaoa_energy": 82295.131647,
+      "qaoa_rank_pct": 0.0125885009765625,
+      "random_rank_pct": 0.017547607421875,
+      "backend": "aer_simulator(qaoa)",
+      "platform": "cpu",
+      "execution_mode": "simulator",
+      "wall_s": 4.8
+    }
+  ],
+  "wall_s": 21.6
+}

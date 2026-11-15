@@ -1,0 +1,70 @@
+{
+  "provenance": {
+    "commit": "15418c8d",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "rows": [
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "total_shots": 5000,
+      "hardware": {
+        "error_mha": 0.0157,
+        "coverage": 0.6866666666666666,
+        "valid_fraction": 0.0138
+      },
+      "uniform_noise": {
+        "error_mha": {
+          "mean": 0.1535,
+          "min": 0.0298,
+          "max": 0.2973
+        },
+        "coverage": 0.7396990740740742,
+        "valid_fraction_total_n": 0.03626666666666667
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "total_shots": 5000,
+      "hardware": {
+        "error_mha": 0.0053,
+        "coverage": 0.6593055555555556,
+        "valid_fraction": 0.0186
+      },
+      "uniform_noise": {
+        "error_mha": {
+          "mean": 0.0007,
+          "min": 0.0006,
+          "max": 0.0009
+        },
+        "coverage": 0.758287037037037,
+        "valid_fraction_total_n": 0.03626666666666667
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "total_shots": 20000,
+      "hardware": {
+        "error_mha": 0.0494,
+        "coverage": 0.6070833333333333,
+        "valid_fraction": 0.0197
+      },
+      "uniform_noise": {
+        "error_mha": {
+          "mean": 0.0112,
+          "min": 0.0051,
+          "max": 0.0196
+        },
+        "coverage": 0.6893750000000001,
+        "valid_fraction_total_n": 0.03676666666666667
+      }
+    }
+  ],
+  "wall_s": 193.9
+}

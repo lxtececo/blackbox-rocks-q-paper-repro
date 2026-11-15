@@ -1,0 +1,720 @@
+{
+  "provenance": {
+    "commit": "1f22f595",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "rows": [
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 19.16,
+      "cost_delta_pct": 17.33,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.74
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 33.91,
+      "cost_delta_pct": 33.06,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.51
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 36.55,
+      "cost_delta_pct": 34.26,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.52
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 1.31,
+      "cost_delta_pct": 1.19,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.51
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 7.54,
+      "cost_delta_pct": 6.82,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.53
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 27.11,
+      "cost_delta_pct": 24.52,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.47
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 35.19,
+      "cost_delta_pct": 33.02,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.67
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 49.84,
+      "cost_delta_pct": 46.28,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 2.44
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 33.73,
+      "cost_delta_pct": 31.71,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.49
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 50.73,
+      "cost_delta_pct": 47.08,
+      "unassigned_delta": 1,
+      "wins": false,
+      "wall_s": 2.45
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 23.59,
+      "cost_delta_pct": 22.38,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.38
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 14.14,
+      "cost_delta_pct": 12.77,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.42
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 16.14,
+      "cost_delta_pct": 15.65,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.66
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 13.3,
+      "cost_delta_pct": 12.02,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.55
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 30.31,
+      "cost_delta_pct": 27.37,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.44
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 23.68,
+      "cost_delta_pct": 21.39,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 2.03
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 30.87,
+      "cost_delta_pct": 28.96,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.18
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 31.04,
+      "cost_delta_pct": 28.03,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.55
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 15.14,
+      "cost_delta_pct": 14.75,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.43
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 8.88,
+      "cost_delta_pct": 8.02,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.99
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 31.82,
+      "cost_delta_pct": 29.97,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 1.14
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 19.78,
+      "cost_delta_pct": 18.01,
+      "unassigned_delta": 10,
+      "wins": false,
+      "wall_s": 1.33
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": -5.1,
+      "cost_delta_pct": -5.63,
+      "unassigned_delta": 9,
+      "wins": false,
+      "wall_s": 1.44
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 17.48,
+      "cost_delta_pct": 15.92,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 1.7
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 9.35,
+      "cost_delta_pct": 7.52,
+      "unassigned_delta": 9,
+      "wins": false,
+      "wall_s": 1.46
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 27.11,
+      "cost_delta_pct": 24.69,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 2.12
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 30.08,
+      "cost_delta_pct": 28.39,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 2.13
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 23.39,
+      "cost_delta_pct": 21.3,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 2.28
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 26.15,
+      "cost_delta_pct": 23.81,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 2.34
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 27.32,
+      "cost_delta_pct": 24.88,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 2.05
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 77.6,
+      "cost_delta_pct": 51.55,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.19
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 76.63,
+      "cost_delta_pct": 53.23,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.18
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 56.62,
+      "cost_delta_pct": 36.98,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.38
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 58.13,
+      "cost_delta_pct": 38.03,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.12
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 53.84,
+      "cost_delta_pct": 35.05,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.19
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 55.65,
+      "cost_delta_pct": 36.31,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.68
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 64.91,
+      "cost_delta_pct": 42.74,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.97
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 52.31,
+      "cost_delta_pct": 36.33,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.16
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 78.14,
+      "cost_delta_pct": 51.92,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.12
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 42,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 31.95,
+      "cost_delta_pct": 22.19,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.59
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 59.48,
+      "cost_delta_pct": 42.17,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.98
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 73.23,
+      "cost_delta_pct": 51.92,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.03
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 43.49,
+      "cost_delta_pct": 30.83,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.02
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 74.53,
+      "cost_delta_pct": 52.84,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.83
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 53.31,
+      "cost_delta_pct": 37.8,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.0
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 69.61,
+      "cost_delta_pct": 49.35,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.59
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 62.42,
+      "cost_delta_pct": 44.26,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.35
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 55.36,
+      "cost_delta_pct": 39.25,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.81
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 58.49,
+      "cost_delta_pct": 41.47,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.24
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 7,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 92.4,
+      "cost_delta_pct": 65.51,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.88
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 65.64,
+      "cost_delta_pct": 49.2,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.91
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 82.5,
+      "cost_delta_pct": 61.84,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.97
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 56.53,
+      "cost_delta_pct": 42.38,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.06
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 62.62,
+      "cost_delta_pct": 46.94,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.88
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 53.39,
+      "cost_delta_pct": 40.02,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.04
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 38.74,
+      "cost_delta_pct": 29.04,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.69
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 63.99,
+      "cost_delta_pct": 47.97,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.49
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 78.58,
+      "cost_delta_pct": 58.9,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.54
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 47.75,
+      "cost_delta_pct": 35.79,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.5
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 11,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 75.52,
+      "cost_delta_pct": 56.61,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.49
+    }
+  ],
+  "summary": {
+    "regional_food_redistributor_demo|qubo-annealing": {
+      "distance_delta_pct": {
+        "mean": 17.952,
+        "ci95": 6.067724489109022,
+        "n": 15
+      },
+      "best": -5.1,
+      "worst": 36.55,
+      "wins": 0,
+      "runs": 15,
+      "any_unassigned": 8
+    },
+    "regional_food_redistributor_demo|simulated-annealing": {
+      "distance_delta_pct": {
+        "mean": 29.350666666666662,
+        "ci95": 5.492240850330987,
+        "n": 15
+      },
+      "best": 8.88,
+      "worst": 50.73,
+      "wins": 0,
+      "runs": 15,
+      "any_unassigned": 10
+    },
+    "metro_grocery_last_mile|qubo-annealing": {
+      "distance_delta_pct": {
+        "mean": 63.16933333333332,
+        "ci95": 5.7270137186883385,
+        "n": 15
+      },
+      "best": 43.49,
+      "worst": 82.5,
+      "wins": 0,
+      "runs": 15,
+      "any_unassigned": 0
+    },
+    "metro_grocery_last_mile|simulated-annealing": {
+      "distance_delta_pct": {
+        "mean": 61.721333333333334,
+        "ci95": 8.057959299817238,
+        "n": 15
+      },
+      "best": 31.95,
+      "worst": 92.4,
+      "wins": 0,
+      "runs": 15,
+      "any_unassigned": 0
+    }
+  },
+  "wall_s": 179.8
+}

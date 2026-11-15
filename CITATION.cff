@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite the paper and this archive."
+title: "Every Quantum Run Needs a Referee — reproduction package"
+type: software
+authors:
+  - family-names: Nachtigall
+    given-names: Alexander
+    affiliation: "BLACKBOX.ROCKS, Cologne, Germany"
+license: Apache-2.0
+repository-code: "https://github.com/lxtececo/blackbox-rocks-q-paper-repro"
+version: "1.0.0"
+date-released: "2026-11-15"
+keywords: [quantum computing, benchmarking, amplitude estimation, QAOA, sample-based quantum diagonalization, Rydberg arrays, reproducibility]
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Nachtigall
+      given-names: Alexander
+  title: "Every Quantum Run Needs a Referee: Design and Empirical Lessons from a Vendor-Neutral Hybrid Quantum-Classical Platform"
+  year: 2026

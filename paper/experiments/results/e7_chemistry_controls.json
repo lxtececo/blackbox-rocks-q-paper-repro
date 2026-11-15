@@ -1,0 +1,210 @@
+{
+  "provenance": {
+    "commit": "84d9a530",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "rows": [
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "control": "cisd_strings",
+      "error_mha": 1.8989,
+      "coverage": 0.5017361111111112
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "control": "random_matched",
+      "error_mha": {
+        "mean": 94.14126666666665,
+        "min": 67.3205,
+        "max": 122.3121
+      },
+      "coverage": {
+        "mean": 0.1667361111111111,
+        "ci95": 0.0,
+        "n": 3
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "control": "sqdrift",
+      "error_mha": {
+        "mean": 4.8541,
+        "min": 4.6219,
+        "max": 5.0863
+      },
+      "coverage": {
+        "mean": 0.16756944444444444,
+        "ci95": 0.05948055555555554,
+        "n": 2
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "control": "cisd_strings",
+      "error_mha": 1.8989,
+      "coverage": 0.5017361111111112
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "control": "random_matched",
+      "error_mha": {
+        "mean": 52.689233333333334,
+        "min": 27.7953,
+        "max": 69.7799
+      },
+      "coverage": {
+        "mean": 0.38027777777777777,
+        "ci95": 0.0,
+        "n": 3
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "control": "sqdrift",
+      "error_mha": {
+        "mean": 1.17785,
+        "min": 0.8541,
+        "max": 1.5016
+      },
+      "coverage": {
+        "mean": 0.3852083333333334,
+        "ci95": 0.02055277777777778,
+        "n": 2
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "control": "cisd_strings",
+      "error_mha": 15.4276,
+      "coverage": 0.5017361111111112
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "control": "random_matched",
+      "error_mha": {
+        "mean": 292.2913333333333,
+        "min": 251.198,
+        "max": 330.4025
+      },
+      "coverage": {
+        "mean": 0.12840277777777778,
+        "ci95": 0.0,
+        "n": 3
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "control": "sqdrift",
+      "error_mha": {
+        "mean": 27.322499999999998,
+        "min": 26.9675,
+        "max": 27.6775
+      },
+      "coverage": {
+        "mean": 0.13055555555555554,
+        "ci95": 0.006397222222222216,
+        "n": 2
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "control": "cisd_strings",
+      "error_mha": 15.4276,
+      "coverage": 0.5017361111111112
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "control": "random_matched",
+      "error_mha": {
+        "mean": 160.40486666666666,
+        "min": 118.5125,
+        "max": 197.1135
+      },
+      "coverage": {
+        "mean": 0.34027777777777785,
+        "ci95": 7.693453047550498e-17,
+        "n": 3
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "control": "sqdrift",
+      "error_mha": {
+        "mean": 6.1213,
+        "min": 5.1192,
+        "max": 7.1234
+      },
+      "coverage": {
+        "mean": 0.34020833333333333,
+        "ci95": 0.048319444444444484,
+        "n": 2
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 200,
+      "control": "cisd_strings",
+      "error_mha": 15.4276,
+      "coverage": 0.5017361111111112
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 200,
+      "control": "random_matched",
+      "error_mha": {
+        "mean": 134.5476,
+        "min": 116.9947,
+        "max": 167.2849
+      },
+      "coverage": {
+        "mean": 0.38027777777777777,
+        "ci95": 0.0,
+        "n": 3
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 200,
+      "control": "sqdrift",
+      "error_mha": {
+        "mean": 5.2501999999999995,
+        "min": 4.4407,
+        "max": 6.0597
+      },
+      "coverage": {
+        "mean": 0.3823263888888889,
+        "ci95": 0.00524027777777778,
+        "n": 2
+      }
+    }
+  ],
+  "wall_s": 23.5
+}

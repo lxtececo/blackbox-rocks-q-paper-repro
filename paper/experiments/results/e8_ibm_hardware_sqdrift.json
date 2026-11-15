@@ -1,0 +1,101 @@
+{
+  "provenance": {
+    "commit": "15418c8d",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "real",
+  "sqdrift": [
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "error_mha": 0.0157,
+      "within_chemical_accuracy": true,
+      "subspace_dimension": 9888,
+      "coverage": 0.6866666666666666,
+      "valid_fraction": 0.0138,
+      "distinct_valid_configurations": 69,
+      "distinct_bitstrings": 4987,
+      "total_shots": 5000,
+      "backend": "ibm_marrakesh",
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspcf6jjaos73akfn3g",
+          "stage": "sqdrift ensemble",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:31:14.665889+00:00"
+        }
+      ],
+      "timings": {
+        "build_seconds": 2.743,
+        "sampling_seconds": 465.415,
+        "diagonalization_seconds": 9.117
+      },
+      "wall_s": 477.5
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "error_mha": 0.0053,
+      "within_chemical_accuracy": true,
+      "subspace_dimension": 9494,
+      "coverage": 0.6593055555555556,
+      "valid_fraction": 0.0186,
+      "distinct_valid_configurations": 93,
+      "distinct_bitstrings": 4989,
+      "total_shots": 5000,
+      "backend": "ibm_marrakesh",
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspg6habdes73frf920",
+          "stage": "sqdrift ensemble",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:38:21.677310+00:00"
+        }
+      ],
+      "timings": {
+        "build_seconds": 1.104,
+        "sampling_seconds": 412.686,
+        "diagonalization_seconds": 21.416
+      },
+      "wall_s": 435.2
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "error_mha": 0.0494,
+      "within_chemical_accuracy": true,
+      "subspace_dimension": 8742,
+      "coverage": 0.6070833333333333,
+      "valid_fraction": 0.0197,
+      "distinct_valid_configurations": 384,
+      "distinct_bitstrings": 19758,
+      "total_shots": 20000,
+      "backend": "ibm_marrakesh",
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspjnhabdes73frfcbg",
+          "stage": "sqdrift ensemble",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T12:05:21.062515+00:00"
+        }
+      ],
+      "timings": {
+        "build_seconds": 4.254,
+        "sampling_seconds": 1586.111,
+        "diagonalization_seconds": 12.628
+      },
+      "wall_s": 1604.1
+    }
+  ],
+  "wall_s": 2531.7
+}

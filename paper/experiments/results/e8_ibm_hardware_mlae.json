@@ -1,0 +1,135 @@
+{
+  "provenance": {
+    "commit": "dc5cd91d",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "real",
+  "mlae": [
+    {
+      "max_power": 1,
+      "queries": 800,
+      "price": 79.4499,
+      "error_vs_target": 69.01227004178531,
+      "error_vs_bs": 68.99931642781443,
+      "hits_per_power": [
+        53,
+        93
+      ],
+      "grover_schedule": [
+        0,
+        1
+      ],
+      "backend": "ibm_marrakesh",
+      "physical_qubits": 156,
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspbg1abdes73frf3l0",
+          "stage": "mlae grover schedule",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:21:45.768038+00:00"
+        }
+      ],
+      "wall_s": 16.8
+    },
+    {
+      "max_power": 2,
+      "queries": 1800,
+      "price": 79.534987,
+      "error_vs_target": 69.09735704178533,
+      "error_vs_bs": 69.08440342781444,
+      "hits_per_power": [
+        64,
+        102,
+        91
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2
+      ],
+      "backend": "ibm_marrakesh",
+      "physical_qubits": 156,
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspbk6jjaos73akfm90",
+          "stage": "mlae grover schedule",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:22:05.303615+00:00"
+        }
+      ],
+      "wall_s": 19.5
+    },
+    {
+      "max_power": 4,
+      "queries": 3600,
+      "price": 81.316453,
+      "error_vs_target": 70.87882304178532,
+      "error_vs_bs": 70.86586942781443,
+      "hits_per_power": [
+        45,
+        97,
+        104,
+        99
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "backend": "ibm_marrakesh",
+      "physical_qubits": 156,
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspbpejjaos73akfme0",
+          "stage": "mlae grover schedule",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:22:34.611429+00:00"
+        }
+      ],
+      "wall_s": 29.3
+    },
+    {
+      "max_power": 8,
+      "queries": 7000,
+      "price": 81.377268,
+      "error_vs_target": 70.93963804178532,
+      "error_vs_bs": 70.92668442781444,
+      "hits_per_power": [
+        49,
+        107,
+        103,
+        98,
+        99
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "backend": "ibm_marrakesh",
+      "physical_qubits": 156,
+      "vendor_runs": [
+        {
+          "vendor": "ibm",
+          "vendor_label": "IBM Quantum",
+          "job_id": "dbspc0fv5hds73dj8te0",
+          "stage": "mlae grover schedule",
+          "backend": "ibm_marrakesh",
+          "submitted_at": "2026-11-15T11:23:21.513047+00:00"
+        }
+      ],
+      "wall_s": 46.9
+    }
+  ],
+  "wall_s": 113.0
+}

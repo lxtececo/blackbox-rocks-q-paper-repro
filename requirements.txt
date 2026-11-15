@@ -1,0 +1,15 @@
+amazon-braket-default-simulator==1.39.1
+amazon-braket-sdk==1.117.1
+dimod==0.12.21
+dwave-samplers==1.7.0
+matplotlib==3.10.8
+numpy==2.4.1
+pyscf==2.14.0
+qiskit==2.5.2
+qiskit-addon-sqd==0.13.1
+qiskit-aer==0.17.2
+qiskit-algorithms==0.4.0
+qiskit-fermions==0.1.0
+qiskit-ibm-runtime==0.45.0
+qiskit-ionq==1.0.2
+scipy==1.17.0

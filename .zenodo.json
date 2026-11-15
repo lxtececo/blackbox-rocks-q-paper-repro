@@ -1,0 +1,11 @@
+{
+  "title": "Every Quantum Run Needs a Referee — reproduction package",
+  "upload_type": "software",
+  "description": "Experiment scripts, raw results (including IBM Quantum job IDs), solver modules and LaTeX source for the paper 'Every Quantum Run Needs a Referee: Design and Empirical Lessons from a Vendor-Neutral Hybrid Quantum-Classical Platform'. Nine experiments: amplitude estimation vs classical Monte Carlo, exact MILP referee for facility location, Rydberg MIS mapping, sample-based diagonalization with classical and uniform-noise controls, vehicle routing, QAOA vs random sampling, and a hardware round on IBM Heron (ibm_marrakesh).",
+  "creators": [
+    {"name": "Nachtigall, Alexander", "affiliation": "BLACKBOX.ROCKS, Cologne, Germany"}
+  ],
+  "license": "Apache-2.0",
+  "keywords": ["quantum computing", "benchmarking", "amplitude estimation", "QAOA", "sample-based quantum diagonalization", "Rydberg arrays", "reproducibility"],
+  "access_right": "open"
+}

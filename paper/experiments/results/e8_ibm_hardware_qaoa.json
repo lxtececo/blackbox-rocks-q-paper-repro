@@ -1,0 +1,44 @@
+{
+  "provenance": {
+    "commit": "15418c8d",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "real",
+  "qaoa": [
+    {
+      "reps": 1,
+      "seed": 0,
+      "qaoa_energy": 112007.940262,
+      "qaoa_rank_pct": 0.04425048828125,
+      "random_rank_pct": 0.030517578125,
+      "backend": "ibm_marrakesh(qaoa)",
+      "platform": "ibm",
+      "execution_mode": "real",
+      "wall_s": 24.8
+    },
+    {
+      "reps": 1,
+      "seed": 1,
+      "qaoa_energy": 113021.247346,
+      "qaoa_rank_pct": 0.04730224609375,
+      "random_rank_pct": 0.017547607421875,
+      "backend": "ibm_marrakesh(qaoa)",
+      "platform": "ibm",
+      "execution_mode": "real",
+      "wall_s": 20.9
+    },
+    {
+      "reps": 1,
+      "seed": 2,
+      "qaoa_energy": 104097.826659,
+      "qaoa_rank_pct": 0.026702880859375,
+      "random_rank_pct": 0.017547607421875,
+      "backend": "ibm_marrakesh(qaoa)",
+      "platform": "ibm",
+      "execution_mode": "real",
+      "wall_s": 21.6
+    }
+  ],
+  "wall_s": 67.6
+}

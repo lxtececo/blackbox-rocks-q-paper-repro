@@ -1,0 +1,250 @@
+{
+  "provenance": {
+    "commit": "1f22f595",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "seeds": 10,
+  "rows": [
+    {
+      "scenario": "pilot_2of4",
+      "sites": 4,
+      "demand": 3,
+      "qubo_vars": 18,
+      "exact": {
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 44521.522349301915,
+        "mip_gap": 0.0,
+        "open_sites": [
+          "S1"
+        ],
+        "wall_s": 0.01
+      },
+      "referee_cost": 44521.522,
+      "referee_overflow": 0.0,
+      "referee_gap_to_exact_pct": -7.845686741220215e-07,
+      "samplers": {
+        "dwave": {
+          "raw_gap_pct": {
+            "mean": -19.69826925614871,
+            "ci95": 0.0,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": -7.845686741220214e-07,
+            "ci95": 6.917435735910119e-23,
+            "n": 10
+          },
+          "refined_optimal_runs": 10,
+          "raw_feasible_runs": 0,
+          "best_raw_gap_pct": -19.69826925614871,
+          "worst_refined_gap_pct": -7.845686741220215e-07,
+          "elapsed_ms": {
+            "mean": 57.7,
+            "ci95": 21.84528226719291,
+            "n": 10
+          }
+        },
+        "numpy": {
+          "raw_gap_pct": {
+            "mean": -19.69826925614871,
+            "ci95": 0.0,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": -7.845686741220214e-07,
+            "ci95": 6.917435735910119e-23,
+            "n": 10
+          },
+          "refined_optimal_runs": 10,
+          "raw_feasible_runs": 0,
+          "best_raw_gap_pct": -19.69826925614871,
+          "worst_refined_gap_pct": -7.845686741220215e-07,
+          "elapsed_ms": {
+            "mean": 105.8,
+            "ci95": 0.7619110475931191,
+            "n": 10
+          }
+        }
+      }
+    },
+    {
+      "scenario": "regional_3of6",
+      "sites": 6,
+      "demand": 8,
+      "qubo_vars": 56,
+      "exact": {
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 64553.16760187505,
+        "mip_gap": 0.0,
+        "open_sites": [
+          "S5"
+        ],
+        "wall_s": 0.01
+      },
+      "referee_cost": 64553.168,
+      "referee_overflow": 0.0,
+      "referee_gap_to_exact_pct": 6.167395982324813e-07,
+      "samplers": {
+        "dwave": {
+          "raw_gap_pct": {
+            "mean": -12.707983212332358,
+            "ci95": 14.909849097237828,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": 6.167395982324813e-07,
+            "ci95": 0.0,
+            "n": 10
+          },
+          "refined_optimal_runs": 10,
+          "raw_feasible_runs": 1,
+          "best_raw_gap_pct": -33.41881956114642,
+          "worst_refined_gap_pct": 6.167395982324813e-07,
+          "elapsed_ms": {
+            "mean": 158.4,
+            "ci95": 1.176,
+            "n": 10
+          }
+        },
+        "numpy": {
+          "raw_gap_pct": {
+            "mean": 20.748992025816396,
+            "ci95": 24.427543601186215,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": 6.167395982324813e-07,
+            "ci95": 0.0,
+            "n": 10
+          },
+          "refined_optimal_runs": 10,
+          "raw_feasible_runs": 1,
+          "best_raw_gap_pct": -33.41881956114642,
+          "worst_refined_gap_pct": 6.167395982324813e-07,
+          "elapsed_ms": {
+            "mean": 325.8,
+            "ci95": 3.0336061415784052,
+            "n": 10
+          }
+        }
+      }
+    },
+    {
+      "scenario": "metro_5of12",
+      "sites": 12,
+      "demand": 20,
+      "qubo_vars": 255,
+      "exact": {
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 141388.3158094533,
+        "mip_gap": 0.0,
+        "open_sites": [
+          "S3",
+          "S7",
+          "S10"
+        ],
+        "wall_s": 2.95
+      },
+      "referee_cost": 146133.556,
+      "referee_overflow": 0.0,
+      "referee_gap_to_exact_pct": 3.356175624117186,
+      "samplers": {
+        "dwave": {
+          "raw_gap_pct": {
+            "mean": 21.183306356736566,
+            "ci95": 6.739548767626349,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": 3.9401230283091166,
+            "ci95": 0.5784656203138299,
+            "n": 10
+          },
+          "refined_optimal_runs": 0,
+          "raw_feasible_runs": 0,
+          "best_raw_gap_pct": -0.567177566874791,
+          "worst_refined_gap_pct": 4.3269050596737175,
+          "elapsed_ms": {
+            "mean": 748.1,
+            "ci95": 3.0286774524718063,
+            "n": 10
+          }
+        },
+        "numpy": {
+          "raw_gap_pct": {
+            "mean": 46.97537551833965,
+            "ci95": 5.609348457415391,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": 3.620892335577559,
+            "ci95": 0.6930793794714013,
+            "n": 10
+          },
+          "refined_optimal_runs": 0,
+          "raw_feasible_runs": 0,
+          "best_raw_gap_pct": 28.542246903154986,
+          "worst_refined_gap_pct": 4.537629685887903,
+          "elapsed_ms": {
+            "mean": 3680.1,
+            "ci95": 15.948427383287667,
+            "n": 10
+          }
+        }
+      }
+    },
+    {
+      "scenario": "national_8of40",
+      "sites": 40,
+      "demand": 60,
+      "qubo_vars": 2444,
+      "exact": {
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "objective": 290279.0311122554,
+        "mip_gap": 0.0,
+        "open_sites": [
+          "S4",
+          "S9",
+          "S16",
+          "S18",
+          "S24",
+          "S27",
+          "S35",
+          "S36"
+        ],
+        "wall_s": 111.55
+      },
+      "referee_cost": 296571.345,
+      "referee_overflow": 0.0,
+      "referee_gap_to_exact_pct": 2.167677721547591,
+      "samplers": {
+        "dwave": {
+          "raw_gap_pct": {
+            "mean": 22.176787500317214,
+            "ci95": 0.9605667538615065,
+            "n": 10
+          },
+          "refined_gap_pct": {
+            "mean": 3.4998608920586465,
+            "ci95": 0.785845730306059,
+            "n": 10
+          },
+          "refined_optimal_runs": 0,
+          "raw_feasible_runs": 0,
+          "best_raw_gap_pct": 19.387915369601938,
+          "worst_refined_gap_pct": 5.544956460020721,
+          "elapsed_ms": {
+            "mean": 10489.3,
+            "ci95": 82.25829909903719,
+            "n": 10
+          }
+        }
+      }
+    }
+  ]
+}
