@@ -320,10 +320,26 @@ def build_program(embedding: Embedding, duration_s: float = MAX_DURATION_S):
     return AnalogHamiltonianSimulation(register=register, hamiltonian=drive)
 
 
-def run_local(program, *, shots: int, steps: int = 80) -> List[Tuple[List[int], List[int]]]:
+def run_local(
+    program, *, shots: int, steps: int = 80, seed: Optional[int] = None
+) -> List[Tuple[List[int], List[int]]]:
     from braket.devices import LocalSimulator
 
-    result = LocalSimulator("braket_ahs").run(program, shots=shots, steps=steps).result()
+    def _run():
+        return LocalSimulator("braket_ahs").run(program, shots=shots, steps=steps).result()
+
+    if seed is None:
+        result = _run()
+    else:
+        import numpy as np  # noqa: PLC0415
+
+        # The AHS simulator draws shots from NumPy's global generator and takes no seed.
+        state = np.random.get_state()
+        np.random.seed(seed)
+        try:
+            result = _run()
+        finally:
+            np.random.set_state(state)
     return [
         (list(map(int, m.pre_sequence)), list(map(int, m.post_sequence)))
         for m in result.measurements
@@ -381,6 +397,7 @@ def solve_spacing(
     shots: int = 100,
     steps: int = 80,
     backend: str = "local",
+    seed: Optional[int] = None,
 ) -> Dict[str, Any]:
     """Solve and score. ``method`` is ``classical-mis`` or ``rydberg-mis``."""
     started = time.perf_counter()
@@ -410,7 +427,7 @@ def solve_spacing(
         embedding = embed(graph, problem.min_spacing_km, max_atoms=MAX_LOCAL_ATOMS)
         program = build_program(embedding)
         try:
-            shot_rows = run_local(program, shots=shots, steps=steps)
+            shot_rows = run_local(program, shots=shots, steps=steps, seed=seed)
         except Exception as exc:  # noqa: BLE001 - surfaced, never replaced
             logger.warning("[rydberg-mis] local AHS simulation failed: %s", exc)
             raise RydbergExecutionError(f"neutral-atom simulation failed: {exc}") from exc

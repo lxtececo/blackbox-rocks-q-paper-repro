@@ -1,0 +1,271 @@
+{
+  "provenance": {
+    "commit": "05211244",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mlae_true_amplitude": 0.06398546641948993,
+  "mlae": [
+    {
+      "grover_power": 0,
+      "job_max_power": 1,
+      "hits": 53,
+      "shots": 200,
+      "p_hat": 0.265,
+      "wilson95": [
+        0.20868060011609973,
+        0.33017702266551113
+      ],
+      "ideal": 0.06398546641948993,
+      "p_vs_ideal": 4.152728781383352e-19,
+      "p_vs_half": 2.0554776988442582e-11,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 0,
+      "job_max_power": 2,
+      "hits": 64,
+      "shots": 200,
+      "p_hat": 0.32,
+      "wilson95": [
+        0.2592642960770526,
+        0.38752026605354306
+      ],
+      "ideal": 0.06398546641948993,
+      "p_vs_ideal": 9.561129811290912e-28,
+      "p_vs_half": 3.904467779916419e-07,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 0,
+      "job_max_power": 4,
+      "hits": 45,
+      "shots": 200,
+      "p_hat": 0.225,
+      "wilson95": [
+        0.17262283786915622,
+        0.28774246538592035
+      ],
+      "ideal": 0.06398546641948993,
+      "p_vs_ideal": 1.185618744848004e-13,
+      "p_vs_half": 2.3971559589524633e-15,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 0,
+      "job_max_power": 8,
+      "hits": 49,
+      "shots": 200,
+      "p_hat": 0.245,
+      "wilson95": [
+        0.19056777914685893,
+        0.3090436838714848
+      ],
+      "ideal": 0.06398546641948993,
+      "p_vs_ideal": 2.743133240588743e-16,
+      "p_vs_half": 2.74428563600153e-13,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 1,
+      "job_max_power": 1,
+      "hits": 93,
+      "shots": 200,
+      "p_hat": 0.465,
+      "wilson95": [
+        0.39718443070423204,
+        0.5341347897100506
+      ],
+      "ideal": 0.4818012870959742,
+      "p_vs_ideal": 0.6713501506485244,
+      "p_vs_half": 0.3580030906245022,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 1,
+      "job_max_power": 2,
+      "hits": 102,
+      "shots": 200,
+      "p_hat": 0.51,
+      "wilson95": [
+        0.441184632709161,
+        0.5784384471724727
+      ],
+      "ideal": 0.4818012870959742,
+      "p_vs_ideal": 0.4369958045350375,
+      "p_vs_half": 0.8320703744377604,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 1,
+      "job_max_power": 4,
+      "hits": 97,
+      "shots": 200,
+      "p_hat": 0.485,
+      "wilson95": [
+        0.4166726249238525,
+        0.5538927552536972
+      ],
+      "ideal": 0.4818012870959742,
+      "p_vs_ideal": 0.9436797852001784,
+      "p_vs_half": 0.7237710263128071,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 1,
+      "job_max_power": 8,
+      "hits": 107,
+      "shots": 200,
+      "p_hat": 0.535,
+      "wilson95": [
+        0.46586521028994954,
+        0.6028155692957681
+      ],
+      "ideal": 0.4818012870959742,
+      "p_vs_ideal": 0.13760234956466671,
+      "p_vs_half": 0.3580030906245022,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 2,
+      "job_max_power": 2,
+      "hits": 91,
+      "shots": 200,
+      "p_hat": 0.455,
+      "wilson95": [
+        0.38748099090226035,
+        0.5242151496303886
+      ],
+      "ideal": 0.9170562286770078,
+      "p_vs_ideal": 2.320439062570813e-63,
+      "p_vs_half": 0.22924659725971622,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 2,
+      "job_max_power": 4,
+      "hits": 104,
+      "shots": 200,
+      "p_hat": 0.52,
+      "wilson95": [
+        0.4510366005581654,
+        0.5882095592051018
+      ],
+      "ideal": 0.9170562286770078,
+      "p_vs_ideal": 1.6762790031878815e-49,
+      "p_vs_half": 0.6207289280968303,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 2,
+      "job_max_power": 8,
+      "hits": 103,
+      "shots": 200,
+      "p_hat": 0.515,
+      "wilson95": [
+        0.44610724474630287,
+        0.5833273750761476
+      ],
+      "ideal": 0.9170562286770078,
+      "p_vs_ideal": 1.6221133715282374e-50,
+      "p_vs_half": 0.7237710263128071,
+      "ideal_resolvable_from_half": true
+    },
+    {
+      "grover_power": 4,
+      "job_max_power": 4,
+      "hits": 99,
+      "shots": 200,
+      "p_hat": 0.495,
+      "wilson95": [
+        0.4264572195415849,
+        0.5637312405175983
+      ],
+      "ideal": 0.5544997020868387,
+      "p_vs_ideal": 0.10160137167039049,
+      "p_vs_half": 0.9436515209907435,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 4,
+      "job_max_power": 8,
+      "hits": 98,
+      "shots": 200,
+      "p_hat": 0.49,
+      "wilson95": [
+        0.4215615528275274,
+        0.5588153672908391
+      ],
+      "ideal": 0.5544997020868387,
+      "p_vs_ideal": 0.075103180642112,
+      "p_vs_half": 0.8320703744377604,
+      "ideal_resolvable_from_half": false
+    },
+    {
+      "grover_power": 8,
+      "job_max_power": 8,
+      "hits": 99,
+      "shots": 200,
+      "p_hat": 0.495,
+      "wilson95": [
+        0.4264572195415849,
+        0.5637312405175983
+      ],
+      "ideal": 0.8726217357304642,
+      "p_vs_ideal": 5.957772203962392e-38,
+      "p_vs_half": 0.9436515209907435,
+      "ideal_resolvable_from_half": true
+    }
+  ],
+  "sqdrift_valid_fraction": [
+    {
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "shots": 5000,
+      "valid_shots": 69,
+      "valid_fraction": 0.0138,
+      "wilson95": [
+        0.010919380389000657,
+        0.01742716039678281
+      ],
+      "uniform_rate": 0.01373291015625,
+      "expected_under_uniform": 68.66455078125,
+      "ratio_to_uniform": 1.0048853333333334,
+      "p_vs_uniform": 0.9515073223710908,
+      "z_vs_uniform": 0.04076272625176042
+    },
+    {
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "shots": 5000,
+      "valid_shots": 93,
+      "valid_fraction": 0.0186,
+      "wilson95": [
+        0.015207834375972463,
+        0.02273133620049023
+      ],
+      "uniform_rate": 0.01373291015625,
+      "expected_under_uniform": 68.66455078125,
+      "ratio_to_uniform": 1.3544106666666667,
+      "p_vs_uniform": 0.005066110426368014,
+      "z_vs_uniform": 2.9571666865523834
+    },
+    {
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "shots": 20000,
+      "valid_shots": 394,
+      "valid_fraction": 0.0197,
+      "wilson95": [
+        0.017864227101698892,
+        0.02172024951203314
+      ],
+      "uniform_rate": 0.01373291015625,
+      "expected_under_uniform": 274.658203125,
+      "ratio_to_uniform": 1.4345102222222221,
+      "p_vs_uniform": 8.906382334192716e-12,
+      "z_vs_uniform": 7.251018521575886
+    }
+  ],
+  "uniform_valid_rate": 0.01373291015625
+}

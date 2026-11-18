@@ -1,10 +1,11 @@
 {
   "provenance": {
-    "commit": "1f22f595",
+    "commit": "05211244",
     "python": "3.12.3",
     "machine": "x86_64"
   },
   "shots": 200,
+  "sweep_shots": 1000,
   "instances": 24,
   "ablation": [
     {
@@ -14,15 +15,15 @@
       "greedy": 4,
       "ambiguous_pairs": 6,
       "cutoff": {
-        "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.985,
-        "raw_mean_size": 3.985,
+        "raw_independent_fraction": 0.995,
+        "raw_optimal_fraction": 0.97,
+        "raw_mean_size": 3.98,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.315,
-        "raw_optimal_fraction": 0.315,
-        "raw_mean_size": 4.69,
+        "raw_independent_fraction": 0.305,
+        "raw_optimal_fraction": 0.305,
+        "raw_mean_size": 4.7,
         "final_optimal": true
       }
     },
@@ -34,14 +35,14 @@
       "ambiguous_pairs": 8,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.275,
-        "raw_mean_size": 3.27,
+        "raw_optimal_fraction": 0.335,
+        "raw_mean_size": 3.33,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.65,
-        "raw_optimal_fraction": 0.645,
-        "raw_mean_size": 4.11,
+        "raw_independent_fraction": 0.585,
+        "raw_optimal_fraction": 0.575,
+        "raw_mean_size": 4.18,
         "final_optimal": true
       }
     },
@@ -52,15 +53,15 @@
       "greedy": 5,
       "ambiguous_pairs": 4,
       "cutoff": {
-        "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.16,
-        "raw_mean_size": 3.895,
+        "raw_independent_fraction": 0.995,
+        "raw_optimal_fraction": 0.155,
+        "raw_mean_size": 3.9,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.995,
-        "raw_optimal_fraction": 0.945,
-        "raw_mean_size": 4.95,
+        "raw_independent_fraction": 0.965,
+        "raw_optimal_fraction": 0.925,
+        "raw_mean_size": 4.98,
         "final_optimal": true
       }
     },
@@ -72,14 +73,14 @@
       "ambiguous_pairs": 4,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.96,
-        "raw_mean_size": 3.96,
+        "raw_optimal_fraction": 0.975,
+        "raw_mean_size": 3.975,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.375,
-        "raw_optimal_fraction": 0.365,
-        "raw_mean_size": 4.63,
+        "raw_independent_fraction": 0.395,
+        "raw_optimal_fraction": 0.395,
+        "raw_mean_size": 4.605,
         "final_optimal": true
       }
     },
@@ -91,14 +92,14 @@
       "ambiguous_pairs": 2,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.93,
-        "raw_mean_size": 4.93,
+        "raw_optimal_fraction": 0.925,
+        "raw_mean_size": 4.92,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.93,
-        "raw_optimal_fraction": 0.885,
-        "raw_mean_size": 5.01,
+        "raw_independent_fraction": 0.965,
+        "raw_optimal_fraction": 0.94,
+        "raw_mean_size": 4.995,
         "final_optimal": true
       }
     },
@@ -110,13 +111,13 @@
       "ambiguous_pairs": 4,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 1.0,
-        "raw_mean_size": 4.0,
+        "raw_optimal_fraction": 0.995,
+        "raw_mean_size": 3.995,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.02,
-        "raw_optimal_fraction": 0.02,
+        "raw_independent_fraction": 0.01,
+        "raw_optimal_fraction": 0.005,
         "raw_mean_size": 5.44,
         "final_optimal": true
       }
@@ -129,14 +130,14 @@
       "ambiguous_pairs": 6,
       "cutoff": {
         "raw_independent_fraction": 0.99,
-        "raw_optimal_fraction": 0.735,
-        "raw_mean_size": 3.75,
+        "raw_optimal_fraction": 0.7,
+        "raw_mean_size": 3.71,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.005,
-        "raw_optimal_fraction": 0.005,
-        "raw_mean_size": 5.915,
+        "raw_independent_fraction": 0.0,
+        "raw_optimal_fraction": 0.0,
+        "raw_mean_size": 5.905,
         "final_optimal": true
       }
     },
@@ -148,14 +149,14 @@
       "ambiguous_pairs": 0,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.91,
-        "raw_mean_size": 5.91,
+        "raw_optimal_fraction": 0.87,
+        "raw_mean_size": 5.87,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.53,
-        "raw_optimal_fraction": 0.515,
-        "raw_mean_size": 6.53,
+        "raw_independent_fraction": 0.42,
+        "raw_optimal_fraction": 0.415,
+        "raw_mean_size": 6.645,
         "final_optimal": true
       }
     },
@@ -166,15 +167,15 @@
       "greedy": 3,
       "ambiguous_pairs": 5,
       "cutoff": {
-        "raw_independent_fraction": 0.99,
-        "raw_optimal_fraction": 0.93,
-        "raw_mean_size": 2.945,
+        "raw_independent_fraction": 0.98,
+        "raw_optimal_fraction": 0.935,
+        "raw_mean_size": 2.955,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.025,
-        "raw_optimal_fraction": 0.025,
-        "raw_mean_size": 3.995,
+        "raw_independent_fraction": 0.005,
+        "raw_optimal_fraction": 0.005,
+        "raw_mean_size": 4.01,
         "final_optimal": true
       }
     },
@@ -185,15 +186,15 @@
       "greedy": 5,
       "ambiguous_pairs": 3,
       "cutoff": {
-        "raw_independent_fraction": 0.9,
+        "raw_independent_fraction": 0.94,
         "raw_optimal_fraction": 0.755,
-        "raw_mean_size": 4.94,
+        "raw_mean_size": 4.855,
         "final_optimal": true
       },
       "omega": {
         "raw_independent_fraction": 0.005,
         "raw_optimal_fraction": 0.005,
-        "raw_mean_size": 6.425,
+        "raw_mean_size": 6.39,
         "final_optimal": true
       }
     },
@@ -204,15 +205,15 @@
       "greedy": 4,
       "ambiguous_pairs": 8,
       "cutoff": {
-        "raw_independent_fraction": 0.85,
-        "raw_optimal_fraction": 0.0,
-        "raw_mean_size": 2.855,
+        "raw_independent_fraction": 0.87,
+        "raw_optimal_fraction": 0.01,
+        "raw_mean_size": 2.815,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.04,
-        "raw_optimal_fraction": 0.035,
-        "raw_mean_size": 4.775,
+        "raw_independent_fraction": 0.015,
+        "raw_optimal_fraction": 0.015,
+        "raw_mean_size": 4.81,
         "final_optimal": true
       }
     },
@@ -224,14 +225,14 @@
       "ambiguous_pairs": 7,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.06,
-        "raw_mean_size": 3.03,
+        "raw_optimal_fraction": 0.045,
+        "raw_mean_size": 2.995,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.935,
-        "raw_optimal_fraction": 0.84,
-        "raw_mean_size": 3.9,
+        "raw_independent_fraction": 0.92,
+        "raw_optimal_fraction": 0.83,
+        "raw_mean_size": 3.91,
         "final_optimal": true
       }
     },
@@ -242,15 +243,15 @@
       "greedy": 5,
       "ambiguous_pairs": 0,
       "cutoff": {
-        "raw_independent_fraction": 1.0,
+        "raw_independent_fraction": 0.995,
         "raw_optimal_fraction": 0.96,
-        "raw_mean_size": 4.96,
+        "raw_mean_size": 4.97,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.7,
-        "raw_optimal_fraction": 0.675,
-        "raw_mean_size": 5.29,
+        "raw_independent_fraction": 0.725,
+        "raw_optimal_fraction": 0.705,
+        "raw_mean_size": 5.265,
         "final_optimal": true
       }
     },
@@ -261,15 +262,15 @@
       "greedy": 5,
       "ambiguous_pairs": 2,
       "cutoff": {
-        "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.955,
-        "raw_mean_size": 4.955,
+        "raw_independent_fraction": 0.995,
+        "raw_optimal_fraction": 0.94,
+        "raw_mean_size": 4.95,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.05,
-        "raw_optimal_fraction": 0.05,
-        "raw_mean_size": 6.145,
+        "raw_independent_fraction": 0.035,
+        "raw_optimal_fraction": 0.035,
+        "raw_mean_size": 6.23,
         "final_optimal": true
       }
     },
@@ -281,14 +282,14 @@
       "ambiguous_pairs": 7,
       "cutoff": {
         "raw_independent_fraction": 0.995,
-        "raw_optimal_fraction": 0.53,
-        "raw_mean_size": 3.49,
+        "raw_optimal_fraction": 0.475,
+        "raw_mean_size": 3.445,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.325,
-        "raw_optimal_fraction": 0.325,
-        "raw_mean_size": 4.665,
+        "raw_independent_fraction": 0.335,
+        "raw_optimal_fraction": 0.33,
+        "raw_mean_size": 4.65,
         "final_optimal": true
       }
     },
@@ -299,15 +300,15 @@
       "greedy": 5,
       "ambiguous_pairs": 8,
       "cutoff": {
-        "raw_independent_fraction": 0.9,
-        "raw_optimal_fraction": 0.015,
-        "raw_mean_size": 3.475,
+        "raw_independent_fraction": 0.89,
+        "raw_optimal_fraction": 0.005,
+        "raw_mean_size": 3.47,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.01,
-        "raw_optimal_fraction": 0.01,
-        "raw_mean_size": 5.825,
+        "raw_independent_fraction": 0.0,
+        "raw_optimal_fraction": 0.0,
+        "raw_mean_size": 5.865,
         "final_optimal": true
       }
     },
@@ -319,14 +320,14 @@
       "ambiguous_pairs": 4,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.755,
+        "raw_optimal_fraction": 0.76,
         "raw_mean_size": 2.715,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.885,
-        "raw_optimal_fraction": 0.88,
-        "raw_mean_size": 3.05,
+        "raw_independent_fraction": 0.89,
+        "raw_optimal_fraction": 0.89,
+        "raw_mean_size": 3.055,
         "final_optimal": true
       }
     },
@@ -338,14 +339,14 @@
       "ambiguous_pairs": 0,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.9,
-        "raw_mean_size": 6.9,
+        "raw_optimal_fraction": 0.91,
+        "raw_mean_size": 6.905,
         "final_optimal": true
       },
       "omega": {
         "raw_independent_fraction": 0.975,
-        "raw_optimal_fraction": 0.915,
-        "raw_mean_size": 6.96,
+        "raw_optimal_fraction": 0.895,
+        "raw_mean_size": 6.925,
         "final_optimal": true
       }
     },
@@ -356,15 +357,15 @@
       "greedy": 4,
       "ambiguous_pairs": 5,
       "cutoff": {
-        "raw_independent_fraction": 0.805,
-        "raw_optimal_fraction": 0.8,
-        "raw_mean_size": 4.215,
+        "raw_independent_fraction": 0.75,
+        "raw_optimal_fraction": 0.73,
+        "raw_mean_size": 4.225,
         "final_optimal": true
       },
       "omega": {
         "raw_independent_fraction": 0.0,
         "raw_optimal_fraction": 0.0,
-        "raw_mean_size": 6.815,
+        "raw_mean_size": 6.8,
         "final_optimal": true
       }
     },
@@ -376,14 +377,14 @@
       "ambiguous_pairs": 3,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.485,
-        "raw_mean_size": 4.435,
+        "raw_optimal_fraction": 0.46,
+        "raw_mean_size": 4.38,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.91,
-        "raw_optimal_fraction": 0.905,
-        "raw_mean_size": 5.065,
+        "raw_independent_fraction": 0.85,
+        "raw_optimal_fraction": 0.825,
+        "raw_mean_size": 5.075,
         "final_optimal": true
       }
     },
@@ -395,14 +396,14 @@
       "ambiguous_pairs": 4,
       "cutoff": {
         "raw_independent_fraction": 1.0,
-        "raw_optimal_fraction": 0.24,
-        "raw_mean_size": 5.08,
+        "raw_optimal_fraction": 0.19,
+        "raw_mean_size": 5.02,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.98,
-        "raw_optimal_fraction": 0.86,
-        "raw_mean_size": 5.875,
+        "raw_independent_fraction": 0.995,
+        "raw_optimal_fraction": 0.895,
+        "raw_mean_size": 5.895,
         "final_optimal": true
       }
     },
@@ -413,15 +414,15 @@
       "greedy": 4,
       "ambiguous_pairs": 5,
       "cutoff": {
-        "raw_independent_fraction": 0.915,
-        "raw_optimal_fraction": 0.535,
-        "raw_mean_size": 3.63,
+        "raw_independent_fraction": 0.945,
+        "raw_optimal_fraction": 0.48,
+        "raw_mean_size": 3.53,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.015,
-        "raw_optimal_fraction": 0.015,
-        "raw_mean_size": 4.985,
+        "raw_independent_fraction": 0.02,
+        "raw_optimal_fraction": 0.02,
+        "raw_mean_size": 4.975,
         "final_optimal": true
       }
     },
@@ -432,15 +433,15 @@
       "greedy": 4,
       "ambiguous_pairs": 8,
       "cutoff": {
-        "raw_independent_fraction": 0.995,
-        "raw_optimal_fraction": 0.87,
-        "raw_mean_size": 3.865,
+        "raw_independent_fraction": 1.0,
+        "raw_optimal_fraction": 0.86,
+        "raw_mean_size": 3.85,
         "final_optimal": true
       },
       "omega": {
         "raw_independent_fraction": 0.235,
         "raw_optimal_fraction": 0.235,
-        "raw_mean_size": 4.75,
+        "raw_mean_size": 4.74,
         "final_optimal": true
       }
     },
@@ -452,14 +453,14 @@
       "ambiguous_pairs": 3,
       "cutoff": {
         "raw_independent_fraction": 0.94,
-        "raw_optimal_fraction": 0.485,
-        "raw_mean_size": 3.455,
+        "raw_optimal_fraction": 0.51,
+        "raw_mean_size": 3.555,
         "final_optimal": true
       },
       "omega": {
-        "raw_independent_fraction": 0.085,
-        "raw_optimal_fraction": 0.085,
-        "raw_mean_size": 4.885,
+        "raw_independent_fraction": 0.115,
+        "raw_optimal_fraction": 0.115,
+        "raw_mean_size": 4.845,
         "final_optimal": true
       }
     }
@@ -468,131 +469,163 @@
     "cutoff": {
       "raw_independent_fraction": {
         "mean": 0.9700000000000001,
-        "ci95": 0.02207168820661109,
+        "ci95": 0.02502017493782284,
         "n": 24
       },
       "raw_optimal_fraction": {
-        "mean": 0.6345833333333334,
-        "ci95": 0.13723159358463263,
+        "mean": 0.6229166666666667,
+        "ci95": 0.14471354086975652,
         "n": 24
       },
       "final_optimal_instances": 24
     },
     "omega": {
       "raw_independent_fraction": {
-        "mean": 0.4164583333333333,
-        "ci95": 0.1603770315330643,
+        "mean": 0.40687500000000004,
+        "ci95": 0.16860521967205333,
         "n": 24
       },
       "raw_optimal_fraction": {
-        "mean": 0.398125,
-        "ci95": 0.15132830267407812,
+        "mean": 0.38999999999999996,
+        "ci95": 0.1594785710640864,
         "n": 24
       },
       "final_optimal_instances": 24
     },
     "greedy_optimal_instances": 24,
-    "corr_ambiguous_vs_raw_optimal": -0.5402621045394485
+    "paired": {
+      "raw_independent_fraction": {
+        "difference": {
+          "mean": 0.563125,
+          "ci95": 0.1576559478572461,
+          "n": 24
+        },
+        "wilcoxon_p": 1.8197386214786344e-05,
+        "static_better": 24,
+        "dynamic_better": 0
+      },
+      "raw_optimal_fraction": {
+        "difference": {
+          "mean": 0.23291666666666666,
+          "ci95": 0.227765947635696,
+          "n": 24
+        },
+        "wilcoxon_p": 0.05642664432525635,
+        "static_better": 16,
+        "dynamic_better": 8
+      }
+    },
+    "corr_ambiguous_vs_raw_optimal": {
+      "pearson_r": -0.5383966596170944,
+      "ci95": [
+        -0.7737455527610414,
+        -0.17245501277439063
+      ],
+      "p": 0.006645048633307621,
+      "spearman_rho": -0.4909130898787744,
+      "spearman_p": 0.014857060668196202,
+      "n": 24
+    }
   },
   "duration_sweep": [
     {
       "spacing_km": 15.0,
       "duration_us": 0.5,
-      "raw_independent_fraction": 0.97,
-      "raw_optimal_fraction": 0.355,
+      "raw_independent_fraction": 0.967,
+      "raw_optimal_fraction": 0.39,
       "ci": [
-        0.29198518653239286,
-        0.4234801551839203
+        0.36024486930243227,
+        0.42059704838657375
       ]
     },
     {
       "spacing_km": 15.0,
       "duration_us": 1.0,
-      "raw_independent_fraction": 1.0,
-      "raw_optimal_fraction": 0.68,
+      "raw_independent_fraction": 0.998,
+      "raw_optimal_fraction": 0.705,
       "ci": [
-        0.612479733946457,
-        0.7407357039229475
+        0.6759928938455586,
+        0.7324380777340211
       ]
     },
     {
       "spacing_km": 15.0,
       "duration_us": 2.0,
       "raw_independent_fraction": 1.0,
-      "raw_optimal_fraction": 0.885,
+      "raw_optimal_fraction": 0.86,
       "ci": [
-        0.8333517476611362,
-        0.9221368277817569
+        0.8371128627361262,
+        0.8801317702816727
       ]
     },
     {
       "spacing_km": 15.0,
       "duration_us": 3.0,
-      "raw_independent_fraction": 0.99,
-      "raw_optimal_fraction": 0.925,
+      "raw_independent_fraction": 0.996,
+      "raw_optimal_fraction": 0.91,
       "ci": [
-        0.8799554020266798,
-        0.9540254929427476
+        0.8906578220441299,
+        0.92620412111503
       ]
     },
     {
       "spacing_km": 15.0,
       "duration_us": 4.0,
       "raw_independent_fraction": 1.0,
-      "raw_optimal_fraction": 0.995,
+      "raw_optimal_fraction": 0.957,
       "ci": [
-        0.9722256001302286,
-        0.999116854010634
+        0.9425806957803401,
+        0.9679215189116991
       ]
     },
     {
       "spacing_km": 20.0,
       "duration_us": 0.5,
-      "raw_independent_fraction": 0.925,
-      "raw_optimal_fraction": 0.2,
+      "raw_independent_fraction": 0.946,
+      "raw_optimal_fraction": 0.172,
       "ci": [
-        0.15045120743928825,
-        0.26085639611170436
+        0.14987601887484397,
+        0.1966344265978282
       ]
     },
     {
       "spacing_km": 20.0,
       "duration_us": 1.0,
-      "raw_independent_fraction": 0.975,
-      "raw_optimal_fraction": 0.36,
+      "raw_independent_fraction": 0.95,
+      "raw_optimal_fraction": 0.348,
       "ci": [
-        0.29669087731339805,
-        0.42858600434373184
+        0.3191088817410635,
+        0.3780544954291993
       ]
     },
     {
       "spacing_km": 20.0,
       "duration_us": 2.0,
-      "raw_independent_fraction": 0.99,
-      "raw_optimal_fraction": 0.325,
+      "raw_independent_fraction": 0.986,
+      "raw_optimal_fraction": 0.335,
       "ci": [
-        0.2639146705018621,
-        0.39268143156955027
+        0.3064263694110255,
+        0.3648365071224835
       ]
     },
     {
       "spacing_km": 20.0,
       "duration_us": 3.0,
-      "raw_independent_fraction": 1.0,
-      "raw_optimal_fraction": 0.465,
+      "raw_independent_fraction": 0.997,
+      "raw_optimal_fraction": 0.46,
       "ci": [
-        0.39718443070423204,
-        0.5341347897100506
+        0.4293208680902404,
+        0.49098528379667095
       ]
     },
     {
       "spacing_km": 20.0,
       "duration_us": 4.0,
-      "raw_independent_fraction": 1.0,
-      "raw_optimal_fraction": 0.53,
+      "raw_independent_fraction": 0.999,
+      "raw_optimal_fraction": 0.568,
       "ci": [
-        0.46091557335361155,
-        0.5979536662912893
+        0.5370950847871004,
+        0.5983844570051503
       ]
     }
   ],
@@ -663,5 +696,5 @@
     "field": 12,
     "total": 2000
   },
-  "wall_s": 65.4
+  "wall_s": 79.5
 }

@@ -59,9 +59,10 @@ logger = logging.getLogger(__name__)
 #: Objective-qubit measurement register name, read back from the sampler.
 _CREG = "obj"
 
-#: Deepest Grover amplification worth attempting on hardware. Depth grows
-#: linearly in the power, and past ~8 iterations a NISQ device's output is
-#: closer to uniform than to sin^2((2m+1)theta).
+#: Deepest Grover amplification attempted on hardware. A cap on QPU time, not a
+#: measured threshold: on ibm_marrakesh (November 2026, qubits screened in the
+#: session) half the signal of a 3-qubit register was left after six iterates,
+#: and 13% of the 6-qubit pricing register's after one (paper, hardware round 2B).
 MAX_HARDWARE_GROVER_POWER = 8
 
 

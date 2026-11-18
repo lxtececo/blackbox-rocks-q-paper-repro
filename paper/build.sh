@@ -18,9 +18,17 @@ else
 fi
 
 if [[ "${1:-}" == "bundle" ]]; then
-  tar czf arxiv-upload.tar.gz --exclude='__pycache__' \
-    --transform 's,^experiments,anc/experiments,' \
-    main.tex main.bbl figures/*.pdf experiments
+  # Ancillary files: a redacted, scanned copy of experiments/ where the builder exists (the platform
+  # repository); in the public package experiments/ is that copy already.
+  tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
+  builder="../../../scripts/paper/build_repro_package.py"
+  if [[ -f "$builder" ]]; then
+    python3 "$builder" --ancillary "$tmp/anc/experiments"
+  else
+    mkdir -p "$tmp/anc" && cp -r experiments "$tmp/anc/experiments"
+    find "$tmp/anc" -name '__pycache__' -prune -exec rm -rf {} +
+  fi
+  tar czf arxiv-upload.tar.gz main.tex main.bbl figures/*.pdf -C "$tmp" anc
   echo "arxiv-upload.tar.gz:"
   tar tzf arxiv-upload.tar.gz
 fi

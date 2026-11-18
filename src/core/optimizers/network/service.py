@@ -45,6 +45,14 @@ QUANTUM_ENTITLEMENT = "network.quantum"
 
 DEFAULT_METHOD = "classical"
 
+#: Said in the description of every method that samples the QUBO. Without a
+#: capacity term the QUBO's own optimum overfills sites (paper, facility
+#: location: on all four instances), so feasibility comes from the repair.
+_NO_CAPACITY_TERM = (
+    "The QUBO has no capacity term; capacity is enforced by a classical "
+    "repair after sampling."
+)
+
 NETWORK_METHODS: Dict[str, Dict[str, Any]] = {
     "classical": {
         "label": "Greedy + Local Search",
@@ -73,7 +81,8 @@ NETWORK_METHODS: Dict[str, Dict[str, Any]] = {
             "optimum when it finishes inside the time limit; otherwise "
             "returns the best plan found and the remaining gap."
         ),
-        "entitlement": VERTICAL_ENTITLEMENT,
+        # The endpoint asks for this key for every method other than the baseline.
+        "entitlement": QUANTUM_ENTITLEMENT,
     },
     "simulated-annealing": {
         "label": "Simulated Annealing (quantum-inspired)",
@@ -85,7 +94,7 @@ NETWORK_METHODS: Dict[str, Dict[str, Any]] = {
         "baseline": False,
         "description": (
             "The facility-location QUBO annealed on CPU. Same encoding the "
-            "annealer runs, without the device."
+            "annealer runs, without the device. " + _NO_CAPACITY_TERM
         ),
         "entitlement": QUANTUM_ENTITLEMENT,
     },
@@ -99,7 +108,8 @@ NETWORK_METHODS: Dict[str, Dict[str, Any]] = {
         "baseline": False,
         "description": (
             "Site-opening and assignment binaries solved with D-Wave Ocean: "
-            "simulated annealing in simulator mode, Leap hybrid on hardware."
+            "simulated annealing in simulator mode, Leap hybrid on hardware. "
+            + _NO_CAPACITY_TERM
         ),
         "entitlement": QUANTUM_ENTITLEMENT,
     },
@@ -116,7 +126,7 @@ NETWORK_METHODS: Dict[str, Dict[str, Any]] = {
             "QAOA. Parameters train on a simulator; in real mode the final "
             "circuit is measured on an IBM or IonQ device. Small scenarios "
             f"only (<= {MAX_GATE_QUBITS} binaries on a simulator, "
-            f"<= {MAX_REAL_GATE_QUBITS} on hardware)."
+            f"<= {MAX_REAL_GATE_QUBITS} on hardware). " + _NO_CAPACITY_TERM
         ),
         "entitlement": QUANTUM_ENTITLEMENT,
     },

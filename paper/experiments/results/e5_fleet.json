@@ -1,9 +1,28 @@
 {
   "provenance": {
-    "commit": "1f22f595",
+    "commit": "05211244",
     "python": "3.12.3",
     "machine": "x86_64"
   },
+  "instance_seeds": [
+    42,
+    7,
+    11,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107
+  ],
+  "solver_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
   "rows": [
     {
       "preset": "regional_food_redistributor_demo",
@@ -14,7 +33,7 @@
       "cost_delta_pct": 17.33,
       "unassigned_delta": 4,
       "wins": false,
-      "wall_s": 1.74
+      "wall_s": 1.61
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -25,7 +44,7 @@
       "cost_delta_pct": 33.06,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.51
+      "wall_s": 1.66
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -36,7 +55,7 @@
       "cost_delta_pct": 34.26,
       "unassigned_delta": 2,
       "wins": false,
-      "wall_s": 1.52
+      "wall_s": 1.76
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -47,7 +66,7 @@
       "cost_delta_pct": 1.19,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.51
+      "wall_s": 1.53
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -58,7 +77,7 @@
       "cost_delta_pct": 6.82,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.53
+      "wall_s": 1.31
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -69,7 +88,7 @@
       "cost_delta_pct": 24.52,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.47
+      "wall_s": 2.23
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -80,7 +99,7 @@
       "cost_delta_pct": 33.02,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.67
+      "wall_s": 2.32
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -91,7 +110,7 @@
       "cost_delta_pct": 46.28,
       "unassigned_delta": 2,
       "wins": false,
-      "wall_s": 2.44
+      "wall_s": 2.3
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -102,7 +121,7 @@
       "cost_delta_pct": 31.71,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.49
+      "wall_s": 2.29
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -113,7 +132,7 @@
       "cost_delta_pct": 47.08,
       "unassigned_delta": 1,
       "wins": false,
-      "wall_s": 2.45
+      "wall_s": 2.12
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -124,7 +143,7 @@
       "cost_delta_pct": 22.38,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.38
+      "wall_s": 1.31
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -135,7 +154,7 @@
       "cost_delta_pct": 12.77,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.42
+      "wall_s": 1.34
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -146,7 +165,7 @@
       "cost_delta_pct": 15.65,
       "unassigned_delta": 2,
       "wins": false,
-      "wall_s": 1.66
+      "wall_s": 1.38
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -157,7 +176,7 @@
       "cost_delta_pct": 12.02,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.55
+      "wall_s": 1.23
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -168,7 +187,7 @@
       "cost_delta_pct": 27.37,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 1.44
+      "wall_s": 1.61
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -179,7 +198,7 @@
       "cost_delta_pct": 21.39,
       "unassigned_delta": 2,
       "wins": false,
-      "wall_s": 2.03
+      "wall_s": 2.25
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -190,7 +209,7 @@
       "cost_delta_pct": 28.96,
       "unassigned_delta": 3,
       "wins": false,
-      "wall_s": 2.18
+      "wall_s": 2.34
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -201,7 +220,7 @@
       "cost_delta_pct": 28.03,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.55
+      "wall_s": 2.14
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -212,7 +231,7 @@
       "cost_delta_pct": 14.75,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.43
+      "wall_s": 2.19
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -223,7 +242,7 @@
       "cost_delta_pct": 8.02,
       "unassigned_delta": 2,
       "wins": false,
-      "wall_s": 1.99
+      "wall_s": 2.19
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -234,7 +253,7 @@
       "cost_delta_pct": 29.97,
       "unassigned_delta": 5,
       "wins": false,
-      "wall_s": 1.14
+      "wall_s": 1.33
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -245,7 +264,7 @@
       "cost_delta_pct": 18.01,
       "unassigned_delta": 10,
       "wins": false,
-      "wall_s": 1.33
+      "wall_s": 1.51
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -256,7 +275,7 @@
       "cost_delta_pct": -5.63,
       "unassigned_delta": 9,
       "wins": false,
-      "wall_s": 1.44
+      "wall_s": 1.26
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -267,7 +286,7 @@
       "cost_delta_pct": 15.92,
       "unassigned_delta": 3,
       "wins": false,
-      "wall_s": 1.7
+      "wall_s": 1.49
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -278,7 +297,7 @@
       "cost_delta_pct": 7.52,
       "unassigned_delta": 9,
       "wins": false,
-      "wall_s": 1.46
+      "wall_s": 1.27
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -289,7 +308,7 @@
       "cost_delta_pct": 24.69,
       "unassigned_delta": 5,
       "wins": false,
-      "wall_s": 2.12
+      "wall_s": 2.05
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -300,7 +319,7 @@
       "cost_delta_pct": 28.39,
       "unassigned_delta": 5,
       "wins": false,
-      "wall_s": 2.13
+      "wall_s": 2.07
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -311,7 +330,7 @@
       "cost_delta_pct": 21.3,
       "unassigned_delta": 7,
       "wins": false,
-      "wall_s": 2.28
+      "wall_s": 2.62
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -322,7 +341,7 @@
       "cost_delta_pct": 23.81,
       "unassigned_delta": 5,
       "wins": false,
-      "wall_s": 2.34
+      "wall_s": 2.07
     },
     {
       "preset": "regional_food_redistributor_demo",
@@ -333,7 +352,777 @@
       "cost_delta_pct": 24.88,
       "unassigned_delta": 6,
       "wins": false,
+      "wall_s": 2.27
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 5.63,
+      "cost_delta_pct": 6.01,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.19
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 20.37,
+      "cost_delta_pct": 19.73,
+      "unassigned_delta": 1,
+      "wins": false,
+      "wall_s": 1.16
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 12.23,
+      "cost_delta_pct": 12.15,
+      "unassigned_delta": 8,
+      "wins": false,
+      "wall_s": 1.08
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 2.46,
+      "cost_delta_pct": 2.29,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 1.06
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 11.02,
+      "cost_delta_pct": 11.02,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 1.29
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 9.71,
+      "cost_delta_pct": 9.8,
+      "unassigned_delta": -2,
+      "wins": true,
+      "wall_s": 2.03
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 18.48,
+      "cost_delta_pct": 17.98,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.23
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 1.31,
+      "cost_delta_pct": 1.98,
+      "unassigned_delta": 1,
+      "wins": false,
       "wall_s": 2.05
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": -4.83,
+      "cost_delta_pct": -4.5,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 2.06
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 9.16,
+      "cost_delta_pct": 9.3,
+      "unassigned_delta": 8,
+      "wins": false,
+      "wall_s": 2.6
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 9.59,
+      "cost_delta_pct": 7.69,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.16
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 1.96,
+      "cost_delta_pct": 0.75,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.27
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 18.88,
+      "cost_delta_pct": 17.14,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.21
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 6.45,
+      "cost_delta_pct": 4.83,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.17
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 19.38,
+      "cost_delta_pct": 17.6,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.19
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 7.64,
+      "cost_delta_pct": 5.92,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.02
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 13.03,
+      "cost_delta_pct": 10.81,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.2
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 10.02,
+      "cost_delta_pct": 8.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.36
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 3.17,
+      "cost_delta_pct": 1.86,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.4
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 6.54,
+      "cost_delta_pct": 4.92,
+      "unassigned_delta": 8,
+      "wins": false,
+      "wall_s": 2.16
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 23.25,
+      "cost_delta_pct": 21.11,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 1.24
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 0.74,
+      "cost_delta_pct": -0.35,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 1.13
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 11.83,
+      "cost_delta_pct": 9.71,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.35
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 23.43,
+      "cost_delta_pct": 21.28,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.33
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 7.63,
+      "cost_delta_pct": 5.91,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.43
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 26.59,
+      "cost_delta_pct": 24.14,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.09
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 25.23,
+      "cost_delta_pct": 21.88,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 2.51
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 24.39,
+      "cost_delta_pct": 23.17,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.15
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 3.65,
+      "cost_delta_pct": 1.26,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 2.22
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 21.76,
+      "cost_delta_pct": 19.75,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.23
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": -0.48,
+      "cost_delta_pct": -2.31,
+      "unassigned_delta": 11,
+      "wins": false,
+      "wall_s": 1.31
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 15.82,
+      "cost_delta_pct": 14.33,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 1.14
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 12.43,
+      "cost_delta_pct": 10.33,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.27
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 24.83,
+      "cost_delta_pct": 22.5,
+      "unassigned_delta": 10,
+      "wins": false,
+      "wall_s": 1.25
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 11.5,
+      "cost_delta_pct": 9.48,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 1.23
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": -8.43,
+      "cost_delta_pct": -9.52,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 1.92
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 6.21,
+      "cost_delta_pct": 4.69,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 2.35
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 7.69,
+      "cost_delta_pct": 6.97,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 2.14
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 7.2,
+      "cost_delta_pct": 6.53,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 2.1
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": -0.01,
+      "cost_delta_pct": -0.01,
+      "unassigned_delta": 1,
+      "wins": false,
+      "wall_s": 2.29
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 37.78,
+      "cost_delta_pct": 36.71,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 1.4
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": -0.22,
+      "cost_delta_pct": -0.21,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 1.19
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 11.38,
+      "cost_delta_pct": 10.43,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 1.48
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": -5.7,
+      "cost_delta_pct": -5.23,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 1.27
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 30.42,
+      "cost_delta_pct": 28.93,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.27
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 6.74,
+      "cost_delta_pct": 6.18,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 2.29
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 4.01,
+      "cost_delta_pct": 3.67,
+      "unassigned_delta": 10,
+      "wins": false,
+      "wall_s": 2.34
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 9.62,
+      "cost_delta_pct": 8.82,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.62
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 1.36,
+      "cost_delta_pct": 1.25,
+      "unassigned_delta": 8,
+      "wins": false,
+      "wall_s": 2.32
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 37.69,
+      "cost_delta_pct": 35.6,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.23
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 12.26,
+      "cost_delta_pct": 11.23,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 1.18
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 30.63,
+      "cost_delta_pct": 28.98,
+      "unassigned_delta": -4,
+      "wins": true,
+      "wall_s": 1.61
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 4.7,
+      "cost_delta_pct": 4.3,
+      "unassigned_delta": 5,
+      "wins": false,
+      "wall_s": 1.13
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 2.32,
+      "cost_delta_pct": 2.13,
+      "unassigned_delta": 1,
+      "wins": false,
+      "wall_s": 1.29
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 22.98,
+      "cost_delta_pct": 21.05,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 1.24
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 4.93,
+      "cost_delta_pct": 4.51,
+      "unassigned_delta": -1,
+      "wins": true,
+      "wall_s": 1.88
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 4.55,
+      "cost_delta_pct": 4.17,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 2.07
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 20.3,
+      "cost_delta_pct": 18.59,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 1.92
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 14.93,
+      "cost_delta_pct": 14.61,
+      "unassigned_delta": -1,
+      "wins": false,
+      "wall_s": 2.12
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 7.84,
+      "cost_delta_pct": 7.18,
+      "unassigned_delta": 8,
+      "wins": false,
+      "wall_s": 2.04
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": -5.47,
+      "cost_delta_pct": -5.88,
+      "unassigned_delta": 9,
+      "wins": false,
+      "wall_s": 1.19
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": -6.65,
+      "cost_delta_pct": -6.06,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.26
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 26.36,
+      "cost_delta_pct": 24.02,
+      "unassigned_delta": 6,
+      "wins": false,
+      "wall_s": 1.28
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 5.04,
+      "cost_delta_pct": 3.71,
+      "unassigned_delta": 7,
+      "wins": false,
+      "wall_s": 1.41
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": -3.33,
+      "cost_delta_pct": -3.92,
+      "unassigned_delta": 4,
+      "wins": false,
+      "wall_s": 1.35
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 36.87,
+      "cost_delta_pct": 34.48,
+      "unassigned_delta": 1,
+      "wins": false,
+      "wall_s": 2.08
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 2.89,
+      "cost_delta_pct": 1.74,
+      "unassigned_delta": 10,
+      "wins": false,
+      "wall_s": 2.56
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": -3.65,
+      "cost_delta_pct": -4.21,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.06
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": -4.82,
+      "cost_delta_pct": -5.28,
+      "unassigned_delta": 2,
+      "wins": false,
+      "wall_s": 2.19
+    },
+    {
+      "preset": "regional_food_redistributor_demo",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": -12.93,
+      "cost_delta_pct": -12.67,
+      "unassigned_delta": 3,
+      "wins": false,
+      "wall_s": 2.25
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -344,7 +1133,7 @@
       "cost_delta_pct": 51.55,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.19
+      "wall_s": 2.96
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -355,7 +1144,7 @@
       "cost_delta_pct": 53.23,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.18
+      "wall_s": 2.76
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -366,7 +1155,7 @@
       "cost_delta_pct": 36.98,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.38
+      "wall_s": 4.03
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -377,7 +1166,7 @@
       "cost_delta_pct": 38.03,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.12
+      "wall_s": 2.74
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -388,7 +1177,7 @@
       "cost_delta_pct": 35.05,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.19
+      "wall_s": 2.69
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -399,7 +1188,7 @@
       "cost_delta_pct": 36.31,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.68
+      "wall_s": 4.67
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -410,7 +1199,7 @@
       "cost_delta_pct": 42.74,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.97
+      "wall_s": 4.95
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -421,7 +1210,7 @@
       "cost_delta_pct": 36.33,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.16
+      "wall_s": 4.85
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -432,7 +1221,7 @@
       "cost_delta_pct": 51.92,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.12
+      "wall_s": 5.02
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -443,7 +1232,7 @@
       "cost_delta_pct": 22.19,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.59
+      "wall_s": 4.85
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -454,7 +1243,7 @@
       "cost_delta_pct": 42.17,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.98
+      "wall_s": 2.58
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -465,7 +1254,7 @@
       "cost_delta_pct": 51.92,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.03
+      "wall_s": 2.86
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -476,7 +1265,7 @@
       "cost_delta_pct": 30.83,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.02
+      "wall_s": 2.85
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -487,7 +1276,7 @@
       "cost_delta_pct": 52.84,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.83
+      "wall_s": 2.48
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -498,7 +1287,7 @@
       "cost_delta_pct": 37.8,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.0
+      "wall_s": 3.19
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -509,7 +1298,7 @@
       "cost_delta_pct": 49.35,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.59
+      "wall_s": 4.85
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -520,7 +1309,7 @@
       "cost_delta_pct": 44.26,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.35
+      "wall_s": 4.86
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -531,7 +1320,7 @@
       "cost_delta_pct": 39.25,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.81
+      "wall_s": 4.52
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -542,7 +1331,7 @@
       "cost_delta_pct": 41.47,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.24
+      "wall_s": 5.13
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -553,7 +1342,7 @@
       "cost_delta_pct": 65.51,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 4.88
+      "wall_s": 4.28
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -564,7 +1353,7 @@
       "cost_delta_pct": 49.2,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.91
+      "wall_s": 2.79
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -575,7 +1364,7 @@
       "cost_delta_pct": 61.84,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.97
+      "wall_s": 2.42
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -586,7 +1375,7 @@
       "cost_delta_pct": 42.38,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.06
+      "wall_s": 2.72
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -597,7 +1386,7 @@
       "cost_delta_pct": 46.94,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 2.88
+      "wall_s": 2.91
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -608,7 +1397,7 @@
       "cost_delta_pct": 40.02,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 3.04
+      "wall_s": 2.66
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -619,7 +1408,7 @@
       "cost_delta_pct": 29.04,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.69
+      "wall_s": 5.05
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -630,7 +1419,7 @@
       "cost_delta_pct": 47.97,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.49
+      "wall_s": 5.58
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -641,7 +1430,7 @@
       "cost_delta_pct": 58.9,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.54
+      "wall_s": 5.11
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -652,7 +1441,7 @@
       "cost_delta_pct": 35.79,
       "unassigned_delta": 0,
       "wins": false,
-      "wall_s": 5.5
+      "wall_s": 4.66
     },
     {
       "preset": "metro_grocery_last_mile",
@@ -663,58 +1452,888 @@
       "cost_delta_pct": 56.61,
       "unassigned_delta": 0,
       "wins": false,
+      "wall_s": 5.72
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 44.99,
+      "cost_delta_pct": 34.48,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.55
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 42.58,
+      "cost_delta_pct": 32.64,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.3
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 38.57,
+      "cost_delta_pct": 29.56,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.66
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 39.07,
+      "cost_delta_pct": 29.94,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.88
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 45.18,
+      "cost_delta_pct": 34.63,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.66
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 25.23,
+      "cost_delta_pct": 19.33,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.99
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 23.87,
+      "cost_delta_pct": 18.29,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.84
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 43.32,
+      "cost_delta_pct": 33.2,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.95
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 37.47,
+      "cost_delta_pct": 28.72,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.89
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 101,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 45.37,
+      "cost_delta_pct": 34.77,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.7
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 49.94,
+      "cost_delta_pct": 38.11,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.58
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 85.94,
+      "cost_delta_pct": 65.59,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.75
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 37.6,
+      "cost_delta_pct": 28.69,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.9
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 45.04,
+      "cost_delta_pct": 34.37,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.77
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 63.22,
+      "cost_delta_pct": 48.25,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.59
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 67.26,
+      "cost_delta_pct": 51.33,
+      "unassigned_delta": 0,
+      "wins": false,
       "wall_s": 5.49
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 44.12,
+      "cost_delta_pct": 33.67,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.78
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 29.45,
+      "cost_delta_pct": 22.47,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.14
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 36.79,
+      "cost_delta_pct": 28.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.66
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 102,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 43.19,
+      "cost_delta_pct": 32.96,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.83
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 47.52,
+      "cost_delta_pct": 34.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.83
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 87.73,
+      "cost_delta_pct": 62.9,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.69
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 60.63,
+      "cost_delta_pct": 43.47,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.55
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 74.65,
+      "cost_delta_pct": 53.53,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.78
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 60.83,
+      "cost_delta_pct": 43.61,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.53
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 51.51,
+      "cost_delta_pct": 36.93,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.84
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 43.79,
+      "cost_delta_pct": 31.4,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.95
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 71.59,
+      "cost_delta_pct": 51.33,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.35
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 60.61,
+      "cost_delta_pct": 43.45,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.99
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 103,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 54.52,
+      "cost_delta_pct": 39.09,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.09
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 48.38,
+      "cost_delta_pct": 37.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.88
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 71.13,
+      "cost_delta_pct": 54.51,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.21
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 40.68,
+      "cost_delta_pct": 29.38,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.9
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 41.73,
+      "cost_delta_pct": 31.98,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.97
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 53.13,
+      "cost_delta_pct": 38.92,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.67
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 54.48,
+      "cost_delta_pct": 39.95,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 6.09
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 60.79,
+      "cost_delta_pct": 44.79,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 6.9
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 38.68,
+      "cost_delta_pct": 27.84,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 6.77
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 56.04,
+      "cost_delta_pct": 42.94,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 7.14
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 104,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 35.33,
+      "cost_delta_pct": 27.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 7.0
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 87.33,
+      "cost_delta_pct": 66.36,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.65
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 61.53,
+      "cost_delta_pct": 46.75,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.75
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 74.06,
+      "cost_delta_pct": 56.28,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.84
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 76.03,
+      "cost_delta_pct": 57.77,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.72
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 67.86,
+      "cost_delta_pct": 51.56,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.96
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 41.97,
+      "cost_delta_pct": 31.89,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 8.16
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 31.51,
+      "cost_delta_pct": 23.94,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 8.89
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 76.18,
+      "cost_delta_pct": 57.88,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 8.56
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 60.7,
+      "cost_delta_pct": 46.13,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 9.46
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 105,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 64.1,
+      "cost_delta_pct": 48.71,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 10.19
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 52.76,
+      "cost_delta_pct": 39.88,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.71
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 57.12,
+      "cost_delta_pct": 43.18,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 5.13
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 82.56,
+      "cost_delta_pct": 62.41,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.67
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 70.41,
+      "cost_delta_pct": 53.22,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.89
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 27.26,
+      "cost_delta_pct": 20.61,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 7.13
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 56.62,
+      "cost_delta_pct": 42.8,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 9.0
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 50.27,
+      "cost_delta_pct": 38.0,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 9.42
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 66.27,
+      "cost_delta_pct": 50.09,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 8.63
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 53.4,
+      "cost_delta_pct": 40.36,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 8.17
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 106,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 26.46,
+      "cost_delta_pct": 20.0,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 7.77
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 47.42,
+      "cost_delta_pct": 33.62,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.89
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 63.45,
+      "cost_delta_pct": 45.64,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.12
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 59.23,
+      "cost_delta_pct": 42.47,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.39
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 56.4,
+      "cost_delta_pct": 40.35,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 3.02
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "qubo-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 83.15,
+      "cost_delta_pct": 60.41,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 2.88
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 0,
+      "distance_delta_pct": 29.09,
+      "cost_delta_pct": 19.88,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.54
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 1,
+      "distance_delta_pct": 36.27,
+      "cost_delta_pct": 25.26,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.46
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 2,
+      "distance_delta_pct": 32.71,
+      "cost_delta_pct": 22.59,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.33
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 3,
+      "distance_delta_pct": 28.01,
+      "cost_delta_pct": 19.07,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.43
+    },
+    {
+      "preset": "metro_grocery_last_mile",
+      "instance_seed": 107,
+      "method": "simulated-annealing",
+      "solver_seed": 4,
+      "distance_delta_pct": 67.26,
+      "cost_delta_pct": 48.49,
+      "unassigned_delta": 0,
+      "wins": false,
+      "wall_s": 4.23
     }
   ],
   "summary": {
     "regional_food_redistributor_demo|qubo-annealing": {
       "distance_delta_pct": {
-        "mean": 17.952,
-        "ci95": 6.067724489109022,
-        "n": 15
+        "mean": 13.414600000000002,
+        "ci95": 3.3729373411722885,
+        "n": 10
       },
-      "best": -5.1,
-      "worst": 36.55,
-      "wins": 0,
-      "runs": 15,
-      "any_unassigned": 8
+      "instance_means": [
+        19.694,
+        19.496000000000002,
+        14.666,
+        10.342000000000002,
+        11.252,
+        13.376,
+        12.819999999999999,
+        14.732,
+        14.578,
+        3.1899999999999995
+      ],
+      "within_instance_sd": 12.091514793440894,
+      "best": -6.65,
+      "worst": 37.78,
+      "wins": 1,
+      "runs": 50,
+      "instances": 10,
+      "instances_with_a_win": 1,
+      "any_unassigned": 37
     },
     "regional_food_redistributor_demo|simulated-annealing": {
       "distance_delta_pct": {
-        "mean": 29.350666666666662,
-        "ci95": 5.492240850330987,
-        "n": 15
+        "mean": 15.181999999999999,
+        "ci95": 8.383881344201274,
+        "n": 10
       },
-      "best": 8.88,
+      "instance_means": [
+        39.32,
+        21.922,
+        26.809999999999995,
+        6.766,
+        8.08,
+        20.324000000000005,
+        2.5320000000000005,
+        11.883999999999999,
+        10.51,
+        3.6719999999999997
+      ],
+      "within_instance_sd": 10.400270429176349,
+      "best": -12.93,
       "worst": 50.73,
-      "wins": 0,
-      "runs": 15,
-      "any_unassigned": 10
+      "wins": 2,
+      "runs": 50,
+      "instances": 10,
+      "instances_with_a_win": 2,
+      "any_unassigned": 38
     },
     "metro_grocery_last_mile|qubo-annealing": {
       "distance_delta_pct": {
-        "mean": 63.16933333333332,
-        "ci95": 5.7270137186883385,
-        "n": 15
+        "mean": 59.852999999999994,
+        "ci95": 6.214631828966145,
+        "n": 10
       },
-      "best": 43.49,
-      "worst": 82.5,
+      "instance_means": [
+        64.56400000000001,
+        60.80800000000001,
+        64.136,
+        42.077999999999996,
+        56.348,
+        66.27199999999999,
+        51.01,
+        73.36200000000001,
+        58.022000000000006,
+        61.92999999999999
+      ],
+      "within_instance_sd": 13.775735842415097,
+      "best": 27.26,
+      "worst": 87.73,
       "wins": 0,
-      "runs": 15,
+      "runs": 50,
+      "instances": 10,
+      "instances_with_a_win": 0,
       "any_unassigned": 0
     },
     "metro_grocery_last_mile|simulated-annealing": {
       "distance_delta_pct": {
-        "mean": 61.721333333333334,
-        "ci95": 8.057959299817238,
-        "n": 15
+        "mean": 51.40099999999999,
+        "ci95": 7.180712294014241,
+        "n": 10
       },
-      "best": 31.95,
+      "instance_means": [
+        56.592,
+        67.65599999999999,
+        60.916,
+        35.052,
+        44.16199999999999,
+        56.403999999999996,
+        49.064,
+        54.89200000000001,
+        50.604,
+        38.668
+      ],
+      "within_instance_sd": 14.675468305986012,
+      "best": 23.87,
       "worst": 92.4,
       "wins": 0,
-      "runs": 15,
+      "runs": 50,
+      "instances": 10,
+      "instances_with_a_win": 0,
       "any_unassigned": 0
     }
   },
-  "wall_s": 179.8
+  "wall_s": 161.3
 }

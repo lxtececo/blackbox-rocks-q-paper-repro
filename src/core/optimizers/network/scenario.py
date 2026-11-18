@@ -259,18 +259,14 @@ def build_custom_scenario(
 ) -> NetworkProblem:
     """A seeded random instance with the difficulty knobs exposed.
 
-    The presets are hand-authored and small enough that greedy + drop/swap
-    local search reaches the global optimum, so every solver ties and the
-    comparison says nothing. This builder exists so a user can push the
-    instance past that point.
+    On the two small presets greedy + drop/swap local search reaches the
+    optimum, so a comparison shows nothing there. This builder exists so a
+    user can try other instances.
 
     ``capacity_headroom`` is the ratio of the capacity available across the
-    ``max_open_sites`` largest sites to total demand, and is the knob that
-    actually changes solver behaviour — not the raw site count. At 2.0+ there
-    is slack everywhere and every method finds the same plan; near 1.05 the
-    assignment sub-problem is what binds and heuristics start to diverge. It
-    is floored at 1.05 so a feasible plan always exists: below 1.0 no solver
-    can serve all demand and the run would only measure who overflows least.
+    ``max_open_sites`` largest sites to total demand. It is floored at 1.05
+    so a feasible plan always exists: below 1.0 no solver can serve all
+    demand and the run would only measure who overflows least.
     """
     import math  # noqa: PLC0415
     import random  # noqa: PLC0415

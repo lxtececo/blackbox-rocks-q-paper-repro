@@ -323,17 +323,23 @@ def _run_statevector(
     evaluates them natively, at the cost of materialising the full state -
     fine at the qubit counts these circuits use, unusable for a wide QAOA.
     """
+    import numpy as np  # noqa: PLC0415
     from qiskit.primitives import StatevectorSampler  # noqa: PLC0415
 
-    sampler = StatevectorSampler(seed=seed)
-    results = sampler.run(list(circuits), shots=shots).result()
-    return [
-        {
+    # StatevectorSampler(seed=s) reuses one random stream for every circuit in
+    # a batch, which makes the shot noise of different circuits perfectly
+    # correlated. MLAE's likelihood assumes independent rounds, so one sampler
+    # per circuit, each with its own spawned seed.
+    children = np.random.SeedSequence(seed).spawn(len(circuits))
+    out: List[Dict[str, int]] = []
+    for circuit, child in zip(circuits, children):
+        sampler = StatevectorSampler(seed=int(child.generate_state(1)[0]))
+        outcome = sampler.run([circuit], shots=shots).result()[0]
+        out.append({
             str(k): int(v)
             for k, v in getattr(outcome.data, _creg_name(circuit)).get_counts().items()
-        }
-        for outcome, circuit in zip(results, circuits)
-    ]
+        })
+    return out
 
 
 _LOCAL_SIMULATORS = {"aer": _run_aer, "statevector": _run_statevector}

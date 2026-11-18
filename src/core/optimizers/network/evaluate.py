@@ -137,8 +137,9 @@ def compare_solutions(
     cand_overflow = candidate.metrics.get("capacity_overflow", 0.0) or 0.0
     if cand_overflow > 1e-6:
         caveats.append(
-            f"Capacity exceeded by {cand_overflow:.1f} demand units. Capacity "
-            "is a soft constraint in this encoding; treat the plan as advisory."
+            f"Capacity exceeded by {cand_overflow:.1f} demand units. The QUBO has "
+            "no capacity term: capacity is handled by a classical repair after "
+            "sampling, and this plan still exceeds it. Treat the plan as advisory."
         )
     if gap_pct > 0:
         caveats.append(

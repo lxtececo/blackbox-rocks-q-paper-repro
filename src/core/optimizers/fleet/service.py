@@ -32,11 +32,15 @@ _NON_DETAIL_DIAGNOSTICS = frozenset(
     {"energy_trace", "objective_trace", "batches", "vendor_runs"}
 )
 
+#: Entitlement keys the fleet endpoints enforce.
+VERTICAL_ENTITLEMENT = "fleet.routing"
+QUANTUM_ENTITLEMENT = "fleet.quantum"
+
 
 #: Method catalogue. ``backend`` selects the sampler in
 #: :mod:`core.optimizers.fleet.samplers`; ``paradigm`` and ``platforms``
 #: line up with the finance vertical's vocabulary so the UI can reuse its
-#: provider chips and the entitlement gates behave identically.
+#: provider chips. ``entitlement`` is the key the endpoint enforces.
 FLEET_METHODS: Dict[str, Dict[str, Any]] = {
     "classical": {
         "label": "Savings + Local Search",
@@ -50,7 +54,7 @@ FLEET_METHODS: Dict[str, Dict[str, Any]] = {
             "Clarke-Wright savings construction refined by 2-opt, Or-opt and "
             "inter-route relocation. The comparison baseline."
         ),
-        "entitlement": "solver.classical",
+        "entitlement": VERTICAL_ENTITLEMENT,
     },
     "simulated-annealing": {
         "label": "Simulated Annealing (quantum-inspired)",
@@ -64,7 +68,7 @@ FLEET_METHODS: Dict[str, Dict[str, Any]] = {
             "Cluster-to-vehicle assignment QUBO annealed on CPU. Same "
             "encoding the annealer runs, without the device."
         ),
-        "entitlement": "solver.quantum_simulator.one",
+        "entitlement": QUANTUM_ENTITLEMENT,
     },
     "qubo-annealing": {
         "label": "QUBO Annealing",
@@ -78,7 +82,7 @@ FLEET_METHODS: Dict[str, Dict[str, Any]] = {
             "Cluster-to-vehicle assignment QUBO solved with D-Wave Ocean: "
             "simulated annealing in simulator mode, Leap hybrid on hardware."
         ),
-        "entitlement": "solver.quantum_simulator.all",
+        "entitlement": QUANTUM_ENTITLEMENT,
     },
     "qaoa": {
         "label": "QAOA (gate-based)",
@@ -94,7 +98,7 @@ FLEET_METHODS: Dict[str, Dict[str, Any]] = {
             "mode the final circuit is measured on an IBM or IonQ device. "
             "Small instances only."
         ),
-        "entitlement": "solver.quantum_simulator.all",
+        "entitlement": QUANTUM_ENTITLEMENT,
     },
 }
 

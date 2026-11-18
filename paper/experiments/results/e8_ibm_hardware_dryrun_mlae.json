@@ -1,0 +1,99 @@
+{
+  "provenance": {
+    "commit": "bf7d21e7",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "simulator",
+  "mlae": [
+    {
+      "max_power": 1,
+      "queries": 800,
+      "price": 9.568849,
+      "error_vs_target": -0.8687809582146784,
+      "error_vs_bs": -0.8817345721855645,
+      "hits_per_power": [
+        17,
+        86
+      ],
+      "grover_schedule": [
+        0,
+        1
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.5
+    },
+    {
+      "max_power": 2,
+      "queries": 1800,
+      "price": 9.587033,
+      "error_vs_target": -0.8505969582146786,
+      "error_vs_bs": -0.8635505721855647,
+      "hits_per_power": [
+        17,
+        86,
+        177
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.1
+    },
+    {
+      "max_power": 4,
+      "queries": 3600,
+      "price": 9.956388,
+      "error_vs_target": -0.4812419582146781,
+      "error_vs_bs": -0.4941955721855642,
+      "hits_per_power": [
+        17,
+        86,
+        177,
+        118
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.2
+    },
+    {
+      "max_power": 8,
+      "queries": 7000,
+      "price": 10.256763,
+      "error_vs_target": -0.18086695821467913,
+      "error_vs_bs": -0.19382057218556525,
+      "hits_per_power": [
+        17,
+        86,
+        177,
+        118,
+        173
+      ],
+      "grover_schedule": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "backend": "statevector_sampler",
+      "physical_qubits": null,
+      "vendor_runs": [],
+      "wall_s": 0.3
+    }
+  ],
+  "wall_s": 1.5
+}

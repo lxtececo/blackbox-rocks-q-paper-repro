@@ -1,0 +1,328 @@
+{
+  "provenance": {
+    "commit": "b9aa5631",
+    "uncommitted_changes": [],
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "design": "E24, post hoc - why no selection displayed a lower J than the classical steps alone.\n\nWritten after the result of E24 was known; not part of its design. The second\nclassical step minimises J over the assets the first step left with a positive\nweight. If, for the selection \"every asset\", the first step leaves every asset\nwith a positive weight, the second step minimises J over the whole universe\nunder the caps, and a selection of three or more assets that the guard does not\nreplace can only restrict that minimisation. This script checks the premise on\nthe 30 instances with the product's own first step, and lists the exact\ndifferences of J where the QAOA display differs from that of the classical\nsteps alone (read from the stored result of E24; nothing is re-run for them).",
+  "e24_commit": "9dc7de16",
+  "summary": {
+    "8": {
+      "instances": 10,
+      "instances_where_step_1_keeps_every_asset": 10,
+      "smallest_weight_after_step_1": 0.01773932183640747
+    },
+    "12": {
+      "instances": 10,
+      "instances_where_step_1_keeps_every_asset": 10,
+      "smallest_weight_after_step_1": 0.01395459456355494
+    },
+    "16": {
+      "instances": 10,
+      "instances_where_step_1_keeps_every_asset": 10,
+      "smallest_weight_after_step_1": 0.014962349076410903
+    }
+  },
+  "step_1_on_every_asset": [
+    {
+      "n": 8,
+      "instance": 0,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.06721330234116503,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 1,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.03697627343261007,
+      "held_above_1pct_after_all_steps": 3
+    },
+    {
+      "n": 8,
+      "instance": 2,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.046529685613423875,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 3,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.01773932183640747,
+      "held_above_1pct_after_all_steps": 3
+    },
+    {
+      "n": 8,
+      "instance": 4,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.07836436728096345,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 5,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.09869471384777749,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 6,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.03504033276577805,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 7,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.05432138921873914,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 8,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.09564455752681571,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 8,
+      "instance": 9,
+      "assets": 8,
+      "positive_after_step_1": 8,
+      "smallest_weight_after_step_1": 0.06561401598656258,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 0,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.047329303985097944,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 1,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.01395459456355494,
+      "held_above_1pct_after_all_steps": 3
+    },
+    {
+      "n": 12,
+      "instance": 2,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.03290478888846009,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 3,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.029626034281238892,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 4,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.0267598008079885,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 5,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.03668278833359775,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 6,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.015548237480799882,
+      "held_above_1pct_after_all_steps": 3
+    },
+    {
+      "n": 12,
+      "instance": 7,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.043136762975948435,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 12,
+      "instance": 8,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.05261900502234447,
+      "held_above_1pct_after_all_steps": 5
+    },
+    {
+      "n": 12,
+      "instance": 9,
+      "assets": 12,
+      "positive_after_step_1": 12,
+      "smallest_weight_after_step_1": 0.037514835292364254,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 0,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.0322928183455664,
+      "held_above_1pct_after_all_steps": 5
+    },
+    {
+      "n": 16,
+      "instance": 1,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.030105609555109877,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 2,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.01640323323225879,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 3,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.015009589826506808,
+      "held_above_1pct_after_all_steps": 5
+    },
+    {
+      "n": 16,
+      "instance": 4,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.014962349076410903,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 5,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.018547256003423874,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 6,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.02648891174015456,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 7,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.04565649463543904,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 8,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.03495972373241518,
+      "held_above_1pct_after_all_steps": 4
+    },
+    {
+      "n": 16,
+      "instance": 9,
+      "assets": 16,
+      "positive_after_step_1": 16,
+      "smallest_weight_after_step_1": 0.038764671677894776,
+      "held_above_1pct_after_all_steps": 4
+    }
+  ],
+  "qaoa_runs_that_differ": [
+    {
+      "n": 8,
+      "instance": 2,
+      "runs_that_differ": 5,
+      "runs": 5,
+      "J_minus_J_all_of_those_runs": [
+        0.0033279561080354902,
+        0.0033279561080354902,
+        0.0033279561080354902,
+        0.0033279561080354902,
+        0.0033279561080354902
+      ],
+      "largest_weight_difference": [
+        0.021400000000000002,
+        0.021400000000000002,
+        0.021400000000000002,
+        0.021400000000000002,
+        0.021400000000000002
+      ],
+      "optimum_same_as_all": false
+    },
+    {
+      "n": 8,
+      "instance": 7,
+      "runs_that_differ": 5,
+      "runs": 5,
+      "J_minus_J_all_of_those_runs": [
+        0.001191099246174776,
+        0.001191099246174776,
+        0.001191099246174776,
+        0.001191099246174776,
+        0.001191099246174776
+      ],
+      "largest_weight_difference": [
+        0.012004,
+        0.012004,
+        0.012004,
+        0.012004,
+        0.012004
+      ],
+      "optimum_same_as_all": false
+    },
+    {
+      "n": 12,
+      "instance": 6,
+      "runs_that_differ": 2,
+      "runs": 5,
+      "J_minus_J_all_of_those_runs": [
+        5.562968970584947e-06,
+        5.562968970584947e-06
+      ],
+      "largest_weight_difference": [
+        0.0023560000000000005,
+        0.0023560000000000005
+      ],
+      "optimum_same_as_all": true
+    }
+  ]
+}

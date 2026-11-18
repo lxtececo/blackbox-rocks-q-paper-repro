@@ -1,10 +1,349 @@
 {
   "provenance": {
-    "commit": "1f22f595",
+    "commit": "bf7d21e7",
     "python": "3.12.3",
     "machine": "x86_64"
   },
   "shots_per_circuit": 100,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "summary": [
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "runs": 5,
+      "qubits": 4,
+      "fci_dimension": 4,
+      "abs_error_mha": {
+        "mean": 0.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.0,
+      "coverage": {
+        "mean": 1.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 100.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 2.0,
+        "ci95": 0.0,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "runs": 5,
+      "qubits": 4,
+      "fci_dimension": 4,
+      "abs_error_mha": {
+        "mean": 0.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.0,
+      "coverage": {
+        "mean": 1.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 100.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 2.0,
+        "ci95": 0.0,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "runs": 5,
+      "qubits": 12,
+      "fci_dimension": 225,
+      "abs_error_mha": {
+        "mean": 0.00052,
+        "ci95": 0.0014437514547028525,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.0026,
+      "coverage": {
+        "mean": 0.8844444444444444,
+        "ci95": 0.08690552976651934,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 99.998,
+        "ci95": 0.005552890210398427,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 56.8,
+        "ci95": 4.76061166460779,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "runs": 5,
+      "qubits": 12,
+      "fci_dimension": 225,
+      "abs_error_mha": {
+        "mean": 0.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.0,
+      "coverage": {
+        "mean": 0.9226666666666666,
+        "ci95": 0.08765570684039743,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 100.0,
+        "ci95": 0.0,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 67.8,
+        "ci95": 0.5552890210395586,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "h2o",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "runs": 5,
+      "qubits": 14,
+      "fci_dimension": 441,
+      "abs_error_mha": {
+        "mean": 0.35878,
+        "ci95": 0.4994283886919932,
+        "n": 5
+      },
+      "max_abs_error_mha": 1.0771,
+      "coverage": {
+        "mean": 0.5337868480725624,
+        "ci95": 0.11098468611392005,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 99.274,
+        "ci95": 1.0107785587088922,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 75.0,
+        "ci95": 8.236267195468812,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "h2o",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "runs": 5,
+      "qubits": 14,
+      "fci_dimension": 441,
+      "abs_error_mha": {
+        "mean": 0.0903,
+        "ci95": 0.12428293738108731,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.1989,
+      "coverage": {
+        "mean": 0.7492063492063493,
+        "ci95": 0.20121538500118757,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 99.82000000000001,
+        "ci95": 0.2518772881474542,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 104.2,
+        "ci95": 7.522065678972605,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 25,
+      "runs": 5,
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "abs_error_mha": {
+        "mean": 5.086539999999999,
+        "ci95": 1.3875309694270375,
+        "n": 5
+      },
+      "max_abs_error_mha": 7.0542,
+      "coverage": {
+        "mean": 0.19001388888888887,
+        "ci95": 0.0365093522079609,
+        "n": 5
+      },
+      "within_chemical_accuracy": 0,
+      "correlation_recovered_pct": {
+        "mean": 96.712,
+        "ci95": 0.8970710891510918,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 153.8,
+        "ci95": 15.64200975513988,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "circuits_per_time": 100,
+      "runs": 5,
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "abs_error_mha": {
+        "mean": 0.61664,
+        "ci95": 0.27263467516798534,
+        "n": 5
+      },
+      "max_abs_error_mha": 0.9075,
+      "coverage": {
+        "mean": 0.40555555555555556,
+        "ci95": 0.0685788547880413,
+        "n": 5
+      },
+      "within_chemical_accuracy": 5,
+      "correlation_recovered_pct": {
+        "mean": 99.6,
+        "ci95": 0.17821230984241176,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 432.6,
+        "ci95": 27.703301921466345,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 25,
+      "runs": 5,
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "abs_error_mha": {
+        "mean": 15.84384,
+        "ci95": 9.04528587414976,
+        "n": 5
+      },
+      "max_abs_error_mha": 23.9487,
+      "coverage": {
+        "mean": 0.19029166666666666,
+        "ci95": 0.07056048299926315,
+        "n": 5
+      },
+      "within_chemical_accuracy": 0,
+      "correlation_recovered_pct": {
+        "mean": 96.6,
+        "ci95": 1.9424006781069143,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 154.2,
+        "ci95": 37.757611871745475,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 100,
+      "runs": 5,
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "abs_error_mha": {
+        "mean": 3.6961800000000005,
+        "ci95": 2.7851415539836863,
+        "n": 5
+      },
+      "max_abs_error_mha": 5.6973,
+      "coverage": {
+        "mean": 0.4309722222222222,
+        "ci95": 0.02453046371002874,
+        "n": 5
+      },
+      "within_chemical_accuracy": 1,
+      "correlation_recovered_pct": {
+        "mean": 99.208,
+        "ci95": 0.5999563173524584,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 366.0,
+        "ci95": 11.779458968865342,
+        "n": 5
+      }
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "circuits_per_time": 200,
+      "runs": 5,
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "abs_error_mha": {
+        "mean": 2.462,
+        "ci95": 2.050316824512542,
+        "n": 5
+      },
+      "max_abs_error_mha": 4.4415,
+      "coverage": {
+        "mean": 0.4537638888888889,
+        "ci95": 0.04407761793364229,
+        "n": 5
+      },
+      "within_chemical_accuracy": 1,
+      "correlation_recovered_pct": {
+        "mean": 99.472,
+        "ci95": 0.44130632045538887,
+        "n": 5
+      },
+      "distinct_valid_configurations": {
+        "mean": 553.0,
+        "ci95": 37.5385235294879,
+        "n": 5
+      }
+    }
+  ],
   "rows": [
     {
       "molecule": "h2",
@@ -31,7 +370,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 3.8
+      "wall_s": 10.1
     },
     {
       "molecule": "h2",
@@ -58,7 +397,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 2.7
+      "wall_s": 10.0
     },
     {
       "molecule": "h2",
@@ -85,7 +424,61 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 2.8
+      "wall_s": 10.3
+    },
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "norb": 2,
+      "nelec": [
+        1,
+        1
+      ],
+      "qubits": 4,
+      "fci_dimension": 4,
+      "circuits_per_time": 25,
+      "seed": 3,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 4,
+      "subspace_fraction": 1.0,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 2,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 2
+      },
+      "wall_s": 10.2
+    },
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "norb": 2,
+      "nelec": [
+        1,
+        1
+      ],
+      "qubits": 4,
+      "fci_dimension": 4,
+      "circuits_per_time": 25,
+      "seed": 4,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 4,
+      "subspace_fraction": 1.0,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 2,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 2
+      },
+      "wall_s": 9.6
     },
     {
       "molecule": "h2",
@@ -112,7 +505,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 7.9
+      "wall_s": 30.0
     },
     {
       "molecule": "h2",
@@ -139,7 +532,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 8.2
+      "wall_s": 30.0
     },
     {
       "molecule": "h2",
@@ -166,7 +559,61 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 2
       },
-      "wall_s": 8.2
+      "wall_s": 29.6
+    },
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "norb": 2,
+      "nelec": [
+        1,
+        1
+      ],
+      "qubits": 4,
+      "fci_dimension": 4,
+      "circuits_per_time": 100,
+      "seed": 3,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 4,
+      "subspace_fraction": 1.0,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 2,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 2
+      },
+      "wall_s": 30.0
+    },
+    {
+      "molecule": "h2",
+      "bond_length": null,
+      "norb": 2,
+      "nelec": [
+        1,
+        1
+      ],
+      "qubits": 4,
+      "fci_dimension": 4,
+      "circuits_per_time": 100,
+      "seed": 4,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 4,
+      "subspace_fraction": 1.0,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 2,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 2
+      },
+      "wall_s": 27.5
     },
     {
       "molecule": "lih",
@@ -193,7 +640,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 60
       },
-      "wall_s": 3.3
+      "wall_s": 10.6
     },
     {
       "molecule": "lih",
@@ -220,7 +667,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 57
       },
-      "wall_s": 2.8
+      "wall_s": 10.7
     },
     {
       "molecule": "lih",
@@ -247,7 +694,61 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 52
       },
-      "wall_s": 2.8
+      "wall_s": 9.2
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "norb": 6,
+      "nelec": [
+        2,
+        2
+      ],
+      "qubits": 12,
+      "fci_dimension": 225,
+      "circuits_per_time": 25,
+      "seed": 3,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 196,
+      "subspace_fraction": 0.8711111111111111,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 54,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 54
+      },
+      "wall_s": 12.0
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "norb": 6,
+      "nelec": [
+        2,
+        2
+      ],
+      "qubits": 12,
+      "fci_dimension": 225,
+      "circuits_per_time": 25,
+      "seed": 4,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 196,
+      "subspace_fraction": 0.8711111111111111,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 61,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 61
+      },
+      "wall_s": 10.0
     },
     {
       "molecule": "lih",
@@ -274,7 +775,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 68
       },
-      "wall_s": 8.9
+      "wall_s": 36.7
     },
     {
       "molecule": "lih",
@@ -301,7 +802,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 68
       },
-      "wall_s": 9.0
+      "wall_s": 36.9
     },
     {
       "molecule": "lih",
@@ -328,7 +829,61 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 67
       },
-      "wall_s": 8.7
+      "wall_s": 36.8
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "norb": 6,
+      "nelec": [
+        2,
+        2
+      ],
+      "qubits": 12,
+      "fci_dimension": 225,
+      "circuits_per_time": 100,
+      "seed": 3,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 225,
+      "subspace_fraction": 1.0,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 68,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 68
+      },
+      "wall_s": 37.2
+    },
+    {
+      "molecule": "lih",
+      "bond_length": null,
+      "norb": 6,
+      "nelec": [
+        2,
+        2
+      ],
+      "qubits": 12,
+      "fci_dimension": 225,
+      "circuits_per_time": 100,
+      "seed": 4,
+      "error_mha": 0.0,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 100.0,
+      "subspace_dimension": 196,
+      "subspace_fraction": 0.8711111111111111,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 68,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 68
+      },
+      "wall_s": 37.9
     },
     {
       "molecule": "h2o",
@@ -355,7 +910,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 82
       },
-      "wall_s": 3.7
+      "wall_s": 12.6
     },
     {
       "molecule": "h2o",
@@ -382,7 +937,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 64
       },
-      "wall_s": 3.4
+      "wall_s": 9.8
     },
     {
       "molecule": "h2o",
@@ -409,7 +964,61 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 77
       },
-      "wall_s": 3.2
+      "wall_s": 14.1
+    },
+    {
+      "molecule": "h2o",
+      "bond_length": null,
+      "norb": 7,
+      "nelec": [
+        5,
+        5
+      ],
+      "qubits": 14,
+      "fci_dimension": 441,
+      "circuits_per_time": 25,
+      "seed": 3,
+      "error_mha": 0.1771,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.64,
+      "subspace_dimension": 272,
+      "subspace_fraction": 0.6167800453514739,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 76,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 76
+      },
+      "wall_s": 15.2
+    },
+    {
+      "molecule": "h2o",
+      "bond_length": null,
+      "norb": 7,
+      "nelec": [
+        5,
+        5
+      ],
+      "qubits": 14,
+      "fci_dimension": 441,
+      "circuits_per_time": 25,
+      "seed": 4,
+      "error_mha": 0.1989,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.6,
+      "subspace_dimension": 240,
+      "subspace_fraction": 0.54421768707483,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 76,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 76
+      },
+      "wall_s": 13.7
     },
     {
       "molecule": "h2o",
@@ -436,7 +1045,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 109
       },
-      "wall_s": 10.7
+      "wall_s": 41.4
     },
     {
       "molecule": "h2o",
@@ -463,7 +1072,7 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 102
       },
-      "wall_s": 10.6
+      "wall_s": 40.0
     },
     {
       "molecule": "h2o",
@@ -490,169 +1099,466 @@
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 110
       },
-      "wall_s": 10.6
+      "wall_s": 41.0
     },
     {
-      "molecule": "n2",
+      "molecule": "h2o",
       "bond_length": null,
-      "norb": 10,
+      "norb": 7,
       "nelec": [
-        7,
-        7
+        5,
+        5
       ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 25,
-      "seed": 0,
-      "error_mha": 5.0863,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 96.71,
-      "subspace_dimension": 2850,
-      "subspace_fraction": 0.19791666666666666,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 5000,
-        "distinct_bitstrings": 135,
-        "valid_shots": 5000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 135
-      },
-      "wall_s": 10.6
-    },
-    {
-      "molecule": "n2",
-      "bond_length": null,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 25,
-      "seed": 1,
-      "error_mha": 4.6219,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 97.01,
-      "subspace_dimension": 1976,
-      "subspace_fraction": 0.13722222222222222,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 5000,
-        "distinct_bitstrings": 109,
-        "valid_shots": 5000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 109
-      },
-      "wall_s": 10.0
-    },
-    {
-      "molecule": "n2",
-      "bond_length": null,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
+      "qubits": 14,
+      "fci_dimension": 441,
       "circuits_per_time": 100,
-      "seed": 0,
-      "error_mha": 0.8541,
+      "seed": 3,
+      "error_mha": 0.0064,
       "within_chemical_accuracy": true,
-      "correlation_recovered_pct": 99.45,
-      "subspace_dimension": 5698,
-      "subspace_fraction": 0.39569444444444446,
+      "correlation_recovered_pct": 99.99,
+      "subspace_dimension": 420,
+      "subspace_fraction": 0.9523809523809523,
       "sqd_iterations": 2,
       "sampling": {
         "total_shots": 20000,
-        "distinct_bitstrings": 321,
-        "valid_shots": 20000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 321
-      },
-      "wall_s": 35.9
-    },
-    {
-      "molecule": "n2",
-      "bond_length": null,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 100,
-      "seed": 1,
-      "error_mha": 1.5016,
-      "within_chemical_accuracy": true,
-      "correlation_recovered_pct": 99.03,
-      "subspace_dimension": 5396,
-      "subspace_fraction": 0.37472222222222223,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 20000,
-        "distinct_bitstrings": 326,
-        "valid_shots": 20000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 326
-      },
-      "wall_s": 36.3
-    },
-    {
-      "molecule": "n2",
-      "bond_length": 1.8,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 25,
-      "seed": 0,
-      "error_mha": 26.9675,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 94.21,
-      "subspace_dimension": 1927,
-      "subspace_fraction": 0.13381944444444444,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 5000,
-        "distinct_bitstrings": 117,
-        "valid_shots": 5000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 117
-      },
-      "wall_s": 9.4
-    },
-    {
-      "molecule": "n2",
-      "bond_length": 1.8,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 25,
-      "seed": 1,
-      "error_mha": 27.6775,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 94.06,
-      "subspace_dimension": 1833,
-      "subspace_fraction": 0.12729166666666666,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 5000,
         "distinct_bitstrings": 105,
-        "valid_shots": 5000,
+        "valid_shots": 20000,
         "valid_fraction": 1.0,
         "distinct_valid_configurations": 105
       },
-      "wall_s": 9.0
+      "wall_s": 40.1
+    },
+    {
+      "molecule": "h2o",
+      "bond_length": null,
+      "norb": 7,
+      "nelec": [
+        5,
+        5
+      ],
+      "qubits": 14,
+      "fci_dimension": 441,
+      "circuits_per_time": 100,
+      "seed": 4,
+      "error_mha": 0.1989,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.6,
+      "subspace_dimension": 240,
+      "subspace_fraction": 0.54421768707483,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 95,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 95
+      },
+      "wall_s": 34.3
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 0,
+      "error_mha": 7.0542,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 95.44,
+      "subspace_dimension": 2600,
+      "subspace_fraction": 0.18055555555555555,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 159,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 159
+      },
+      "wall_s": 114.2
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 1,
+      "error_mha": 4.9339,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 96.81,
+      "subspace_dimension": 2808,
+      "subspace_fraction": 0.195,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 162,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 162
+      },
+      "wall_s": 106.4
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 2,
+      "error_mha": 4.5159,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 97.08,
+      "subspace_dimension": 2548,
+      "subspace_fraction": 0.17694444444444443,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 138,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 138
+      },
+      "wall_s": 104.9
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 3,
+      "error_mha": 4.4734,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 97.11,
+      "subspace_dimension": 2303,
+      "subspace_fraction": 0.15993055555555555,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 143,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 143
+      },
+      "wall_s": 105.6
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 4,
+      "error_mha": 4.4553,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 97.12,
+      "subspace_dimension": 3422,
+      "subspace_fraction": 0.2376388888888889,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 167,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 167
+      },
+      "wall_s": 107.8
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 0,
+      "error_mha": 0.9075,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.41,
+      "subspace_dimension": 5694,
+      "subspace_fraction": 0.3954166666666667,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 430,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 430
+      },
+      "wall_s": 388.4
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 1,
+      "error_mha": 0.4485,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.71,
+      "subspace_dimension": 5850,
+      "subspace_fraction": 0.40625,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 431,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 431
+      },
+      "wall_s": 375.3
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 2,
+      "error_mha": 0.722,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.53,
+      "subspace_dimension": 6723,
+      "subspace_fraction": 0.466875,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 470,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 470
+      },
+      "wall_s": 365.1
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 3,
+      "error_mha": 0.3562,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.77,
+      "subspace_dimension": 6318,
+      "subspace_fraction": 0.43875,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 420,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 420
+      },
+      "wall_s": 363.7
+    },
+    {
+      "molecule": "n2",
+      "bond_length": null,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 4,
+      "error_mha": 0.649,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.58,
+      "subspace_dimension": 4615,
+      "subspace_fraction": 0.32048611111111114,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 412,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 412
+      },
+      "wall_s": 372.6
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 0,
+      "error_mha": 8.3668,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 98.21,
+      "subspace_dimension": 3843,
+      "subspace_fraction": 0.266875,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 200,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 200
+      },
+      "wall_s": 89.9
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 1,
+      "error_mha": 23.158,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 95.03,
+      "subspace_dimension": 1599,
+      "subspace_fraction": 0.11104166666666666,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 115,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 115
+      },
+      "wall_s": 77.2
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 2,
+      "error_mha": 23.9487,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 94.86,
+      "subspace_dimension": 2800,
+      "subspace_fraction": 0.19444444444444445,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 157,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 157
+      },
+      "wall_s": 85.9
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 3,
+      "error_mha": 10.1929,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 97.81,
+      "subspace_dimension": 2450,
+      "subspace_fraction": 0.1701388888888889,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 147,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 147
+      },
+      "wall_s": 89.2
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 25,
+      "seed": 4,
+      "error_mha": 13.5528,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 97.09,
+      "subspace_dimension": 3009,
+      "subspace_fraction": 0.20895833333333333,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 5000,
+        "distinct_bitstrings": 152,
+        "valid_shots": 5000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 152
+      },
+      "wall_s": 87.0
     },
     {
       "molecule": "n2",
@@ -666,20 +1572,20 @@
       "fci_dimension": 14400,
       "circuits_per_time": 100,
       "seed": 0,
-      "error_mha": 5.1192,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 98.9,
-      "subspace_dimension": 5254,
-      "subspace_fraction": 0.36486111111111114,
-      "sqd_iterations": 2,
+      "error_mha": 0.1623,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.97,
+      "subspace_dimension": 6557,
+      "subspace_fraction": 0.45534722222222224,
+      "sqd_iterations": 3,
       "sampling": {
         "total_shots": 20000,
-        "distinct_bitstrings": 278,
+        "distinct_bitstrings": 373,
         "valid_shots": 20000,
         "valid_fraction": 1.0,
-        "distinct_valid_configurations": 278
+        "distinct_valid_configurations": 373
       },
-      "wall_s": 31.1
+      "wall_s": 306.1
     },
     {
       "molecule": "n2",
@@ -693,20 +1599,101 @@
       "fci_dimension": 14400,
       "circuits_per_time": 100,
       "seed": 1,
-      "error_mha": 7.1234,
+      "error_mha": 5.6973,
       "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 98.47,
-      "subspace_dimension": 4544,
-      "subspace_fraction": 0.31555555555555553,
+      "correlation_recovered_pct": 98.78,
+      "subspace_dimension": 6241,
+      "subspace_fraction": 0.4334027777777778,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 376,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 376
+      },
+      "wall_s": 305.6
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 2,
+      "error_mha": 4.013,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 99.14,
+      "subspace_dimension": 6300,
+      "subspace_fraction": 0.4375,
       "sqd_iterations": 2,
       "sampling": {
         "total_shots": 20000,
-        "distinct_bitstrings": 251,
+        "distinct_bitstrings": 355,
         "valid_shots": 20000,
         "valid_fraction": 1.0,
-        "distinct_valid_configurations": 251
+        "distinct_valid_configurations": 355
       },
-      "wall_s": 33.4
+      "wall_s": 315.9
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 3,
+      "error_mha": 3.1224,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 99.33,
+      "subspace_dimension": 6160,
+      "subspace_fraction": 0.42777777777777776,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 369,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 369
+      },
+      "wall_s": 315.1
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 100,
+      "seed": 4,
+      "error_mha": 5.4859,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 98.82,
+      "subspace_dimension": 5772,
+      "subspace_fraction": 0.4008333333333333,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 20000,
+        "distinct_bitstrings": 357,
+        "valid_shots": 20000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 357
+      },
+      "wall_s": 293.0
     },
     {
       "molecule": "n2",
@@ -720,48 +1707,129 @@
       "fci_dimension": 14400,
       "circuits_per_time": 200,
       "seed": 0,
-      "error_mha": 6.0597,
+      "error_mha": 3.6172,
       "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 98.7,
-      "subspace_dimension": 5467,
-      "subspace_fraction": 0.3796527777777778,
-      "sqd_iterations": 2,
-      "sampling": {
-        "total_shots": 40000,
-        "distinct_bitstrings": 395,
-        "valid_shots": 40000,
-        "valid_fraction": 1.0,
-        "distinct_valid_configurations": 395
-      },
-      "wall_s": 62.1
-    },
-    {
-      "molecule": "n2",
-      "bond_length": 1.8,
-      "norb": 10,
-      "nelec": [
-        7,
-        7
-      ],
-      "qubits": 20,
-      "fci_dimension": 14400,
-      "circuits_per_time": 200,
-      "seed": 1,
-      "error_mha": 4.4407,
-      "within_chemical_accuracy": false,
-      "correlation_recovered_pct": 99.05,
-      "subspace_dimension": 5544,
-      "subspace_fraction": 0.385,
+      "correlation_recovered_pct": 99.22,
+      "subspace_dimension": 6474,
+      "subspace_fraction": 0.44958333333333333,
       "sqd_iterations": 3,
       "sampling": {
         "total_shots": 40000,
-        "distinct_bitstrings": 393,
+        "distinct_bitstrings": 525,
         "valid_shots": 40000,
         "valid_fraction": 1.0,
-        "distinct_valid_configurations": 393
+        "distinct_valid_configurations": 525
       },
-      "wall_s": 62.8
+      "wall_s": 498.4
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 200,
+      "seed": 1,
+      "error_mha": 4.4415,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 99.05,
+      "subspace_dimension": 6004,
+      "subspace_fraction": 0.41694444444444445,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 40000,
+        "distinct_bitstrings": 547,
+        "valid_shots": 40000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 547
+      },
+      "wall_s": 492.0
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 200,
+      "seed": 2,
+      "error_mha": 2.0973,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 99.55,
+      "subspace_dimension": 6083,
+      "subspace_fraction": 0.42243055555555553,
+      "sqd_iterations": 2,
+      "sampling": {
+        "total_shots": 40000,
+        "distinct_bitstrings": 529,
+        "valid_shots": 40000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 529
+      },
+      "wall_s": 445.7
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 200,
+      "seed": 3,
+      "error_mha": 0.1593,
+      "within_chemical_accuracy": true,
+      "correlation_recovered_pct": 99.97,
+      "subspace_dimension": 7140,
+      "subspace_fraction": 0.49583333333333335,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 40000,
+        "distinct_bitstrings": 599,
+        "valid_shots": 40000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 599
+      },
+      "wall_s": 444.0
+    },
+    {
+      "molecule": "n2",
+      "bond_length": 1.8,
+      "norb": 10,
+      "nelec": [
+        7,
+        7
+      ],
+      "qubits": 20,
+      "fci_dimension": 14400,
+      "circuits_per_time": 200,
+      "seed": 4,
+      "error_mha": 1.9947,
+      "within_chemical_accuracy": false,
+      "correlation_recovered_pct": 99.57,
+      "subspace_dimension": 6970,
+      "subspace_fraction": 0.4840277777777778,
+      "sqd_iterations": 3,
+      "sampling": {
+        "total_shots": 40000,
+        "distinct_bitstrings": 565,
+        "valid_shots": 40000,
+        "valid_fraction": 1.0,
+        "distinct_valid_configurations": 565
+      },
+      "wall_s": 453.1
     }
   ],
-  "wall_s": 414.9
+  "wall_s": 890.1
 }

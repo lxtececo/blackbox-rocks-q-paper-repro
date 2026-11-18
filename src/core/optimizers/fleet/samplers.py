@@ -268,6 +268,50 @@ def _sample_dwave(
     )
 
 
+def ising_scale(qubo: FleetQubo) -> float:
+    """Largest |h_i| or |J_ij|; dividing by it puts the QAOA phases on an O(1) scale."""
+    h, J, _ = qubo.to_ising()
+    return float(max(np.abs(h).max(initial=0.0), np.abs(J).max(initial=0.0))) or 1.0
+
+
+def build_qaoa_circuit(
+    qubo: FleetQubo, params: np.ndarray, reps: int, *, measure: bool = True, normalize: bool = True
+):
+    """Depth-``reps`` QAOA ansatz on the Ising form; ``params`` = gammas then betas.
+
+    With ``normalize`` the cost Hamiltonian is divided by its largest
+    coefficient. Without it, CFLP penalties of ~1e5 turn gamma in [0, pi] into
+    phases of ~1e5 rad: the landscape oscillates far below the optimiser's
+    step size and the trained circuit is effectively a random-phase circuit.
+    ``params`` may hold numbers or Qiskit ``Parameter`` objects.
+    """
+    from qiskit import QuantumCircuit  # noqa: PLC0415
+
+    h, J, _ = qubo.to_ising()
+    if normalize:
+        s = ising_scale(qubo)
+        h, J = h / s, J / s
+    n = qubo.n_vars
+    pairs = [(i, j, float(J[i, j])) for i in range(n) for j in range(i + 1, n) if J[i, j]]
+    gammas = params[:reps]
+    betas = params[reps:]
+    qc = QuantumCircuit(n, n) if measure else QuantumCircuit(n)
+    qc.h(range(n))
+    for layer in range(reps):
+        g = gammas[layer]
+        for i in range(n):
+            if h[i]:
+                qc.rz(2.0 * g * float(h[i]), i)
+        for i, j, w in pairs:
+            qc.cx(i, j)
+            qc.rz(2.0 * g * w, j)
+            qc.cx(i, j)
+        qc.rx(2.0 * betas[layer], range(n))
+    if measure:
+        qc.measure(range(n), range(n))
+    return qc
+
+
 def _sample_gate(
     qubo: FleetQubo,
     *,
@@ -306,28 +350,12 @@ def _sample_gate(
         run_measured_circuits,
     )
 
-    h, J, offset = qubo.to_ising()
+    _, _, offset = qubo.to_ising()
     n = qubo.n_vars
-    pairs = [(i, j, float(J[i, j])) for i in range(n) for j in range(i + 1, n) if J[i, j]]
     trace: List[float] = []
 
     def build(params: np.ndarray) -> QuantumCircuit:
-        gammas = params[:reps]
-        betas = params[reps:]
-        qc = QuantumCircuit(n, n)
-        qc.h(range(n))
-        for layer in range(reps):
-            g = float(gammas[layer])
-            for i in range(n):
-                if h[i]:
-                    qc.rz(2.0 * g * float(h[i]), i)
-            for i, j, w in pairs:
-                qc.cx(i, j)
-                qc.rz(2.0 * g * w, j)
-                qc.cx(i, j)
-            qc.rx(2.0 * float(betas[layer]), range(n))
-        qc.measure(range(n), range(n))
-        return qc
+        return build_qaoa_circuit(qubo, params, reps)
 
     def energy_from_counts(counts: Dict[str, int]) -> float:
         total = sum(counts.values())
@@ -388,6 +416,10 @@ def _sample_gate(
             "shots": shots,
             "ising_offset": round(float(offset), 6),
             "optimizer_iterations": int(getattr(result, "nfev", len(trace))),
+            # gammas then betas; lets an auditor rebuild the exact final state
+            "final_parameters": [round(float(x), 10) for x in result.x],
+            "hamiltonian_scale": round(ising_scale(qubo), 6),
+            "hamiltonian_normalized": True,
             "parameter_training": "simulator",
             "final_sample_on": final.execution_mode,
             "vendor_runs": final.vendor_runs,

@@ -205,6 +205,45 @@ def cardinality_penalty_lambda(
     return max(cov_scale, ret_scale) * n
 
 
+def cardinality_penalty_influence(q: np.ndarray, Q: np.ndarray) -> float:
+    """Penalty weight Λ = 2·maxᵢ Iᵢ of arXiv:2602.23976, Eq. 10, for a pair-form objective.
+
+    Iᵢ = |qᵢ| + ½ Σ_{j≠i} |Q_ij| is asset i's influence (the paper's
+    |qᵢ + Q_ii| + Σ_{j≠i}|Q_ij| for a full symmetric matrix). No single flip
+    can gain more than Λ, so a QUBO optimum always holds exactly K assets.
+    """
+    q = np.asarray(q, dtype=float)
+    pairs = np.abs(np.triu(np.asarray(Q, dtype=float), 1))
+    influence = np.abs(q) + 0.5 * (pairs.sum(axis=0) + pairs.sum(axis=1))
+    return 2.0 * float(influence.max()) if influence.size else 0.0
+
+
+def portfolio_qubo(
+    returns: np.ndarray,
+    covariance: np.ndarray,
+    cardinality_K: int,
+    risk_aversion: float,
+    penalty_lambda: Optional[float] = None,
+) -> Tuple[np.ndarray, np.ndarray, float, float]:
+    """Pair-form QUBO of fixed-cardinality portfolio selection (arXiv:2602.23976, Eq. 8).
+
+        f(x) = −(1 − γ) μᵀx + γ xᵀCx + Λ (Σᵢ xᵢ − K)²,   γ = risk_aversion ∈ [0, 1]
+
+    γ = 1 minimises variance, γ = 0 maximises return; the paper's weight
+    γ' ∈ [−1, 1] is 2γ − 1, and its balanced choice γ' = 0 is γ = 0.5.
+
+    Returns (q, Q, const, Λ) with f(x) = Σᵢ qᵢxᵢ + Σᵢ<ⱼ Q_ij xᵢxⱼ + const.
+    """
+    mu = np.asarray(returns, dtype=float)
+    cov = np.asarray(covariance, dtype=float)
+    cov = 0.5 * (cov + cov.T)
+    q = -(1.0 - risk_aversion) * mu + risk_aversion * np.diag(cov)
+    Q = np.triu(2.0 * risk_aversion * cov, 1)
+    lam = cardinality_penalty_influence(q, Q) if penalty_lambda is None else float(penalty_lambda)
+    q, Q, const = cardinality_penalty_params(q, Q, cardinality_K, lam)
+    return q, Q, const, lam
+
+
 def pauli_labels_for_qubit_pair(
     n: int,
     i: int,

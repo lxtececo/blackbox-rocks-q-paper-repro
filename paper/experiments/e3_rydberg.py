@@ -12,7 +12,8 @@ import math
 import time
 
 import numpy as np
-from common import FIGURES, mean_ci, mpl, save, wilson
+from common import FIGURES, mean_ci, mpl, point_seed, save, wilson
+from scipy.stats import pearsonr, spearmanr, wilcoxon
 
 from core.optimizers.network import rydberg_mis as rm
 from core.optimizers.network.models import CandidateSite
@@ -20,6 +21,7 @@ from core.optimizers.network.models import CandidateSite
 KM_PER_DEG = math.pi / 180.0 * rm.EARTH_RADIUS_KM
 LAT0, LON0 = 51.0, 7.0
 SHOTS = 200
+SWEEP_SHOTS = 1000
 
 
 def sites_from_km(points):
@@ -61,8 +63,8 @@ def omega_mapping_embedding(graph, spacing):
     )
 
 
-def run(graph, emb, optimum, duration=rm.MAX_DURATION_S, shots=SHOTS):
-    shots_rows = rm.run_local(rm.build_program(emb, duration_s=duration), shots=shots, steps=80)
+def run(graph, emb, optimum, duration=rm.MAX_DURATION_S, shots=SHOTS, seed=None):
+    shots_rows = rm.run_local(rm.build_program(emb, duration_s=duration), shots=shots, steps=80, seed=seed)
     d = rm.decode(graph, shots_rows, optimum)
     return d
 
@@ -89,8 +91,8 @@ def main() -> None:
             continue
         opt = len(rm.exact_mis(g))
         greedy = len(rm.greedy_mis(g))
-        new = run(g, emb_new, opt)
-        old = run(g, omega_mapping_embedding(g, spacing), opt)
+        new = run(g, emb_new, opt, seed=point_seed(3, len(ablation), 0))
+        old = run(g, omega_mapping_embedding(g, spacing), opt, seed=point_seed(3, len(ablation), 1))
         ablation.append({
             "edges": len(g.edges), "ratio": spacing / d_min, "optimum": opt, "greedy": greedy,
             "ambiguous_pairs": len(emb_new.ambiguous_pairs),
@@ -112,7 +114,8 @@ def main() -> None:
         emb = rm.embed(g, spacing, max_atoms=rm.MAX_LOCAL_ATOMS)
         opt = len(rm.exact_mis(g))
         for T in durations:
-            d = run(g, emb, opt, duration=T)
+            d = run(g, emb, opt, duration=T, shots=SWEEP_SHOTS,
+                    seed=point_seed(3, 1000 + int(spacing), int(round(T * 1e7))))
             k = round(d["raw_optimal_fraction"] * d["shots_used"])
             lo, hi = wilson(k, d["shots_used"])
             sweep.append({"spacing_km": spacing, "duration_us": T * 1e6,
@@ -150,11 +153,24 @@ def main() -> None:
 
     amb = [a["ambiguous_pairs"] for a in ablation]
     opt_frac = [a["cutoff"]["raw_optimal_fraction"] for a in ablation]
-    corr = float(np.corrcoef(amb, opt_frac)[0, 1]) if np.std(amb) > 0 else None
+    corr = None
+    if np.std(amb) > 0:
+        res = pearsonr(amb, opt_frac)
+        lo, hi = res.confidence_interval(0.95)
+        rho = spearmanr(amb, opt_frac)
+        corr = {"pearson_r": float(res.statistic), "ci95": [float(lo), float(hi)], "p": float(res.pvalue),
+                "spearman_rho": float(rho.statistic), "spearman_p": float(rho.pvalue), "n": len(amb)}
+    paired = {}
+    for m in ("raw_independent_fraction", "raw_optimal_fraction"):
+        new_v = np.asarray([a["cutoff"][m] for a in ablation])
+        old_v = np.asarray([a["omega"][m] for a in ablation])
+        paired[m] = {"difference": mean_ci(new_v - old_v), "wilcoxon_p": float(wilcoxon(new_v, old_v).pvalue),
+                     "static_better": int((new_v > old_v).sum()), "dynamic_better": int((new_v < old_v).sum())}
     save("e3_rydberg", {
-        "shots": SHOTS, "instances": len(ablation), "ablation": ablation,
+        "shots": SHOTS, "sweep_shots": SWEEP_SHOTS, "instances": len(ablation), "ablation": ablation,
         "ablation_summary": {"cutoff": summary("cutoff"), "omega": summary("omega"),
                              "greedy_optimal_instances": sum(a["greedy"] == a["optimum"] for a in ablation),
+                             "paired": paired,
                              "corr_ambiguous_vs_raw_optimal": corr},
         "duration_sweep": sweep, "embeddability": embeddable,
         "embed_failures": {"ratio": sum(r["reason"] == "ratio" for r in embed_rows),
@@ -166,8 +182,8 @@ def main() -> None:
     fig, ax = plt.subplots(1, 3, figsize=(6.8, 2.2))
     x = np.arange(len(ablation))
     order = np.argsort([a["cutoff"]["raw_optimal_fraction"] for a in ablation])
-    ax[0].plot(x, [ablation[i]["cutoff"]["raw_optimal_fraction"] for i in order], "o", ms=3, label="Δ-end cutoff")
-    ax[0].plot(x, [ablation[i]["omega"]["raw_optimal_fraction"] for i in order], "x", ms=3, label="Ω blockade radius")
+    ax[0].plot(x, [ablation[i]["cutoff"]["raw_optimal_fraction"] for i in order], "o", ms=3, label="static radius")
+    ax[0].plot(x, [ablation[i]["omega"]["raw_optimal_fraction"] for i in order], "x", ms=3, label="dynamic radius, Δ/Ω = 6")
     ax[0].set_xlabel("random instance (sorted)")
     ax[0].set_ylabel("raw optimal fraction")
     ax[0].legend()

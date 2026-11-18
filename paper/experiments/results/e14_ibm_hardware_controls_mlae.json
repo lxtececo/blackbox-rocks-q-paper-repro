@@ -1,0 +1,914 @@
+{
+  "provenance": {
+    "commit": "c47284f3",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "mode": "hardware",
+  "backend": "ibm_marrakesh",
+  "mlae": {
+    "shots": 4000,
+    "run": {
+      "backend": "ibm_marrakesh",
+      "job_id": "dbtpti1jbrss73a6s5gg",
+      "usage_s": 0.0,
+      "submitted_utc": "2026-11-17T00:24:40Z"
+    },
+    "registers": [
+      {
+        "n_price_qubits": 2,
+        "qubits": 3,
+        "true_amplitude": 0.14125992409795654,
+        "rows": [
+          {
+            "k": 0,
+            "two_qubit_gates": 7,
+            "depth": 28,
+            "objective_hits": 895,
+            "p_hat": 0.22375,
+            "p_hat_ci95": [
+              0.2109152677451459,
+              0.23698947037763515
+            ],
+            "p_ideal": 0.14125992409795643,
+            "p_vs_ideal": 1.295783356136322e-44,
+            "p_vs_half": 1.036523739373622e-282,
+            "signal_fraction": 0.7455878297046691,
+            "signal_fraction_ci95": [
+              0.7274270933574803,
+              0.7637876209641299
+            ],
+            "tv_to_ideal": 0.16083123553187462,
+            "tv_to_uniform": 0.45175,
+            "ideal_tv_to_uniform": 0.6125812355318746,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9900683763437376,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 1,
+            "two_qubit_gates": 27,
+            "depth": 107,
+            "objective_hits": 2454,
+            "p_hat": 0.6135,
+            "p_hat_ci95": [
+              0.5982061495877309,
+              0.6286278606551075
+            ],
+            "p_ideal": 0.8375345651120297,
+            "p_vs_ideal": 1.3400249085437091e-252,
+            "p_vs_half": 4.937698188245815e-47,
+            "signal_fraction": 0.4089498467977197,
+            "signal_fraction_ci95": [
+              0.3888957180846049,
+              0.43139944862597346
+            ],
+            "tv_to_ideal": 0.4142189411321276,
+            "tv_to_uniform": 0.28775,
+            "ideal_tv_to_uniform": 0.6757189411321276,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9616864975217326,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 2,
+            "two_qubit_gates": 47,
+            "depth": 185,
+            "objective_hits": 2216,
+            "p_hat": 0.554,
+            "p_hat_ci95": [
+              0.5384359986934099,
+              0.5694850455384814
+            ],
+            "p_ideal": 0.878692106197201,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 9.029143710321647e-12,
+            "signal_fraction": 0.22947446939317195,
+            "signal_fraction_ci95": [
+              0.21053991831516586,
+              0.24892273988395777
+            ],
+            "tv_to_ideal": 0.559817314429309,
+            "tv_to_uniform": 0.18825,
+            "ideal_tv_to_uniform": 0.7150673144293089,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9341182302287029,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 3,
+            "two_qubit_gates": 67,
+            "depth": 263,
+            "objective_hits": 1827,
+            "p_hat": 0.45675,
+            "p_hat_ci95": [
+              0.441224561128907,
+              0.47233867518552175
+            ],
+            "p_ideal": 0.18485033159588476,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 4.809700994845076e-08,
+            "signal_fraction": 0.1781614903152328,
+            "signal_fraction_ci95": [
+              0.1520375372212314,
+              0.203654074443369
+            ],
+            "tv_to_ideal": 0.4977303196414387,
+            "tv_to_uniform": 0.11324999999999999,
+            "ideal_tv_to_uniform": 0.6109803196414387,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9073402510009609,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 4,
+            "two_qubit_gates": 87,
+            "depth": 341,
+            "objective_hits": 1884,
+            "p_hat": 0.471,
+            "p_hat_ci95": [
+              0.4554321704355478,
+              0.486610229868726
+            ],
+            "p_ideal": 0.1026790587694978,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.00025882002381001125,
+            "signal_fraction": 0.11322281954641213,
+            "signal_fraction_ci95": [
+              0.09335809915200163,
+              0.13630914842237862
+            ],
+            "tv_to_ideal": 0.5723325882735517,
+            "tv_to_uniform": 0.07925000000000001,
+            "ideal_tv_to_uniform": 0.6408325882735517,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.8813299049788634,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 5,
+            "two_qubit_gates": 107,
+            "depth": 419,
+            "objective_hits": 1967,
+            "p_hat": 0.49175,
+            "p_hat_ci95": [
+              0.47614304134600005,
+              0.5073690206131829
+            ],
+            "p_ideal": 0.7916636012699163,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.3040714704340591,
+            "signal_fraction": 0.054482875426088186,
+            "signal_fraction_ci95": [
+              0.037936253287487044,
+              0.07103957465525956
+            ],
+            "tv_to_ideal": 0.6003643336611484,
+            "tv_to_uniform": 0.05900000000000001,
+            "ideal_tv_to_uniform": 0.6318643336611484,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.8560651867402164,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          },
+          {
+            "k": 6,
+            "two_qubit_gates": 127,
+            "depth": 497,
+            "objective_hits": 1971,
+            "p_hat": 0.49275,
+            "p_hat_ci95": [
+              0.4771418302185742,
+              0.5083687696815661
+            ],
+            "p_ideal": 0.9145614896365575,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.36745774991748903,
+            "signal_fraction": 0.027970492053657342,
+            "signal_fraction_ci95": [
+              0.012595319077854253,
+              0.041960409765344736
+            ],
+            "tv_to_ideal": 0.7288599823656869,
+            "tv_to_uniform": 0.044750000000000005,
+            "ideal_tv_to_uniform": 0.7493599823656868,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.8315247216831219,
+              "reported_readout_error": [
+                0.00146484375,
+                0.01611328125,
+                0.00390625
+              ]
+            },
+            "measured_physical": [
+              55,
+              53,
+              54
+            ]
+          }
+        ],
+        "initial_layout": [
+          54,
+          53,
+          55
+        ],
+        "contrast_fit": {
+          "f_A": 0.7653851549971952,
+          "f_Q": 0.46208647406441583,
+          "f_A_ci95": [
+            0.7260657715526443,
+            0.8008756745634049
+          ],
+          "f_Q_ci95": [
+            0.42441156533975255,
+            0.4999895905171001
+          ],
+          "fitted_p": [
+            0.2254256714020088,
+            0.619377242842033,
+            0.561888905111407,
+            0.4762005643988741,
+            0.4861351710723461,
+            0.5047030386724208,
+            0.5030889332851265
+          ],
+          "deviance": 15.800881447048493,
+          "dof": 5,
+          "goodness_of_fit_p": 0.007436168727839515,
+          "free_floor": {
+            "f_A": 0.7595212092688716,
+            "f_Q": 0.4820848865894388,
+            "floor": 0.4855226075728327,
+            "deviance": 0.37394837531322955,
+            "likelihood_ratio_p": 8.575729458407195e-05
+          }
+        },
+        "amplitude_estimates": {
+          "true": 0.14125992409795654,
+          "noiseless_likelihood_mle": 0.4947644988935948,
+          "noiseless_schedule": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "noise_aware_mle": 0.1422919334108308,
+          "noise_aware_f_A": 0.7671130318987738,
+          "noise_aware_f_Q": 0.46055475085142916,
+          "noise_aware_bootstrap_sd": 0.005036351986201041,
+          "price_ceiling": 112.38511831734087
+        },
+        "readout": {
+          "physical_qubits": [
+            53,
+            54,
+            55
+          ],
+          "p_read1_given0": [
+            0.00075,
+            0.00325,
+            0.00075
+          ],
+          "p_read0_given1": [
+            0.0265,
+            0.0795,
+            0.04675
+          ],
+          "mean_assignment_error": 0.02625
+        }
+      },
+      {
+        "n_price_qubits": 3,
+        "qubits": 4,
+        "true_amplitude": 0.08258497999124928,
+        "rows": [
+          {
+            "k": 0,
+            "two_qubit_gates": 16,
+            "depth": 63,
+            "objective_hits": 954,
+            "p_hat": 0.2385,
+            "p_hat_ci95": [
+              0.22536300131084328,
+              0.25202002026403525
+            ],
+            "p_ideal": 0.08258497999124877,
+            "p_vs_ideal": 2.1177572434493544e-195,
+            "p_vs_half": 6.665463282103344e-252,
+            "signal_fraction": 0.5378842977384234,
+            "signal_fraction_ci95": [
+              0.5178875062733074,
+              0.5560506766686265
+            ],
+            "tv_to_ideal": 0.3046817313225164,
+            "tv_to_uniform": 0.36350000000000005,
+            "ideal_tv_to_uniform": 0.6589317313225165,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9750183776565171,
+              "reported_readout_error": [
+                0.00830078125,
+                0.01318359375,
+                0.00390625,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              52,
+              39,
+              54,
+              53
+            ]
+          },
+          {
+            "k": 1,
+            "two_qubit_gates": 65,
+            "depth": 265,
+            "objective_hits": 1910,
+            "p_hat": 0.4775,
+            "p_hat_ci95": [
+              0.4619170372530677,
+              0.49311585930264673
+            ],
+            "p_ideal": 0.5885901674080114,
+            "p_vs_ideal": 1.9186087260265188e-45,
+            "p_vs_half": 0.004645321200348915,
+            "signal_fraction": 0.18787705359041482,
+            "signal_fraction_ci95": [
+              0.16561175959557745,
+              0.2123162225209187
+            ],
+            "tv_to_ideal": 0.5210872161522779,
+            "tv_to_uniform": 0.13375,
+            "ideal_tv_to_uniform": 0.6440872161522779,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.9016821001566442,
+              "reported_readout_error": [
+                0.00390625,
+                0.01318359375,
+                0.00830078125,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              54,
+              39,
+              52,
+              53
+            ]
+          },
+          {
+            "k": 2,
+            "two_qubit_gates": 114,
+            "depth": 463,
+            "objective_hits": 2014,
+            "p_hat": 0.5035,
+            "p_hat_ci95": [
+              0.48788272310193626,
+              0.5191121597092238
+            ],
+            "p_ideal": 0.987203234000676,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.6694520141102308,
+            "signal_fraction": 0.08317114803862496,
+            "signal_fraction_ci95": [
+              0.06941527448508666,
+              0.09821866541548478
+            ],
+            "tv_to_ideal": 0.7466593960094929,
+            "tv_to_uniform": 0.095,
+            "ideal_tv_to_uniform": 0.8151593960094928,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.8335036145721997,
+              "reported_readout_error": [
+                0.00830078125,
+                0.01318359375,
+                0.00390625,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              52,
+              39,
+              54,
+              53
+            ]
+          },
+          {
+            "k": 3,
+            "two_qubit_gates": 165,
+            "depth": 661,
+            "objective_hits": 1983,
+            "p_hat": 0.49575,
+            "p_hat_ci95": [
+              0.480138568581861,
+              0.5113676451480271
+            ],
+            "p_ideal": 0.795211382434439,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.6018319427665395,
+            "signal_fraction": 0.046717956610895235,
+            "signal_fraction_ci95": [
+              0.02832123127054428,
+              0.06378967213065415
+            ],
+            "tv_to_ideal": 0.6395965384702247,
+            "tv_to_uniform": 0.05500000000000001,
+            "ideal_tv_to_uniform": 0.6733465384702247,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.7668082513861455,
+              "reported_readout_error": [
+                0.00830078125,
+                0.00390625,
+                0.01318359375,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              52,
+              54,
+              39,
+              53
+            ]
+          },
+          {
+            "k": 4,
+            "two_qubit_gates": 214,
+            "depth": 860,
+            "objective_hits": 1857,
+            "p_hat": 0.46425,
+            "p_hat_ci95": [
+              0.44870066992942226,
+              0.47985159989309756
+            ],
+            "p_ideal": 0.24535389658132814,
+            "p_vs_ideal": 9.449438685560491e-198,
+            "p_vs_half": 6.542262364901474e-06,
+            "signal_fraction": 0.032491618270237395,
+            "signal_fraction_ci95": [
+              0.011516182902571143,
+              0.05393968686525829
+            ],
+            "tv_to_ideal": 0.5962794066314007,
+            "tv_to_uniform": 0.04200000000000001,
+            "ideal_tv_to_uniform": 0.6147794066314006,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.7086986143069729,
+              "reported_readout_error": [
+                0.01318359375,
+                0.00390625,
+                0.00830078125,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              39,
+              54,
+              52,
+              53
+            ]
+          },
+          {
+            "k": 5,
+            "two_qubit_gates": 263,
+            "depth": 1059,
+            "objective_hits": 1955,
+            "p_hat": 0.48875,
+            "p_hat_ci95": [
+              0.4731470465567229,
+              0.5043694015901398
+            ],
+            "p_ideal": 0.004187385199169588,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.15935555446879282,
+            "signal_fraction": 0.012002605953057783,
+            "signal_fraction_ci95": [
+              5.363445511637444e-07,
+              0.0277739517783867
+            ],
+            "tv_to_ideal": 0.724604387657711,
+            "tv_to_uniform": 0.0335,
+            "ideal_tv_to_uniform": 0.7366043876577109,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.6551121027738624,
+              "reported_readout_error": [
+                0.00830078125,
+                0.00390625,
+                0.01318359375,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              52,
+              54,
+              39,
+              53
+            ]
+          },
+          {
+            "k": 6,
+            "two_qubit_gates": 312,
+            "depth": 1258,
+            "objective_hits": 1972,
+            "p_hat": 0.493,
+            "p_hat_ci95": [
+              0.47739153711866217,
+              0.5086186972672747
+            ],
+            "p_ideal": 0.3640623865796074,
+            "p_vs_ideal": 4.228774238866547e-62,
+            "p_vs_half": 0.3845070469613146,
+            "signal_fraction": 0.010829713594653033,
+            "signal_fraction_ci95": [
+              4.4964514424326296e-07,
+              0.031439500062915626
+            ],
+            "tv_to_ideal": 0.6104725250157943,
+            "tv_to_uniform": 0.026500000000000017,
+            "ideal_tv_to_uniform": 0.6187225250157943,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.6054669320684777,
+              "reported_readout_error": [
+                0.01318359375,
+                0.00390625,
+                0.00830078125,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              39,
+              54,
+              52,
+              53
+            ]
+          }
+        ],
+        "initial_layout": [
+          39,
+          53,
+          54,
+          52
+        ],
+        "contrast_fit": {
+          "f_A": 0.62647483429991,
+          "f_Q": 0.0,
+          "f_A_ci95": [
+            0.5946514425702975,
+            0.6540253253896654
+          ],
+          "f_Q_ci95": [
+            0.0,
+            0.21939466667305102
+          ],
+          "fitted_p": [
+            0.23849999450572396,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "deviance": 31.863396681282325,
+          "dof": 5,
+          "goodness_of_fit_p": 6.323003644928651e-06,
+          "free_floor": {
+            "f_A": 0.6088157057239318,
+            "f_Q": 0.22117064988252386,
+            "floor": 0.48232624162482723,
+            "deviance": 16.097826783118794,
+            "likelihood_ratio_p": 7.169543661272858e-05
+          }
+        },
+        "amplitude_estimates": {
+          "true": 0.08258497999124928,
+          "noiseless_likelihood_mle": 0.4957033738175717,
+          "noiseless_schedule": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "noise_aware_mle": 0.02308179708235724,
+          "noise_aware_f_A": 0.5483859117670481,
+          "noise_aware_f_Q": 0.12993671094813009,
+          "noise_aware_bootstrap_sd": 0.0618719833080477,
+          "price_ceiling": 140.0144956074188
+        },
+        "readout": {
+          "physical_qubits": [
+            39,
+            52,
+            53,
+            54
+          ],
+          "p_read1_given0": [
+            0.011,
+            0.003,
+            0.00075,
+            0.00275
+          ],
+          "p_read0_given1": [
+            0.01375,
+            0.01625,
+            0.02525,
+            0.07325
+          ],
+          "mean_assignment_error": 0.01825
+        }
+      },
+      {
+        "n_price_qubits": 5,
+        "qubits": 6,
+        "true_amplitude": 0.06398546641948993,
+        "rows": [
+          {
+            "k": 0,
+            "two_qubit_gates": 106,
+            "depth": 295,
+            "objective_hits": 1659,
+            "p_hat": 0.41475,
+            "p_hat_ci95": [
+              0.3994239702783315,
+              0.43020068922592497
+            ],
+            "p_ideal": 0.06398546641945996,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 3.6899612822219336e-27,
+            "signal_fraction": 0.18346564411114247,
+            "signal_fraction_ci95": [
+              0.164131828838456,
+              0.20116709484310416
+            ],
+            "tv_to_ideal": 0.5813617734644325,
+            "tv_to_uniform": 0.18675,
+            "ideal_tv_to_uniform": 0.6993098193596661,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.8315827118016635,
+              "reported_readout_error": [
+                0.00390625,
+                0.00830078125,
+                0.01318359375,
+                0.00146484375,
+                0.01318359375,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              54,
+              52,
+              33,
+              55,
+              39,
+              53
+            ]
+          },
+          {
+            "k": 1,
+            "two_qubit_gates": 448,
+            "depth": 1342,
+            "objective_hits": 1959,
+            "p_hat": 0.48975,
+            "p_hat_ci95": [
+              0.47414564950764254,
+              0.5053693365742564
+            ],
+            "p_ideal": 0.4818012870957858,
+            "p_vs_ideal": 0.31888133924133405,
+            "p_vs_half": 0.20028517019594283,
+            "signal_fraction": 0.0016140329849021065,
+            "signal_fraction_ci95": [
+              3.802615519200447e-07,
+              0.021598950983123765
+            ],
+            "tv_to_ideal": 0.6426381672519377,
+            "tv_to_uniform": 0.04100000000000001,
+            "ideal_tv_to_uniform": 0.6415131672519376,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.47181639558374944,
+              "reported_readout_error": [
+                0.01318359375,
+                0.00830078125,
+                0.00146484375,
+                0.01318359375,
+                0.00390625,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              39,
+              52,
+              55,
+              33,
+              54,
+              53
+            ]
+          },
+          {
+            "k": 2,
+            "two_qubit_gates": 790,
+            "depth": 2395,
+            "objective_hits": 2002,
+            "p_hat": 0.5005,
+            "p_hat_ci95": [
+              0.4848845445344097,
+              0.5161147244387972
+            ],
+            "p_ideal": 0.9170562286768214,
+            "p_vs_ideal": 0.0,
+            "p_vs_half": 0.9621679861023625,
+            "signal_fraction": 5.363445511637444e-07,
+            "signal_fraction_ci95": [
+              5.363445511637444e-07,
+              0.008947331986429777
+            ],
+            "tv_to_ideal": 0.759674328543017,
+            "tv_to_uniform": 0.05100000000000001,
+            "ideal_tv_to_uniform": 0.757299328543017,
+            "calibration": {
+              "median_two_qubit_error": 0.002701313236561448,
+              "two_qubit_gate_names": [
+                "cz"
+              ],
+              "p_no_two_qubit_error": 0.26424959725931474,
+              "reported_readout_error": [
+                0.00390625,
+                0.00830078125,
+                0.01318359375,
+                0.00146484375,
+                0.01318359375,
+                0.01611328125
+              ]
+            },
+            "measured_physical": [
+              54,
+              52,
+              33,
+              55,
+              39,
+              53
+            ]
+          }
+        ],
+        "initial_layout": [
+          52,
+          54,
+          33,
+          53,
+          39,
+          55
+        ],
+        "readout": {
+          "physical_qubits": [
+            33,
+            39,
+            52,
+            53,
+            54,
+            55
+          ],
+          "p_read1_given0": [
+            0.00075,
+            0.01475,
+            0.004,
+            0.00175,
+            0.002,
+            0.00075
+          ],
+          "p_read0_given1": [
+            0.0355,
+            0.0185,
+            0.01625,
+            0.026,
+            0.07125,
+            0.04725
+          ],
+          "mean_assignment_error": 0.01989583333333333
+        }
+      }
+    ]
+  },
+  "wall_s": 93.2
+}
