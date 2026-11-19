@@ -7,10 +7,16 @@ Code, raw results and paper source for
 > A. Nachtigall, *Every Quantum Run Needs a Referee: Design and Empirical
 > Lessons from a Vendor-Neutral Hybrid Quantum–Classical Platform*, 2026.
 
-**Version 2.0.0** (18 November 2026): experiments E1 to E25 and three
-hardware rounds on `ibm_marrakesh`. Version 1.0.0 held E1 to E9 of the
-earlier version of the paper and is kept on Zenodo for the record; the
-paper's audit invalidated part of its results.
+**Version 2.0.1** (19 November 2026): experiments E1 to E25 and three
+hardware rounds on `ibm_marrakesh`. Code, results and figures are those of
+version 2.0.0. Only the text of the paper changed, in two places of its
+methodology section: the paragraph on the hardware protocol states the order
+of plan and jobs without the dates and clock times of jobs and commits that
+version 2.0.0 listed, and the workstation's memory is corrected to the
+installed 64 GB (version 2.0.0 gave 62 GB, the usable amount the operating
+system reports). Version 1.0.0 held E1 to E9 of the earlier version of the
+paper and is kept on Zenodo for the record; the paper's audit invalidated
+part of its results.
 
 The experiments call the platform's own solver modules (`src/`), not a
 separate reimplementation. Only those modules are included; the platform's
@@ -131,9 +137,10 @@ either: name them explicitly, with `IBM_QUANTUM_TOKEN` set.
 Code: Apache-2.0 (`LICENSE`). Paper, figures and results: CC-BY-4.0
 (`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI:
 [10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
-versions; it resolves to the latest). Version 2.0.0,
-[10.5281/zenodo.24347819](https://doi.org/10.5281/zenodo.24347819), is the
-version the paper cites. Version 1.0.0,
+versions; it resolves to the latest, which is version 2.0.1). Version 2.0.0,
+[10.5281/zenodo.24347819](https://doi.org/10.5281/zenodo.24347819), holds the
+same code, results and figures; its copy of the paper has the earlier wording
+of the two passages. Version 1.0.0,
 [10.5281/zenodo.24247107](https://doi.org/10.5281/zenodo.24247107), holds the
 results of the earlier version of the paper, including those the paper's
 audit invalidated; it is kept for the record.

@@ -693,7 +693,7 @@ refused rather than embedded unfaithfully.
 
 \paragraph{Setup.} All experiments call the platform's own modules; no
 separate research code reimplements the methods. They ran on a single
-workstation (AMD Ryzen 9 5950X, 16 cores, 62\,GB RAM) with Qiskit 2.5.2,
+workstation (AMD Ryzen 9 5950X, 16 cores, 64\,GB RAM) with Qiskit 2.5.2,
 Qiskit Aer 0.17, \texttt{qiskit-addon-sqd}~0.13, PySCF~2.14~\cite{pyscf2020},
 Amazon Braket SDK 1.117 (local analog simulator), D-Wave Ocean
 (\texttt{neal}), SciPy~1.17 with HiGHS~\cite{virtanen2020,huangfu2018}. Unless
@@ -747,25 +747,22 @@ within each qubit's marginal.
 platform's settings: transpilation at optimisation level~3 (best of eight
 seeds by two-qubit gate count in round~2), SamplerV2 with XY4 dynamical
 decoupling~\cite{viola1999} and Pauli twirling of two-qubit
-gates~\cite{wallman2016}, and no further error mitigation. Round~1
-(15~November 2026, ten jobs, 41\,s) ran the platform's production path
-end to end. Round~2 (17~November 2026, five jobs, 124\,s) was designed after
-the audit. Its analysis plan --- hypotheses, test statistics, shot counts, the
-rule that no run is excluded --- was committed and pushed to the repository
-at 00:17--00:18~UTC; the first job was submitted at 00:22~UTC. One follow-up
+gates~\cite{wallman2016}, and no further error mitigation. Round~1 (ten
+jobs, 41\,s) ran the platform's production path end to end. Round~2 (five
+jobs, 124\,s) was designed after the audit. Its analysis plan ---
+hypotheses, test statistics, shot counts, the rule that no run is excluded
+--- was fixed in writing before the first job was submitted. One follow-up
 experiment (the screened-qubit probe of Section~\ref{sec:res-hw}) was
 designed after a round-2 result was seen; it is labelled post hoc wherever
-it appears. Its plan was committed locally at 00:32~UTC and, amended after a
-failed transpilation and before any probe circuit had run, at 00:36~UTC; its
-probe was submitted at 00:36:54. Round~3 (17~November 2026, six jobs,
-400\,s) sampled portfolio circuits whose angles had been trained on the
-simulator. Its design was committed and pushed before the first job and
-amended once before any device data existed
-(Section~\ref{sec:res-hw3}). Every job
-identifier and the raw counts of rounds~2 and~3 are in the result files. The
-device's published calibration, which the transpiler uses to place circuits,
-was last updated on 13~November; its readout data were 3.9~days old when
-round~2 ran.
+it appears. Its plan was written down before the probe was submitted and
+amended once, after a failed transpilation and before any probe circuit had
+run. Round~3 (six jobs, 400\,s) sampled portfolio circuits whose angles had
+been trained on the simulator. Its design was fixed before the first job
+and amended once before any device data existed
+(Section~\ref{sec:res-hw3}). Every job identifier and the raw counts of
+rounds~2 and~3 are in the result files. The device's published calibration,
+which the transpiler uses to place circuits, was not recent: its readout
+data were 3.9~days old when round~2 ran.
 
 \paragraph{Reproducibility.} Experiment scripts, raw JSON results and figure
 generators are versioned with the paper source. Each result file records the

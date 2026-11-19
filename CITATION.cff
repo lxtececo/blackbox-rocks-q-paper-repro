@@ -15,12 +15,12 @@ identifiers:
     description: "Concept DOI (all versions)"
   - type: doi
     value: "10.5281/zenodo.24347819"
-    description: "Version 2.0.0, as cited in the paper"
+    description: "Version 2.0.0, same code, results and figures; earlier wording of two passages of the paper"
   - type: doi
     value: "10.5281/zenodo.24247107"
     description: "Version 1.0.0, results of the earlier version of the paper"
-version: "2.0.0"
-date-released: "2026-11-18"
+version: "2.0.1"
+date-released: "2026-11-19"
 keywords: [quantum computing, benchmarking, amplitude estimation, QAOA, sample-based quantum diagonalization, Rydberg arrays, reproducibility]
 preferred-citation:
   type: article
