@@ -137,7 +137,9 @@ either: name them explicitly, with `IBM_QUANTUM_TOKEN` set.
 Code: Apache-2.0 (`LICENSE`). Paper, figures and results: CC-BY-4.0
 (`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI:
 [10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
-versions; it resolves to the latest, which is version 2.0.1). Version 2.0.0,
+versions; it resolves to the latest). Version 2.0.1,
+[10.5281/zenodo.24368162](https://doi.org/10.5281/zenodo.24368162), is the
+version the paper cites. Version 2.0.0,
 [10.5281/zenodo.24347819](https://doi.org/10.5281/zenodo.24347819), holds the
 same code, results and figures; its copy of the paper has the earlier wording
 of the two passages. Version 1.0.0,
