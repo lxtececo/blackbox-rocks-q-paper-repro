@@ -155,7 +155,9 @@ Code: Apache-2.0 (`LICENSE`). Paper, figures and results: CC-BY-4.0
 (`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI:
 [10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
 versions; it resolves to the latest, and its page lists the DOI of each
-version). Version 2.0.1,
+version). Version 2.1.0,
+[10.5281/zenodo.24566863](https://doi.org/10.5281/zenodo.24566863), is the
+version the paper cites. Version 2.0.1,
 [10.5281/zenodo.24368162](https://doi.org/10.5281/zenodo.24368162), holds
 experiments E1 to E25, three hardware rounds and the paper as it stood on
 19 November 2026. Version 2.0.0,

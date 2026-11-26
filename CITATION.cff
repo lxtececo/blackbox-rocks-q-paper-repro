@@ -14,6 +14,9 @@ identifiers:
     value: "10.5281/zenodo.24247106"
     description: "Concept DOI (all versions)"
   - type: doi
+    value: "10.5281/zenodo.24566863"
+    description: "Version 2.1.0, as cited in the paper"
+  - type: doi
     value: "10.5281/zenodo.24368162"
     description: "Version 2.0.1: experiments E1 to E25, three hardware rounds"
   - type: doi
