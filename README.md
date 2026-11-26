@@ -161,7 +161,9 @@ the cover of the deck are not part of the licensed material. Cite via
 `CITATION.cff` or the Zenodo DOI:
 [10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
 versions; it resolves to the latest, and its page lists the DOI of each
-version). Version 2.1.0,
+version). Version 2.1.1,
+[10.5281/zenodo.24569405](https://doi.org/10.5281/zenodo.24569405), is the
+version the paper cites. Version 2.1.0,
 [10.5281/zenodo.24566863](https://doi.org/10.5281/zenodo.24566863), holds
 the same code and results without the summary deck. Version 2.0.1,
 [10.5281/zenodo.24368162](https://doi.org/10.5281/zenodo.24368162), holds

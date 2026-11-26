@@ -14,6 +14,9 @@ identifiers:
     value: "10.5281/zenodo.24247106"
     description: "Concept DOI (all versions)"
   - type: doi
+    value: "10.5281/zenodo.24569405"
+    description: "Version 2.1.1, as cited in the paper"
+  - type: doi
     value: "10.5281/zenodo.24566863"
     description: "Version 2.1.0: same code and results, without the summary deck"
   - type: doi
