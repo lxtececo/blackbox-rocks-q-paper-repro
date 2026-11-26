@@ -7,9 +7,12 @@ Code, raw results and paper source for
 > A. Nachtigall, *Every Quantum Run Needs a Referee: Design and Empirical
 > Lessons from a Vendor-Neutral Hybrid Quantum–Classical Platform*, 2026.
 
-**Version 2.1.0** (26 November 2026): experiments E1 to E32 and eight
+**Version 2.1.1** (26 November 2026): experiments E1 to E32 and eight
 hardware rounds on three IBM Heron devices (`ibm_marrakesh`, `ibm_kingston`
-and `ibm_fez`). New since version 2.0.1: hardware rounds 4 to 8, the seventh
+and `ibm_fez`). For a quick way in, start with
+[`paper/summary-deck.pdf`](paper/summary-deck.pdf): the paper in plain
+words, section by section, on 35 slides. The deck is what this version adds
+to version 2.1.0. New since version 2.0.1: hardware rounds 4 to 8, the seventh
 workload (mission resource allocation) with its solver modules and two
 experiments, and a paper that reports the platform as it stands.
 [`CHANGES.md`](CHANGES.md) says what changed from version to version and
@@ -32,6 +35,7 @@ API, tenancy, billing and credential code is not part of this package.
 | `paper/experiments/data/` | The simulated market data of the platform that E23 to E25 use, as fetched once |
 | `paper/experiments/legacy/` | Portfolio modules of an earlier version of the platform, which E19 measured |
 | `paper/main.tex`, `references.bib`, `figures/` | Paper source; `main.pdf` is the built paper |
+| `paper/summary-deck.pdf` | The paper in plain words: an overview, one or more slides per section, and an appendix for readers with a background in quantum computing. Built from the paper; it holds no result of its own |
 | `CHANGES.md` | Release notes: what changed from version to version, and the record of corrections |
 | `paper/PEER_REVIEW_2026-11-15.md` | The internal referee report on the first version of the paper and how it was addressed |
 
@@ -151,13 +155,15 @@ either: name them explicitly, with `IBM_QUANTUM_TOKEN` set.
 
 ## Licence and citation
 
-Code: Apache-2.0 (`LICENSE`). Paper, figures and results: CC-BY-4.0
-(`LICENSE-CC-BY-4.0`). Cite via `CITATION.cff` or the Zenodo DOI:
+Code: Apache-2.0 (`LICENSE`). Paper, figures, results and the summary deck:
+CC-BY-4.0 (`LICENSE-CC-BY-4.0`). The BLACKBOX.ROCKS logo and wordmark on
+the cover of the deck are not part of the licensed material. Cite via
+`CITATION.cff` or the Zenodo DOI:
 [10.5281/zenodo.24247106](https://doi.org/10.5281/zenodo.24247106) (all
 versions; it resolves to the latest, and its page lists the DOI of each
 version). Version 2.1.0,
-[10.5281/zenodo.24566863](https://doi.org/10.5281/zenodo.24566863), is the
-version the paper cites. Version 2.0.1,
+[10.5281/zenodo.24566863](https://doi.org/10.5281/zenodo.24566863), holds
+the same code and results without the summary deck. Version 2.0.1,
 [10.5281/zenodo.24368162](https://doi.org/10.5281/zenodo.24368162), holds
 experiments E1 to E25, three hardware rounds and the paper as it stood on
 19 November 2026. Version 2.0.0,

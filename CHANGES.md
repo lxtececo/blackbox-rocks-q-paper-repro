@@ -6,6 +6,16 @@ on that code. Where an earlier version of the paper or of this archive
 reported a result that a later check invalidated, the correction is listed
 here, under [Corrections](#corrections). Every version stays on Zenodo.
 
+## Version 2.1.1 (26 November 2026)
+
+Adds `paper/summary-deck.pdf`, a summary of the paper in plain words: an
+overview, one or more slides per section, and an appendix for readers with
+a background in quantum computing. The deck is built from the paper and
+holds no result of its own. It is under CC-BY-4.0; the logo and wordmark on
+its cover are excluded. The paper names the deck in its availability
+paragraph and cites this version. Code, results and figures are those of
+version 2.1.0.
+
 ## Version 2.1.0 (26 November 2026)
 
 New experiments and code:
