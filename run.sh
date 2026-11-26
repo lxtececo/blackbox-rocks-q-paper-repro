@@ -10,7 +10,7 @@ PY="${PYTHON:-python3}"
 
 ALL=(e1_montecarlo e2_facility e3_rydberg e4_chemistry e5_fleet e10_qaoa_exact e11_rydberg_tuned_control
      e12_sqd_selected_ci e20_portfolio_corrected e21_qaoa_fresh e23_qaoa_product_data
-     e25_qaoa_initial_angles)
+     e25_qaoa_initial_angles e31_mission_allocation e32_mission_equal_time)
 ANALYSES=(e13_hardware_statistics e16_hardware_summary e17_derived_statistics)
 
 if [[ $# -eq 0 ]]; then

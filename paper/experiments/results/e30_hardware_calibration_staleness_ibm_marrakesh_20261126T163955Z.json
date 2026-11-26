@@ -1,0 +1,504 @@
+{
+  "provenance": {
+    "commit": "0332d58f",
+    "uncommitted_changes": [],
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "design": "E30 - Cost of placing a circuit with old calibration data.\n\nAnalysis plan fixed before any run of this script.\n\nQuestion. Does a placement chosen from hours-old calibration data give fewer constraint-satisfying\nsamples than the placement chosen from the calibration data read at submission, when all circuits\nrun in the same job?\n\nDecisions\n 1. Routing. The circuit of hardware round 2A (e14.qaoa_problem(): 18 qubits, QAOA at depth 1, free\n    angles) is routed once on the device's coupling map WITHOUT error data: optimisation level 3\n    given only the coupling map and the device's basis gates, transpiler seeds 0 to 7, the circuit\n    with the fewest two-qubit gates, the lowest seed among equals. Every arm has this gate\n    structure. The arms differ in the physical qubits and, for the null, in one angle.\n 2. Placement. All isomorphic placements of the routed circuit's interaction graph on the coupling\n    map are enumerated (VF2, directed, not induced). The score of a placement under a set of error\n    data is the product of (1 - error) over every gate application and every measurement of the\n    routed circuit. A placement that uses a gate or a readout whose error is missing or >= 1 is not\n    eligible. The eligible placement with the highest score is chosen; ties go to the\n    lexicographically smallest list of physical qubits (listed in the order of the routed circuit's\n    qubits). The choice is a deterministic function of (routed circuit, coupling map, error data).\n 3. Snapshots. --snapshot stores what the device reports at that moment: the error of every gate\n    name and qubit tuple (the readout errors are those of \"measure\"), the device's\n    last_update_date and the UTC time of reading, as gzip JSON in\n    results/raw/e30_snapshot_<device>_<UTC time>.json.gz. A file is never replaced.\n 4. Submission. --submit reads fresh error data (and stores them as a snapshot), loads the stored\n    snapshots of this device and takes, for each requested age (default 6, 24 and 72 hours; --ages),\n    the snapshot whose age is closest to it, the more recent of two equally close ones, if its age\n    is within 25 percent of the requested age; otherwise that age is skipped and reported. The age\n    of a snapshot is the time from its reading to the reading of the fresh data. ONE job:\n      fresh      the exact-optimal angles on the placement chosen from the fresh data\n      age_<H>h   the exact-optimal angles on the placement chosen from the snapshot taken for age H;\n                 one arm per usable age whose placement differs from the fresh one\n      null       (gamma*, beta = 0) on the fresh placement; its ideal output is exactly uniform\n    with equal shots per arm (--shots, default 40 000). An age whose placement equals the fresh\n    placement gets no circuit and is reported as \"identical placement, no information\", not as\n    \"no effect\". Sampler settings as E14: XY4 dynamical decoupling, gate twirling.\n 5. Analysis. Primary outcome: the fraction of constraint-satisfying samples per arm (E14's\n    \"feasible\": one-hot, linking and site limit). One test per age: one-sided Fisher exact test,\n    fresh greater than stale. Family-wise alpha 0.01 as in the paper, Bonferroni over the number of\n    REQUESTED ages (3 by default, so 0.00333 per test), whether or not an age is skipped or\n    uninformative. Also reported: the score of each placement under the fresh data (what the stale\n    choice loses according to the device's own numbers), the number of physical qubits the\n    placements share, the ratio of the stale rate to the fresh rate with a 95% interval, and, as a\n    check outside the family, fresh against null (one-sided Fisher exact test): whether the fresh\n    placement shows a signal at all.\n 6. --plan prints the arms, the shots, the QPU-seconds estimate and the smallest relative drop of\n    the rate that a test detects with power 0.8 at the per-test alpha, for 40 000, 80 000 and\n    100 000 shots per arm at the Round 2A rate of 244 per 40 000.\n 7. --dry-run uses synthetic error data: the packaged errors of the fake_fez device model as\n    \"fresh\", and three \"stale\" sets, each the fresh errors multiplied per gate by exp(sigma z) with\n    a seeded standard normal z: one aged 6.5 h with sigma small enough that the placement stays\n    identical, one aged 22 h with sigma large enough that it changes, and one aged 40 h, so that\n    the requested 72 h has no snapshot within tolerance. Each arm is sampled with 300 shots on Aer\n    with the depolarising two-qubit errors and the readout errors of the fresh set (single-qubit\n    gate errors are left out; the device noise model takes about 0.1 s per shot). With --quick the\n    simulation is noiseless and uses the full number of shots. Dry-run counts carry no information\n    about hardware; the result says so and its name ends in _dryrun.\n\nNo run is excluded. Every submitted job is listed in results/e30_submission.json and in every\nresult. Raw counts are archived before any analysis. A device result is never replaced. A device\nthat already has a finished job of this experiment gets a further one only with --again.\n\nTo have a usable snapshot for the ages 6, 24 and 72 hours, take snapshots between 54 and 90,\nbetween 18 and 30, and between 4.5 and 7.5 hours before the submission.\n\nDevice, chosen on 20 November 2026 before the first snapshot: ibm_marrakesh, the device of hardware\nrounds 2 and 3. The detectable drop that --plan prints is computed at the rate measured there.\n\nAmendment of 26 November 2026, written and committed before any job of this experiment was\nsubmitted and before any placement was computed from a stored snapshot. The workstation that takes\nthe snapshots was suspended from the evening of 21 November until 26 November. The thirteen\nsnapshots of 20 and 21 November, taken for the 72-hour age, are 110 to 135 hours old on\n26 November; none exists for the 24-hour age; one was taken on 26 November at 11:39:51 UTC. The job\nis submitted on 26 November between 16:10 and 19:10 UTC, when that snapshot is 4.5 to 7.5 hours\nold, with --ages 6,24,120: the 72-hour age is replaced by 120 hours, which the snapshots of\n21 November serve within the tolerance of decision 4, and the 24-hour age stays requested and is\nreported as skipped. Three ages are requested, so the per-test alpha is 0.00333 as before. Nothing\nelse changes.",
+  "execution": "ibm_marrakesh",
+  "requested_ages_h": [
+    6.0,
+    24.0,
+    120.0
+  ],
+  "tolerance": 0.25,
+  "alpha_family": 0.01,
+  "alpha_per_test": 0.0033333333333333335,
+  "shots": 40000,
+  "parameters": {
+    "gamma": 0.4146880408103094,
+    "beta": 2.7275993151100137
+  },
+  "qubits": 18,
+  "routing": {
+    "transpiler_seed": 3,
+    "basis_gates": [
+      "cz",
+      "rz",
+      "sx",
+      "x"
+    ],
+    "two_qubit_gates": 214,
+    "depth": 239,
+    "qubits_in_use": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      16,
+      17,
+      23,
+      24,
+      25,
+      26,
+      27,
+      37,
+      45
+    ]
+  },
+  "placements": {
+    "enumerated": 284,
+    "eligible_under_fresh_data": 211,
+    "score_best": 0.24758486216557593,
+    "score_median": 0.09507131859770805,
+    "score_worst": 0.015199251228944005
+  },
+  "fresh": {
+    "snapshot": "e30_snapshot_ibm_marrakesh_20261126T163953Z.json.gz",
+    "read_utc": "2026-11-26T16:39:53Z",
+    "last_update_date": "2026-11-26 17:07:49+01:00",
+    "placement": [
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      97,
+      98,
+      87,
+      88,
+      89,
+      90,
+      91,
+      78,
+      69
+    ],
+    "score": 0.24758486216557593
+  },
+  "arms": {
+    "fresh": {
+      "placement": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        97,
+        98,
+        87,
+        88,
+        89,
+        90,
+        91,
+        78,
+        69
+      ],
+      "shots": 40000,
+      "approx_ratio": 0.5219559552916406,
+      "approx_ratio_ci95": 0.0027037811215563307,
+      "ideal_approx_ratio": 0.656790781384745,
+      "feasible": {
+        "count": 509,
+        "rate": 0.012725,
+        "ci95": [
+          0.011649569254450511,
+          0.013872002463624942
+        ],
+        "ideal_rate": 0.02700491672029543
+      },
+      "ground": {
+        "count": 9,
+        "rate": 0.000225,
+        "ci95": [
+          0.00010288932372783878,
+          0.00042707692208984895
+        ],
+        "ideal_rate": 0.0006103082975804433
+      },
+      "optimum": {
+        "count": 9,
+        "rate": 0.000225,
+        "ci95": [
+          0.00010288932372783878,
+          0.00042707692208984895
+        ],
+        "ideal_rate": 0.0005942318151439921
+      },
+      "top": {
+        "count": 847,
+        "rate": 0.021175,
+        "ci95": [
+          0.019786486343109696,
+          0.02263361519130265
+        ],
+        "ideal_rate": 0.05182757568619212
+      }
+    },
+    "null": {
+      "placement": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        97,
+        98,
+        87,
+        88,
+        89,
+        90,
+        91,
+        78,
+        69
+      ],
+      "shots": 40000,
+      "approx_ratio": -0.0022919457469617196,
+      "approx_ratio_ci95": 0.00451335209377646,
+      "ideal_approx_ratio": 1.2345542219889863e-15,
+      "feasible": {
+        "count": 22,
+        "rate": 0.00055,
+        "ci95": [
+          0.000344713154307454,
+          0.0008325889001777694
+        ],
+        "ideal_rate": 0.0007934570312499967
+      },
+      "ground": {
+        "count": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          9.22177340369863e-05
+        ],
+        "ideal_rate": 7.629394531249968e-06
+      },
+      "optimum": {
+        "count": 1,
+        "rate": 2.5e-05,
+        "ci95": [
+          6.329448164848377e-07,
+          0.00013928312517954696
+        ],
+        "ideal_rate": 7.6293945312499805e-06
+      },
+      "top": {
+        "count": 32,
+        "rate": 0.0008,
+        "ci95": [
+          0.0005472617516434347,
+          0.0011291753031268097
+        ],
+        "ideal_rate": 0.0009994506835937463
+      }
+    },
+    "age_6h": {
+      "placement": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        97,
+        98,
+        107,
+        108,
+        109,
+        110,
+        111,
+        118,
+        129
+      ],
+      "shots": 40000,
+      "approx_ratio": 0.5018219898396539,
+      "approx_ratio_ci95": 0.002764908097094548,
+      "ideal_approx_ratio": 0.656790781384745,
+      "feasible": {
+        "count": 394,
+        "rate": 0.00985,
+        "ci95": [
+          0.008905409336788548,
+          0.010866727175330788
+        ],
+        "ideal_rate": 0.02700491672029543
+      },
+      "ground": {
+        "count": 13,
+        "rate": 0.000325,
+        "ci95": [
+          0.00017305979804755245,
+          0.0005556957745053688
+        ],
+        "ideal_rate": 0.0006103082975804433
+      },
+      "optimum": {
+        "count": 6,
+        "rate": 0.00015,
+        "ci95": [
+          5.504928178627902e-05,
+          0.0003264580409614693
+        ],
+        "ideal_rate": 0.0005942318151439921
+      },
+      "top": {
+        "count": 655,
+        "rate": 0.016375,
+        "ci95": [
+          0.015153979775447805,
+          0.017666933872365127
+        ],
+        "ideal_rate": 0.05182757568619212
+      }
+    },
+    "age_120h": {
+      "placement": [
+        98,
+        111,
+        110,
+        109,
+        118,
+        129,
+        128,
+        127,
+        137,
+        108,
+        126,
+        107,
+        106,
+        105,
+        117,
+        125,
+        104,
+        103
+      ],
+      "shots": 40000,
+      "approx_ratio": 0.4580795701076528,
+      "approx_ratio_ci95": 0.002984469505372735,
+      "ideal_approx_ratio": 0.656790781384745,
+      "feasible": {
+        "count": 329,
+        "rate": 0.008225,
+        "ci95": [
+          0.007363245421133328,
+          0.009159242400260288
+        ],
+        "ideal_rate": 0.02700491672029543
+      },
+      "ground": {
+        "count": 11,
+        "rate": 0.000275,
+        "ci95": [
+          0.00013728674713798763,
+          0.000491997563238847
+        ],
+        "ideal_rate": 0.0006103082975804433
+      },
+      "optimum": {
+        "count": 2,
+        "rate": 5e-05,
+        "ci95": [
+          6.0552893222270416e-06,
+          0.0001806053963407168
+        ],
+        "ideal_rate": 0.0005942318151439921
+      },
+      "top": {
+        "count": 593,
+        "rate": 0.014825,
+        "ci95": [
+          0.013663492380899544,
+          0.016057694946379555
+        ],
+        "ideal_rate": 0.05182757568619212
+      }
+    }
+  },
+  "ages": [
+    {
+      "age_h": 6.0,
+      "status": "tested",
+      "snapshot": "e30_snapshot_ibm_marrakesh_20261126T113951Z.json.gz",
+      "snapshot_age_h": 5.001,
+      "snapshot_read_utc": "2026-11-26T11:39:51Z",
+      "snapshot_last_update_date": "2026-11-26 12:22:37+01:00",
+      "placement": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        97,
+        98,
+        107,
+        108,
+        109,
+        110,
+        111,
+        118,
+        129
+      ],
+      "score_under_snapshot": 0.3738240802321305,
+      "score_under_fresh_data": 0.1989211884299615,
+      "shared_physical_qubits": 12,
+      "arm": "age_6h",
+      "test": {
+        "hypothesis": "P(constraint-satisfying | fresh placement) > P(constraint-satisfying | this placement)",
+        "method": "one-sided Fisher exact test",
+        "fresh": [
+          509,
+          40000
+        ],
+        "stale": [
+          394,
+          40000
+        ],
+        "p": 6.673422335817954e-05,
+        "alpha": 0.0033333333333333335,
+        "rejects": true
+      },
+      "stale_rate_over_fresh_rate": {
+        "ratio": 0.7740667976424361,
+        "ci95": [
+          0.6791707000761869,
+          0.8822221087352596
+        ]
+      }
+    },
+    {
+      "age_h": 24.0,
+      "status": "no snapshot within tolerance",
+      "snapshot": "e30_snapshot_ibm_marrakesh_20261126T113951Z.json.gz",
+      "snapshot_age_h": 5.001,
+      "snapshot_read_utc": "2026-11-26T11:39:51Z",
+      "snapshot_last_update_date": "2026-11-26 12:22:37+01:00"
+    },
+    {
+      "age_h": 120.0,
+      "status": "tested",
+      "snapshot": "e30_snapshot_ibm_marrakesh_20261121T172606Z.json.gz",
+      "snapshot_age_h": 119.23,
+      "snapshot_read_utc": "2026-11-21T17:26:06Z",
+      "snapshot_last_update_date": "2026-11-21 18:07:19+01:00",
+      "placement": [
+        98,
+        111,
+        110,
+        109,
+        118,
+        129,
+        128,
+        127,
+        137,
+        108,
+        126,
+        107,
+        106,
+        105,
+        117,
+        125,
+        104,
+        103
+      ],
+      "score_under_snapshot": 0.3203429622909351,
+      "score_under_fresh_data": 0.11369241115858364,
+      "shared_physical_qubits": 9,
+      "arm": "age_120h",
+      "test": {
+        "hypothesis": "P(constraint-satisfying | fresh placement) > P(constraint-satisfying | this placement)",
+        "method": "one-sided Fisher exact test",
+        "fresh": [
+          509,
+          40000
+        ],
+        "stale": [
+          329,
+          40000
+        ],
+        "p": 2.1982092555458901e-10,
+        "alpha": 0.0033333333333333335,
+        "rejects": true
+      },
+      "stale_rate_over_fresh_rate": {
+        "ratio": 0.6463654223968566,
+        "ci95": [
+          0.5630742639392015,
+          0.7419771884928095
+        ]
+      }
+    }
+  ],
+  "signal_check": {
+    "note": "outside the family of tests: whether the fresh placement shows a signal at all",
+    "method": "one-sided Fisher exact test, fresh against null",
+    "fresh": [
+      509,
+      40000
+    ],
+    "null": [
+      22,
+      40000
+    ],
+    "p": 1.718360086845538e-122,
+    "uniform_rate": 0.00079345703125
+  },
+  "sensitivity": {
+    "note": "smallest relative drop from the observed fresh rate that one test detects with power 0.8 at the per-test alpha; None if even a rate of 0 is not detected",
+    "relative_drop": 0.211181640625,
+    "method": "exact power of the one-sided Fisher exact test for two independent binomial samples; no normal approximation; counts further than 8 standard deviations from their mean are left out; the difference is located by bisection"
+  },
+  "job": {
+    "job_id": "dc461muq4uuc73a87290",
+    "device": "ibm_marrakesh",
+    "submitted_utc": "2026-11-26T16:39:55Z",
+    "usage_s": 48.0,
+    "estimate": {
+      "pubs": 3,
+      "shots": 160000,
+      "seconds": 50.77056277056277,
+      "seconds_per_shot": 0.0003173160173160173
+    },
+    "archive": "e30_ibm_marrakesh_20261126T163955Z_dc461muq4uuc73a87290.json.gz",
+    "provenance_at_submission": {
+      "commit": "0332d58f",
+      "uncommitted_changes": [],
+      "python": "3.12.3",
+      "machine": "x86_64"
+    },
+    "analysis_code_changed_since_submission": false
+  },
+  "submissions": [
+    {
+      "job_id": "dc461muq4uuc73a87290",
+      "device": "ibm_marrakesh",
+      "submitted_utc": "2026-11-26T16:39:55Z",
+      "state": "DONE"
+    }
+  ],
+  "wall_s": 0.7
+}

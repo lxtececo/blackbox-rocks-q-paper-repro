@@ -210,7 +210,8 @@ def diagonalize(
     result = diagonalize_fermionic_hamiltonian(
         problem.h1e,
         problem.h2e,
-        BitArray.from_counts(combined),
+        # Without num_bits the width is taken from the largest outcome sampled.
+        BitArray.from_counts(combined, num_bits=2 * norb),
         samples_per_batch=samples_per_batch,
         norb=norb,
         nelec=(n_alpha, n_beta),

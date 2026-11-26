@@ -1,0 +1,300 @@
+{
+  "provenance": {
+    "commit": "ecaca376",
+    "uncommitted_changes": [
+      "reports/paper/quantumfpo-arxiv/experiments/e14_ibm_hardware_controls.py"
+    ],
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "design": "E26 - Replication of hardware round 2A (QAOA against depth-matched nulls) on a second device and day.\n\nAnalysis plan fixed before any run of this script.\n\nQuestion. Round 2A (E14 part A; ibm_marrakesh; job submitted 17 November 2026 UTC) found 244\nconstraint-satisfying samples in the 40 000 shots of the exact-optimal binding against 70 in the\n80 000 shots of the two nulls. Does the test of Round 2A reject again on another device, on another\nday?\n\nWhat is run. Nothing of Round 2A is changed.\n - Instance, circuit and bindings are e14.qaoa_problem(): the 18-qubit instance, QAOA at depth 1 on\n   the normalised Hamiltonian. One parameterised circuit is transpiled once and bound three ways, so\n   the three executions use the same physical gates on the same qubits:\n     qaoa        (gamma*, beta*)   the exact-optimal angles of E10\n     null_beta   (gamma*, 0)       ideal output exactly uniform\n     null_gamma  (0, beta*)        ideal output exactly uniform\n - 40 000 shots per binding.\n - Transpilation: the procedure of E14's hardware branch. Optimisation level 3 for the device, with\n   the device's error data, once per transpiler seed 0 to 7; the circuit with the fewest two-qubit\n   gates is kept, the lowest seed among equals.\n - Readout calibration in the same job: all-0 and all-1 on the 18 measured physical qubits, 4 000\n   shots each. It is reported, not used to correct counts.\n - Sampler settings of E14: XY4 dynamical decoupling, gate twirling, at most 300 s of execution.\n - One job of three pubs, 128 000 shots.\n\nHypothesis and test, exactly as in Round 2A. P(constraint-satisfying | qaoa) is greater than\nP(constraint-satisfying | null): one-sided Fisher exact test of the constraint-satisfying samples\nof the qaoa binding against those of the two nulls pooled, alpha = 0.01. \"Constraint-satisfying\" is\nE14's \"feasible\": one-hot, linking and site limit, the constraints the QUBO encodes.\n\nReplication criterion. Round 2A is replicated if this test rejects (p <= 0.01) on the new device.\nNothing else enters the criterion.\n\nReported descriptively only, whatever the outcome\n - the comparison with the Round 2A figures on ibm_marrakesh (244 of 40 000 against 70 of 80 000):\n   both pairs of counts, the ratio of the qaoa rate to the null rate in each run, and the ratio of\n   this run's rates to those of Round 2A, with 95% intervals (Katz); no test is made on them;\n - what E14 part A reports for each binding: constraint-satisfying samples, QUBO ground level, true\n   optimum and lowest 0.1% of states with exact 95% intervals, the approximation ratio with a\n   Student-t interval, the noiseless values, whether the two nulls differ from each other and from\n   the uniform rate, and the retained fraction of the excess of constraint-satisfying samples;\n - the circuit: transpiler seed, two-qubit gates, depth, physical qubits, the device's reported\n   two-qubit errors and their product over the circuit's gates, the reported readout errors and the\n   date of the calibration data, all read at submission; the measured readout errors; QPU seconds.\n\nDevice. QFPO_IBM_BACKEND names it; there is no default. --submit refuses ibm_marrakesh, the device\nof Round 2A, unless --same-device is given. The result of such a run is labelled \"same device,\nother day\": it is a repeat, not a replication on a second device.\n\nNo run is excluded. Every submitted job is listed in results/e26_submission.json and in every\nresult. Raw counts are archived before any analysis. A device result is never replaced.",
+  "execution": "Aer on the logical circuit, two-qubit depolarising error 0",
+  "note": "dry run: it validates the pipeline and the analysis and carries no information about a device",
+  "relation_to_round_2a": "dry run, no device",
+  "verdict": "dry run, no verdict",
+  "parameters": {
+    "gamma": 0.4146880408103094,
+    "beta": 2.7275993151100137
+  },
+  "qubits": 18,
+  "arm_names": [
+    "qaoa",
+    "null_beta",
+    "null_gamma"
+  ],
+  "shots": 40000,
+  "calibration_shots": 4000,
+  "circuit": {
+    "two_qubit_gates": 90,
+    "depth": 46
+  },
+  "test": {
+    "hypothesis": "P(constraint-satisfying | qaoa) > P(constraint-satisfying | pooled nulls)",
+    "method": "one-sided Fisher exact test",
+    "p": 0.0,
+    "alpha": 0.01,
+    "rejects": true
+  },
+  "arms": {
+    "qaoa": {
+      "shots": 40000,
+      "approx_ratio": 0.655770188712823,
+      "approx_ratio_ci95": 0.0019820030753331594,
+      "ideal_approx_ratio": 0.656790781384745,
+      "feasible": {
+        "count": 1032,
+        "rate": 0.0258,
+        "ci95": [
+          0.0242683521214595,
+          0.027400998857956153
+        ],
+        "ideal_rate": 0.02700491672029543
+      },
+      "ground": {
+        "count": 18,
+        "rate": 0.00045,
+        "ci95": [
+          0.0002667196325841458,
+          0.0007111011253212449
+        ],
+        "ideal_rate": 0.0006103082975804433
+      },
+      "optimum": {
+        "count": 27,
+        "rate": 0.000675,
+        "ci95": [
+          0.00044487489741363515,
+          0.0009819387574000254
+        ],
+        "ideal_rate": 0.0005942318151439921
+      },
+      "top": {
+        "count": 2062,
+        "rate": 0.05155,
+        "ci95": [
+          0.04940321322228595,
+          0.05376217728796231
+        ],
+        "ideal_rate": 0.05182757568619212
+      }
+    },
+    "null_beta": {
+      "shots": 40000,
+      "approx_ratio": -0.0028423375093091104,
+      "approx_ratio_ci95": 0.004542235723464475,
+      "ideal_approx_ratio": 1.2345542219889863e-15,
+      "feasible": {
+        "count": 32,
+        "rate": 0.0008,
+        "ci95": [
+          0.0005472617516434347,
+          0.0011291753031268097
+        ],
+        "ideal_rate": 0.0007934570312499967
+      },
+      "ground": {
+        "count": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          9.22177340369863e-05
+        ],
+        "ideal_rate": 7.629394531249968e-06
+      },
+      "optimum": {
+        "count": 1,
+        "rate": 2.5e-05,
+        "ci95": [
+          6.329448164848377e-07,
+          0.00013928312517954696
+        ],
+        "ideal_rate": 7.6293945312499805e-06
+      },
+      "top": {
+        "count": 34,
+        "rate": 0.00085,
+        "ci95": [
+          0.0005887192942281371,
+          0.0011875891727901075
+        ],
+        "ideal_rate": 0.0009994506835937463
+      }
+    },
+    "null_gamma": {
+      "shots": 40000,
+      "approx_ratio": 0.0021326300273804416,
+      "approx_ratio_ci95": 0.00450470615791994,
+      "ideal_approx_ratio": 1.9204176786495342e-15,
+      "feasible": {
+        "count": 48,
+        "rate": 0.0012,
+        "ci95": [
+          0.0008849137117784047,
+          0.0015907147895595098
+        ],
+        "ideal_rate": 0.0007934570312499967
+      },
+      "ground": {
+        "count": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          9.22177340369863e-05
+        ],
+        "ideal_rate": 7.629394531249966e-06
+      },
+      "optimum": {
+        "count": 1,
+        "rate": 2.5e-05,
+        "ci95": [
+          6.329448164848377e-07,
+          0.00013928312517954696
+        ],
+        "ideal_rate": 7.629394531249966e-06
+      },
+      "top": {
+        "count": 39,
+        "rate": 0.000975,
+        "ci95": [
+          0.0006934093229899699,
+          0.0013326185834681193
+        ],
+        "ideal_rate": 0.0009994506835937459
+      }
+    }
+  },
+  "tests": {
+    "feasible_qaoa_vs_pooled_null_fisher_p": 0.0,
+    "pooled_null_feasible": {
+      "count": 80,
+      "shots": 80000,
+      "rate": 0.001,
+      "ci95": [
+        0.0007930149700402478,
+        0.001244434333165159
+      ],
+      "p_vs_uniform": 0.0441022738509359
+    },
+    "nulls_differ_fisher_p": 0.09274876156762284,
+    "retained_fraction_of_feasible_excess": {
+      "estimate": 0.9461510459245684,
+      "ci95": [
+        0.886062824257988,
+        1.0071930488874439
+      ]
+    },
+    "uniform_feasible_rate": 0.00079345703125
+  },
+  "measured_readout": {
+    "p_read1_given0": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "p_read0_given1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean_assignment_error": 0.0
+  },
+  "against_round_2a": {
+    "round_2a": {
+      "device": "ibm_marrakesh",
+      "job_id": "dbtpsl49po4c73ce53r0",
+      "submitted_utc": "2026-11-17T00:22:44Z",
+      "feasible": 244,
+      "shots": 40000,
+      "null_feasible": 70,
+      "null_shots": 80000,
+      "approx_ratio": 0.43109695053070146,
+      "two_qubit_gates": 214,
+      "depth": 234,
+      "retained_fraction": {
+        "estimate": 0.19934029092563996,
+        "ci95": [
+          0.1707149297705884,
+          0.2303381830552251
+        ]
+      }
+    },
+    "this_run": {
+      "feasible": 1032,
+      "shots": 40000,
+      "null_feasible": 80,
+      "null_shots": 80000,
+      "approx_ratio": 0.655770188712823,
+      "retained_fraction": {
+        "estimate": 0.9461510459245684,
+        "ci95": [
+          0.886062824257988,
+          1.0071930488874439
+        ]
+      }
+    },
+    "qaoa_rate_over_null_rate": {
+      "this_run": {
+        "ratio": 25.8,
+        "ci95": [
+          20.557499360057967,
+          32.37942457599197
+        ]
+      },
+      "round_2a": {
+        "ratio": 6.9714285714285715,
+        "ci95": [
+          5.345975115368477,
+          9.091104106866153
+        ]
+      }
+    },
+    "this_run_over_round_2a": {
+      "qaoa_rate": {
+        "ratio": 4.229508196721311,
+        "ci95": [
+          3.6812598751347534,
+          4.859406885931393
+        ]
+      },
+      "null_rate": {
+        "ratio": 1.1428571428571428,
+        "ci95": [
+          0.8293663657739299,
+          1.5748437637216852
+        ]
+      }
+    },
+    "note": "descriptive only: no test is made on these comparisons"
+  },
+  "wall_s": 2.6
+}

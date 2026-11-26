@@ -17,6 +17,12 @@ else
     latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 fi
 
+# An overfull page cuts content off at the page bottom without an error.
+if grep -q 'Overfull \\vbox' main.log; then
+  echo "main.log reports an overfull page: content runs past the bottom of a page" >&2
+  exit 1
+fi
+
 if [[ "${1:-}" == "bundle" ]]; then
   # Ancillary files: a redacted, scanned copy of experiments/ where the builder exists (the platform
   # repository); in the public package experiments/ is that copy already.

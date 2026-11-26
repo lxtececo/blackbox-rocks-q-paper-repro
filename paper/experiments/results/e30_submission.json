@@ -1,0 +1,293 @@
+{
+ "experiment": "e30",
+ "jobs": [
+  {
+   "job_id": "dc461muq4uuc73a87290",
+   "submitted_utc": "2026-11-26T16:39:55Z",
+   "tag": "ibm_marrakesh_20261126T163955Z",
+   "device": "ibm_marrakesh",
+   "state": "DONE",
+   "usage_s": 48.0,
+   "estimate": {
+    "pubs": 3,
+    "shots": 160000,
+    "seconds": 50.77056277056277,
+    "seconds_per_shot": 0.0003173160173160173
+   },
+   "max_execution_s": 300,
+   "provenance": {
+    "commit": "0332d58f",
+    "uncommitted_changes": [],
+    "python": "3.12.3",
+    "machine": "x86_64"
+   },
+   "code_sha256": "fc1910088bbd8f30173dd4e71f11ab201effdb13e754e153bc822effe8cadff2",
+   "requested_ages_h": [
+    6.0,
+    24.0,
+    120.0
+   ],
+   "tolerance": 0.25,
+   "alpha_family": 0.01,
+   "alpha_per_test": 0.0033333333333333335,
+   "shots": 40000,
+   "parameters": {
+    "gamma": 0.4146880408103094,
+    "beta": 2.7275993151100137
+   },
+   "qubits": 18,
+   "routing": {
+    "transpiler_seed": 3,
+    "basis_gates": [
+     "cz",
+     "rz",
+     "sx",
+     "x"
+    ],
+    "two_qubit_gates": 214,
+    "depth": 239,
+    "qubits_in_use": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     16,
+     17,
+     23,
+     24,
+     25,
+     26,
+     27,
+     37,
+     45
+    ]
+   },
+   "placements": {
+    "enumerated": 284,
+    "eligible_under_fresh_data": 211,
+    "score_best": 0.24758486216557593,
+    "score_median": 0.09507131859770805,
+    "score_worst": 0.015199251228944005
+   },
+   "fresh": {
+    "snapshot": "e30_snapshot_ibm_marrakesh_20261126T163953Z.json.gz",
+    "read_utc": "2026-11-26T16:39:53Z",
+    "last_update_date": "2026-11-26 17:07:49+01:00",
+    "placement": [
+     104,
+     105,
+     106,
+     107,
+     108,
+     109,
+     110,
+     111,
+     112,
+     97,
+     98,
+     87,
+     88,
+     89,
+     90,
+     91,
+     78,
+     69
+    ],
+    "score": 0.24758486216557593
+   },
+   "ages": [
+    {
+     "age_h": 6.0,
+     "status": "tested",
+     "snapshot": "e30_snapshot_ibm_marrakesh_20261126T113951Z.json.gz",
+     "snapshot_age_h": 5.001,
+     "snapshot_read_utc": "2026-11-26T11:39:51Z",
+     "snapshot_last_update_date": "2026-11-26 12:22:37+01:00",
+     "placement": [
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      97,
+      98,
+      107,
+      108,
+      109,
+      110,
+      111,
+      118,
+      129
+     ],
+     "score_under_snapshot": 0.3738240802321305,
+     "score_under_fresh_data": 0.1989211884299615,
+     "shared_physical_qubits": 12,
+     "arm": "age_6h"
+    },
+    {
+     "age_h": 24.0,
+     "status": "no snapshot within tolerance",
+     "snapshot": "e30_snapshot_ibm_marrakesh_20261126T113951Z.json.gz",
+     "snapshot_age_h": 5.001,
+     "snapshot_read_utc": "2026-11-26T11:39:51Z",
+     "snapshot_last_update_date": "2026-11-26 12:22:37+01:00"
+    },
+    {
+     "age_h": 120.0,
+     "status": "tested",
+     "snapshot": "e30_snapshot_ibm_marrakesh_20261121T172606Z.json.gz",
+     "snapshot_age_h": 119.23,
+     "snapshot_read_utc": "2026-11-21T17:26:06Z",
+     "snapshot_last_update_date": "2026-11-21 18:07:19+01:00",
+     "placement": [
+      98,
+      111,
+      110,
+      109,
+      118,
+      129,
+      128,
+      127,
+      137,
+      108,
+      126,
+      107,
+      106,
+      105,
+      117,
+      125,
+      104,
+      103
+     ],
+     "score_under_snapshot": 0.3203429622909351,
+     "score_under_fresh_data": 0.11369241115858364,
+     "shared_physical_qubits": 9,
+     "arm": "age_120h"
+    }
+   ],
+   "arms": [
+    {
+     "arm": "fresh",
+     "pub": 0,
+     "binding": 0,
+     "angles": "qaoa",
+     "placement": [
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      97,
+      98,
+      87,
+      88,
+      89,
+      90,
+      91,
+      78,
+      69
+     ]
+    },
+    {
+     "arm": "null",
+     "pub": 0,
+     "binding": 1,
+     "angles": "null_beta",
+     "placement": [
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      97,
+      98,
+      87,
+      88,
+      89,
+      90,
+      91,
+      78,
+      69
+     ]
+    },
+    {
+     "arm": "age_6h",
+     "pub": 1,
+     "binding": 0,
+     "angles": "qaoa",
+     "placement": [
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      97,
+      98,
+      107,
+      108,
+      109,
+      110,
+      111,
+      118,
+      129
+     ]
+    },
+    {
+     "arm": "age_120h",
+     "pub": 2,
+     "binding": 0,
+     "angles": "qaoa",
+     "placement": [
+      98,
+      111,
+      110,
+      109,
+      118,
+      129,
+      128,
+      127,
+      137,
+      108,
+      126,
+      107,
+      106,
+      105,
+      117,
+      125,
+      104,
+      103
+     ]
+    }
+   ],
+   "timestamps": {
+    "created": "2026-11-26T16:39:55.133074Z",
+    "running": "2026-11-26T16:39:56.401490Z",
+    "finished": "2026-11-26T16:41:02.458198Z",
+    "execution_start": "2026-11-26T16:40:07.994067Z",
+    "execution_stop": "2026-11-26T16:40:56.937204Z"
+   },
+   "archive": "e30_ibm_marrakesh_20261126T163955Z_dc461muq4uuc73a87290.json.gz"
+  }
+ ]
+}

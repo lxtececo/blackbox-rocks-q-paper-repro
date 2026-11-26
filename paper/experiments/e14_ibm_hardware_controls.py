@@ -256,7 +256,8 @@ def gate_errors(backend, circuit):
         if inst.operation.num_qubits == 2:
             pair = tuple(circuit.find_bit(q).index for q in inst.qubits)
             error = target[inst.operation.name][pair].error
-            log_ok += math.log1p(-float(error)) if error is not None else 0.0
+            # A gate reported with error 1 makes the product 0.
+            log_ok += 0.0 if error is None else math.log1p(-float(error)) if float(error) < 1 else -math.inf
     readout = [target["measure"][(q,)].error for q in measured_physical(circuit)]
     return {"median_two_qubit_error": float(np.median(every)), "two_qubit_gate_names": names,
             "p_no_two_qubit_error": math.exp(log_ok),
@@ -278,7 +279,8 @@ def counts_vector(counts: dict, n_bits: int) -> np.ndarray:
 # --------------------------------------------------------------------------- A: QAOA
 
 
-def qaoa_part(runner: Runner) -> dict:
+def qaoa_problem() -> dict:
+    """The instance of part A: its states, the parameterised circuit, the three bindings and their exact outputs."""
     import e10_qaoa_exact as e10
     from qiskit.circuit import Parameter
     from qiskit.quantum_info import Statevector
@@ -288,8 +290,7 @@ def qaoa_part(runner: Runner) -> dict:
     ctx = e10._context()
     stored = json.loads((RESULTS / "e10_qaoa_exact.json").read_text())
     gamma_star, beta_star = stored["exact_opt"][0]["params"]
-    n, energies, feasible = ctx["n"], ctx["energies"], ctx["feasible"]
-    e0, eu = float(energies.min()), float(energies.mean())
+    n, energies = ctx["n"], ctx["energies"]
     order = np.argsort(energies, kind="stable")
     top = np.zeros(len(energies), bool)
     top[order[: max(1, int(round(e10.TOP_FRACTION * len(energies))))]] = True
@@ -307,36 +308,37 @@ def qaoa_part(runner: Runner) -> dict:
     assert np.abs(ideal["qaoa"] - reference).max() < 1e-10, "parameterised circuit differs from the E10 state"
     for name in ("null_beta", "null_gamma"):
         assert np.abs(ideal[name] - 2.0 ** -n).max() < 1e-12, f"{name} is not uniform"
+    masks = {"feasible": ctx["feasible"], "ground": ctx["ground"], "optimum": ctx["optimum"], "top": top}
+    return {"n": n, "energies": energies, "masks": masks, "circuit": circuit, "bindings": bindings, "ideal": ideal}
 
-    isa = runner.prepare(circuit)
-    physical = measured_physical(isa) if not SIM else list(range(n))
-    pubs = [(isa, list(bindings.values()), QAOA_SHOTS)]
-    if not SIM:
-        pubs += [(c, None, CAL_SHOTS) for c in calibration_circuits(runner.backend, physical)]
-    counts, meta = runner.run(pubs, "E14-A qaoa")
 
-    def stats(count_dict, prob):
-        v = counts_vector(count_dict, n)
-        shots = int(v.sum())
-        mean_e = float(v @ energies / shots)
-        sd_e = math.sqrt(float(v @ (energies - mean_e) ** 2 / (shots - 1)))
-        half = float(student_t.ppf(0.975, shots - 1)) * sd_e / math.sqrt(shots) / (eu - e0)
-        row = {"shots": shots, "approx_ratio": (eu - mean_e) / (eu - e0), "approx_ratio_ci95": half,
-               "ideal_approx_ratio": float((eu - prob @ energies) / (eu - e0))}
-        for key, mask in (("feasible", feasible), ("ground", ctx["ground"]), ("optimum", ctx["optimum"]), ("top", top)):
-            k = int(v[mask].sum())
-            row[key] = {"count": k, "rate": k / shots, "ci95": exact_ci(k, shots), "ideal_rate": float(prob[mask].sum())}
-        return row
+def qaoa_arm(problem: dict, count_dict: dict, prob) -> dict:
+    """The counts of one binding against its exact distribution prob."""
+    n, energies = problem["n"], problem["energies"]
+    e0, eu = float(energies.min()), float(energies.mean())
+    v = counts_vector(count_dict, n)
+    shots = int(v.sum())
+    mean_e = float(v @ energies / shots)
+    sd_e = math.sqrt(float(v @ (energies - mean_e) ** 2 / (shots - 1)))
+    half = float(student_t.ppf(0.975, shots - 1)) * sd_e / math.sqrt(shots) / (eu - e0)
+    row = {"shots": shots, "approx_ratio": (eu - mean_e) / (eu - e0), "approx_ratio_ci95": half,
+           "ideal_approx_ratio": float((eu - prob @ energies) / (eu - e0))}
+    for key, mask in problem["masks"].items():
+        k = int(v[mask].sum())
+        row[key] = {"count": k, "rate": k / shots, "ci95": exact_ci(k, shots), "ideal_rate": float(prob[mask].sum())}
+    return row
 
-    arms = {name: stats(counts[0][i], ideal[name]) for i, name in enumerate(bindings)}
+
+def qaoa_tests(problem: dict, arms: dict, seed: int) -> dict:
+    """Hypothesis A1 and the checks reported with it; seed is for the bootstrap of the retained fraction."""
     null_k = arms["null_beta"]["feasible"]["count"] + arms["null_gamma"]["feasible"]["count"]
     null_n = arms["null_beta"]["shots"] + arms["null_gamma"]["shots"]
     q_k, q_n = arms["qaoa"]["feasible"]["count"], arms["qaoa"]["shots"]
-    p_uniform = float(feasible.mean())
+    p_uniform = float(problem["masks"]["feasible"].mean())
     excess_ideal = arms["qaoa"]["feasible"]["ideal_rate"] - p_uniform
-    rng = np.random.default_rng(point_seed(14, 1))
+    rng = np.random.default_rng(seed)
     boot = (rng.binomial(q_n, q_k / q_n, BOOT) / q_n - rng.binomial(null_n, null_k / null_n, BOOT) / null_n) / excess_ideal
-    tests = {
+    return {
         "feasible_qaoa_vs_pooled_null_fisher_p": float(fisher_exact([[q_k, q_n - q_k], [null_k, null_n - null_k]],
                                                                     alternative="greater").pvalue),
         "pooled_null_feasible": {"count": null_k, "shots": null_n, "rate": null_k / null_n, "ci95": exact_ci(null_k, null_n),
@@ -348,14 +350,29 @@ def qaoa_part(runner: Runner) -> dict:
                                                  "ci95": [float(x) for x in np.percentile(boot, [2.5, 97.5])]},
         "uniform_feasible_rate": p_uniform,
     }
-    out = {"parameters": {"gamma": gamma_star, "beta": beta_star}, "qubits": n, "two_qubit_gates": two_qubit_gates(isa),
+
+
+def qaoa_part(runner: Runner) -> dict:
+    problem = qaoa_problem()
+    n, bindings = problem["n"], problem["bindings"]
+    isa = runner.prepare(problem["circuit"])
+    physical = measured_physical(isa) if not SIM else list(range(n))
+    pubs = [(isa, list(bindings.values()), QAOA_SHOTS)]
+    if not SIM:
+        pubs += [(c, None, CAL_SHOTS) for c in calibration_circuits(runner.backend, physical)]
+    counts, meta = runner.run(pubs, "E14-A qaoa")
+
+    arms = {name: qaoa_arm(problem, counts[0][i], problem["ideal"][name]) for i, name in enumerate(bindings)}
+    tests = qaoa_tests(problem, arms, point_seed(14, 1))
+    out = {"parameters": dict(bindings["qaoa"]), "qubits": n, "two_qubit_gates": two_qubit_gates(isa),
            "depth": isa.depth(), "physical_qubits": physical, "arms": arms, "tests": tests, "run": meta}
     if not SIM:
         out["calibration"] = {**gate_errors(runner.backend, isa),
                               "measured": readout_errors(counts[1][0], counts[2][0], n, CAL_SHOTS)}
-    a = arms["qaoa"]
-    print(f"QAOA: 2q gates {out['two_qubit_gates']}; feasible {q_k}/{q_n} (ideal {a['feasible']['ideal_rate']:.4f}) vs "
-          f"null {null_k}/{null_n} (uniform {p_uniform:.5f}); Fisher p={tests['feasible_qaoa_vs_pooled_null_fisher_p']:.2e}; "
+    a, null = arms["qaoa"], tests["pooled_null_feasible"]
+    print(f"QAOA: 2q gates {out['two_qubit_gates']}; feasible {a['feasible']['count']}/{a['shots']} "
+          f"(ideal {a['feasible']['ideal_rate']:.4f}) vs null {null['count']}/{null['shots']} "
+          f"(uniform {tests['uniform_feasible_rate']:.5f}); Fisher p={tests['feasible_qaoa_vs_pooled_null_fisher_p']:.2e}; "
           f"r={a['approx_ratio']:.3f}±{a['approx_ratio_ci95']:.3f} (ideal {a['ideal_approx_ratio']:.3f}); "
           f"retained {tests['retained_fraction_of_feasible_excess']['estimate']:.3f}")
     return out
